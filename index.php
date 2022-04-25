@@ -250,9 +250,9 @@ require 'config.php';
           break;  
           
         
-        case 'home':
-		      include 'home.php';
-		      break;
+        default :
+	  include 'home.php';
+	  break;
         }
         ?>
         </div>
