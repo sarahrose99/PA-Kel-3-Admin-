@@ -1,0 +1,80 @@
+{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+body{
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: repeat-y;
+}
+p {
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  padding-top: 10px;
+}
+
+.jdlh3 {
+        font-size: 20px;
+        text-align: center;
+        padding-bottom: 5px;
+        font-weight: bold;
+}
+.judul {
+    color: rgba(0,0,0,.7);
+    text-align: center;
+}
+
+a {
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+}
+.container{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    padding: 20px 25px;
+    width: 350px;
+    background-color: rgb(210, 180, 140);
+    box-shadow: 0 0 10px rgb(210, 180, 140);
+}
+.komen {
+    background-color: white;
+}
+.container h1{
+    text-align: left;
+    color: #fafafa;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+  
+}
+.container label{
+    text-align: left;
+    color: #90caf9;
+}
+.container form input{
+    width: calc(100% - 20px);
+    padding: 8px 10px;
+    margin-bottom: 15px;
+    border: none;
+    background-color: white;
+    color: black;
+    font-size: 12px;
+}
+.container input[type=file] {
+    background-color: transparent;
+}
+.container form button{
+    width: 100%;
+    height: 40px;
+    padding: 5px 0;
+    border: none;
+    background-color:gray;
+    font-size: 18px;
+    color: #fafafa;
+    border-radius: 5px;
+}
