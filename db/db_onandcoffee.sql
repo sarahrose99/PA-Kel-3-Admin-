@@ -1,391 +1,215 @@
--- phpMyAdmin SQL Dump
--- version 5.1.3
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Apr 25, 2022 at 10:00 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.28
+/*
+SQLyog Ultimate v12.5.1 (64 bit)
+MySQL - 10.4.22-MariaDB : Database - db_onandcoffee
+*********************************************************************
+*/
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+/*!40101 SET NAMES utf8 */;
 
+/*!40101 SET SQL_MODE=''*/;
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`db_onandcoffee` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 
---
--- Database: `db_onandcoffee`
---
+USE `db_onandcoffee`;
 
--- --------------------------------------------------------
+/*Table structure for table `admin` */
 
---
--- Table structure for table `admin`
---
+DROP TABLE IF EXISTS `admin`;
 
 CREATE TABLE `admin` (
   `adminID` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
-  `password` varchar(225) NOT NULL
+  `password` varchar(225) NOT NULL,
+  PRIMARY KEY (`adminID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `admin`
---
+/*Data for the table `admin` */
 
-INSERT INTO `admin` (`adminID`, `username`, `password`) VALUES
-(1, 'OnandRoy5872', '05a775b365e659a64fdc35afac58bef0');
+insert  into `admin`(`adminID`,`username`,`password`) values 
+(1,'OnandRoy5872','05a775b365e659a64fdc35afac58bef0');
 
--- --------------------------------------------------------
+/*Table structure for table `cerita` */
 
---
--- Table structure for table `cerita`
---
+DROP TABLE IF EXISTS `cerita`;
 
 CREATE TABLE `cerita` (
-  `id` int(25) NOT NULL,
+  `id` int(25) NOT NULL AUTO_INCREMENT,
   `judulcerita` varchar(100) NOT NULL,
   `deskripsicerita` text NOT NULL,
   `gambarcerita` varchar(100) NOT NULL,
-  `tanggalpost` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `tanggalpost` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `cerita`
---
+/*Data for the table `cerita` */
 
-INSERT INTO `cerita` (`id`, `judulcerita`, `deskripsicerita`, `gambarcerita`, `tanggalpost`) VALUES
-(1, 'Selamat Datang di Kedai Onand Coffee', 'Kami baru saja meluncurkan website baru kami dan kami  akan senang mendengarkan pendapat kalian. Silahkan hubungi kami via WhatsApp maupun Instagram, lebih baik jika kalian berkunjung ke kedai Onand Coffee', '557-2019-06-25.jpg', '2022-03-14'),
-(2, '2nd Anniversary Kedai Onand Coffee', 'Dua tahun sudah kami berjalan dalam dunia perkopi kopian ini ... terima kasih atas support yg sudah diberikan.. harapannya semoga kedepan nya kami akan menjadi lebih baik lagi..dan tak lupa pasang keyboard bongkar untuk kalian para orang dalam dan penghuni lapas nusa kambangan cabang balige sektor ONAND COFFEE. Sekali lagi terima kasih banyak, tanpa kalian kami tidak akan bergerak maju...oh iya besok kita bakal kasih nih harga spesial buat kalian semua...horas perkopian Indoensia salam kami orang dalam', '', '2020-12-01'),
-(3, 'New Signature â€œKOSU ONANDâ€', 'Akhirnya selesai juga persiapan menu baru buat para orang dalam â€œKOSU ONANDâ€ salah satu signature dikedai kitaâ€¨Siap diederkan!!â€¨Kalian bisa delivery atau take awayâ€¨Apalagi nongkrong sama di kedai kita...\r\n.\r\nKAMI TUNGGU PARA ORANG DALAM DIKEDAI KAMI .', '', '2020-05-24');
+insert  into `cerita`(`id`,`judulcerita`,`deskripsicerita`,`gambarcerita`,`tanggalpost`) values 
+(2,'2nd Anniversary Kedai Onand Coffee','Dua tahun sudah kami berjalan dalam dunia perkopi kopian ini ... terima kasih atas support yg sudah diberikan.. harapannya semoga kedepan nya kami akan menjadi lebih baik lagi..dan tak lupa pasang keyboard bongkar untuk kalian para orang dalam dan penghuni lapas nusa kambangan cabang balige sektor ONAND COFFEE. Sekali lagi terima kasih banyak, tanpa kalian kami tidak akan bergerak maju...oh iya besok kita bakal kasih nih harga spesial buat kalian semua...horas perkopian Indoensia salam kami orang dalam','','2020-12-01'),
+(3,'New Signature â€œKOSU ONANDâ€','Akhirnya selesai juga persiapan menu baru buat para orang dalam â€œKOSU ONANDâ€ salah satu signature dikedai kitaâ€¨Siap diederkan!!â€¨Kalian bisa delivery atau take awayâ€¨Apalagi nongkrong sama di kedai kita...\r\n.\r\nKAMI TUNGGU PARA ORANG DALAM DIKEDAI KAMI .','','2020-05-24'),
+(12,'fdsr','mmnbv','432-2019-06-25.jpg','0000-00-00');
 
--- --------------------------------------------------------
+/*Table structure for table `infoproduk` */
 
---
--- Table structure for table `customer`
---
-
-CREATE TABLE `customer` (
-  `customerID` int(11) NOT NULL,
-  `namaCustomer` varchar(255) NOT NULL,
-  `emailCustomer` varchar(255) NOT NULL,
-  `adminID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `customer`
---
-
-INSERT INTO `customer` (`customerID`, `namaCustomer`, `emailCustomer`, `adminID`) VALUES
-(1, 'Hendrik Schicke', 'hendrikschicke@gmail.com', 1),
-(2, 'Rotin', 'rotin123@gmail.com', 1),
-(3, 'Niko Saripson Pandapotan Simamora', 'nikosimamora@gmail.com', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `infoproduk`
---
+DROP TABLE IF EXISTS `infoproduk`;
 
 CREATE TABLE `infoproduk` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `jenisProduk` varchar(100) NOT NULL,
   `namaProduk` varchar(100) NOT NULL,
   `hargaProduk` varchar(50) NOT NULL,
   `deskripsiProduk` varchar(200) DEFAULT '-',
-  `gambarProduk` varchar(1000) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `gambarProduk` varchar(1000) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `infoproduk`
---
+/*Data for the table `infoproduk` */
 
-INSERT INTO `infoproduk` (`id`, `jenisProduk`, `namaProduk`, `hargaProduk`, `deskripsiProduk`, `gambarProduk`) VALUES
-(1, 'Biji Kopi', 'Espresso Beans Lintong', '', '', ''),
-(2, 'Biji Kopi', 'Filter Beans Tapanuli', '', '', ''),
-(3, 'Biji Kopi', 'Filter Beans Lintong', '', '', ''),
-(4, 'Biji Kopi ', 'Filter Beans Kerinci', '', '', ''),
-(5, 'Biji Kopi', 'Filter Beans Sidikalang', '', '', ''),
-(6, 'Biji Kopi', 'Robusta Beans Sidikalang', '', '', ''),
-(7, 'Minuman Panas / Dingin', 'Kosu Onand', '15K / 15K', '', ''),
-(8, 'Minuman Panas ', 'After Sex', '20K', '', ''),
-(9, 'Minuman Panas / Dingin', 'Black Mamba', '20K / 22K', '', ''),
-(10, 'Minuman Panas / Dingin ', 'Klepon', '20K / 22K', '', ''),
-(11, 'Minuman Panas / Dingin ', 'Kacang Ijo', '20K / 22K', 'Kacang Ijo', ''),
-(12, 'Minuman Panas / Dingin ', 'Red Velvet', '20K / 22K', '', ''),
-(13, 'Minuman Panas ', 'Ocean Blue', '18K', '', ''),
-(14, 'Minuman Panas / Dingin ', 'Latte', '18K / 20K', '', ''),
-(15, 'Minuman Panas / Dingin', 'Capuccino', '18K / 20K ', 'Cappuccino adalah secangkir kopi susu yang berasal dari Italia dan mulai hadir di Eropa dan Amerika sejak tahun 1980-an. Secangkir kopi cappuccino memiliki perbandingan espresso, steamed milk dan busa', '67-capucino.jpg'),
-(16, 'Minuman Panas / Dingin ', 'Espresso', '15K / 18K', '', ''),
-(17, 'Minuman Panas / Dingin ', 'Espresso Susu', '15K / 18K', '', ''),
-(18, 'Minuman Panas / Dingin ', 'Sanger', '15K / 18K', '', ''),
-(19, 'Minuman Panas / Dingin ', 'Mocca', '22K / 25K', '', ''),
-(20, 'Minuman Panas / Dingin', 'Aeropress', '20K / 22K', '', ''),
-(21, 'Minuman Panas / Dingin', 'Choco Latte', '20K / 22K', '', ''),
-(22, 'Minuman Panas / Dingin', 'Caramel Latte', '20K / 22K', '', ''),
-(23, 'Minuman Panas / Dingin', 'Vanila Latte', '20K / 22K', '', ''),
-(24, 'Minuman Panas / Dingin', 'Americano', '15K / 18K', '', ''),
-(25, 'Minuman Panas / Dingin', 'Matcha', '20K / 22K', '', ''),
-(26, 'Minuman Panas / Dingin', 'Vietnam Drip', '15K / 18K', '', ''),
-(27, 'Minuman Panas', 'V60', '18K', '', ''),
-(28, 'Minuman Panas', 'Japanese Ice', '20K', '', '');
+insert  into `infoproduk`(`id`,`jenisProduk`,`namaProduk`,`hargaProduk`,`deskripsiProduk`,`gambarProduk`) values 
+(1,'Biji Kopi','Espresso Beans Lintong','','',''),
+(2,'Biji Kopi','Filter Beans Tapanuli','','',''),
+(3,'Biji Kopi','Filter Beans Lintong','','',''),
+(4,'Biji Kopi ','Filter Beans Kerinci','','',''),
+(5,'Biji Kopi','Filter Beans Sidikalang','','',''),
+(6,'Biji Kopi','Robusta Beans Sidikalang','','',''),
+(7,'Minuman Panas / Dingin','Kosu Onand','15K / 15K','',''),
+(8,'Minuman Panas ','After Sex','20K','',''),
+(9,'Minuman Panas / Dingin','Black Mamba','20K / 22K','',''),
+(10,'Minuman Panas / Dingin ','Klepon','20K / 22K','',''),
+(11,'Minuman Panas / Dingin ','Kacang Ijo','20K / 22K','Kacang Ijo',''),
+(12,'Minuman Panas / Dingin ','Red Velvet','20K / 22K','',''),
+(13,'Minuman Panas ','Ocean Blue','18K','',''),
+(14,'Minuman Panas / Dingin ','Latte','18K / 20K','',''),
+(15,'Minuman Panas / Dingin','Capuccino','18K / 20K ','Cappuccino adalah secangkir kopi susu yang berasal dari Italia dan mulai hadir di Eropa dan Amerika sejak tahun 1980-an. Secangkir kopi cappuccino memiliki perbandingan espresso, steamed milk dan busa','67-capucino.jpg'),
+(16,'Minuman Panas / Dingin ','Espresso','15K / 18K','',''),
+(17,'Minuman Panas / Dingin ','Espresso Susu','15K / 18K','',''),
+(18,'Minuman Panas / Dingin ','Sanger','15K / 18K','',''),
+(19,'Minuman Panas / Dingin ','Mocca','22K / 25K','',''),
+(20,'Minuman Panas / Dingin','Aeropress','20K / 22K','',''),
+(21,'Minuman Panas / Dingin','Choco Latte','20K / 22K','',''),
+(22,'Minuman Panas / Dingin','Caramel Latte','20K / 22K','',''),
+(23,'Minuman Panas / Dingin','Vanila Latte','20K / 22K','',''),
+(24,'Minuman Panas / Dingin','Americano','15K / 18K','',''),
+(25,'Minuman Panas / Dingin','Matcha','20K / 22K','',''),
+(26,'Minuman Panas / Dingin','Vietnam Drip','15K / 18K','',''),
+(27,'Minuman Panas','V60','18K','',''),
+(28,'Minuman Panas','Japanese Ice','20K','','');
 
--- --------------------------------------------------------
+/*Table structure for table `jamoperasi` */
 
---
--- Table structure for table `jamoperasi`
---
+DROP TABLE IF EXISTS `jamoperasi`;
 
 CREATE TABLE `jamoperasi` (
-  `id` int(50) NOT NULL,
+  `id` int(50) NOT NULL AUTO_INCREMENT,
   `hariOperasi` varchar(20) NOT NULL,
   `jamBuka` time NOT NULL,
-  `jamTutup` time NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `jamTutup` time NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `jamoperasi`
---
+/*Data for the table `jamoperasi` */
 
-INSERT INTO `jamoperasi` (`id`, `hariOperasi`, `jamBuka`, `jamTutup`) VALUES
-(1, 'Senin', '09:00:00', '23:00:00'),
-(2, 'Selasa', '09:00:00', '23:00:00'),
-(3, 'Rabu', '09:00:00', '23:00:00'),
-(4, 'Kamis', '09:00:00', '23:00:00'),
-(5, 'Jumat', '09:00:00', '23:00:00'),
-(6, 'Sabtu', '09:00:00', '23:00:00'),
-(7, 'Minggu', '09:00:00', '23:00:00');
+insert  into `jamoperasi`(`id`,`hariOperasi`,`jamBuka`,`jamTutup`) values 
+(1,'Senin','09:00:00','23:00:00'),
+(2,'Selasa','09:00:00','23:00:00'),
+(3,'Rabu','09:00:00','23:00:00'),
+(4,'Kamis','09:00:00','23:00:00'),
+(5,'Jumat','09:00:00','23:00:00'),
+(6,'Sabtu','09:00:00','23:00:00'),
+(7,'Minggu','09:00:00','23:00:00');
 
--- --------------------------------------------------------
+/*Table structure for table `lokasi` */
 
---
--- Table structure for table `lokasi`
---
+DROP TABLE IF EXISTS `lokasi`;
 
 CREATE TABLE `lokasi` (
-  `id` int(50) NOT NULL,
+  `id` int(50) NOT NULL AUTO_INCREMENT,
   `lokasiBerapa` varchar(25) NOT NULL,
   `namaLokasi` varchar(200) NOT NULL,
-  `gambarLokasi` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `gambarLokasi` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `lokasi`
---
+/*Data for the table `lokasi` */
 
-INSERT INTO `lokasi` (`id`, `lokasiBerapa`, `namaLokasi`, `gambarLokasi`) VALUES
-(1, 'Lokasi 1', 'Jl. Patuan Nagari No.89, Pardede Onan, Balige, Toba, Sumatera Utara 22312', '591-lokasi1.jpg');
+insert  into `lokasi`(`id`,`lokasiBerapa`,`namaLokasi`,`gambarLokasi`) values 
+(1,'Lokasi 1','Jl. Patuan Nagari No.89, Pardede Onan, Balige, Toba, Sumatera Utara 22312','591-lokasi1.jpg');
 
--- --------------------------------------------------------
+/*Table structure for table `masukan_customer` */
 
---
--- Table structure for table `masukan`
---
-
-CREATE TABLE `masukan` (
-  `masukanID` int(11) NOT NULL,
-  `masukanCustomer` varchar(100) NOT NULL,
-  `tanggalPost` date DEFAULT NULL,
-  `gambarCustomer` blob DEFAULT NULL,
-  `rating` blob DEFAULT NULL,
-  `adminID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `masukan`
---
-
-INSERT INTO `masukan` (`masukanID`, `masukanCustomer`, `tanggalPost`, `gambarCustomer`, `rating`, `adminID`) VALUES
-(1, 'Good coffee for you, the civilized one', '2021-07-27', '', '', 1),
-(2, 'Lokasinya seberang makam raja sebelah Polsek.. Gak begitu faham kopi sih, cuma ini enaaa.. ada favor', '2019-03-02', '', '', 1),
-(3, 'Very cute little coffee with decent coffee, probably the best you can get around here.\r\nIt has wif', '2022-01-20', '', '', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `masukan_customer`
---
+DROP TABLE IF EXISTS `masukan_customer`;
 
 CREATE TABLE `masukan_customer` (
-  `masukan_customer_id` int(11) NOT NULL,
-  `customerID` int(11) NOT NULL,
-  `masukanID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `idMasukan` int(11) NOT NULL AUTO_INCREMENT,
+  `namaCustomer` varchar(50) NOT NULL,
+  `emailCustomer` varchar(50) NOT NULL,
+  `masukanCustomer` varchar(200) NOT NULL,
+  `tanggalPost` date NOT NULL,
+  `gambarCustomer` blob DEFAULT NULL,
+  `adminID` int(11) NOT NULL,
+  `ratingID` int(11) NOT NULL,
+  PRIMARY KEY (`idMasukan`),
+  KEY `adminID` (`adminID`),
+  KEY `ratingID` (`ratingID`),
+  CONSTRAINT `adminID` FOREIGN KEY (`adminID`) REFERENCES `admin` (`adminID`),
+  CONSTRAINT `ratingID` FOREIGN KEY (`ratingID`) REFERENCES `rating` (`ratingID`)
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `masukan_customer`
---
+/*Data for the table `masukan_customer` */
 
-INSERT INTO `masukan_customer` (`masukan_customer_id`, `customerID`, `masukanID`) VALUES
-(1, 1, 1),
-(2, 2, 2),
-(3, 3, 3);
+insert  into `masukan_customer`(`idMasukan`,`namaCustomer`,`emailCustomer`,`masukanCustomer`,`tanggalPost`,`gambarCustomer`,`adminID`,`ratingID`) values 
+(1,'Hendrik Schicke','hendrikschicke@gmail.com','Good coffee for you, the civilized one','2021-07-27','ʐNG\r\n\Z\n\0\0\0\rIHDR\0\0\0~\0\0\0~\0\0\0⣥ɜ0\0\0	pHYs\0\0\0\0\0ڜ\0\0\0sRGB\0ώꜰ\0\0gAMA\0\0я��0\0mىDATxݽYԤב&秮ҧ垻\nŝ AфԬ$܅ߩNئڵ6=/mcƷމ��쎺ؙى$3I#ʹgڛش$A v\n֦{ݻϑ￮DfUaaKԠ2Ԝ"cڷ_?��ÿ۝Ϳ̆ױώ\\b࠼_Q֔e)��	UUE忴ݗTy��戤ѓ_A߳��ŀࠢ+ѳί9ǄЛ҇p��ܟ܇࠹𞯌ރoӻI񷴉בɛՔeſȺ󜜢wvl𼾯˴򼾽񵘇贃ܯ븋йϷẍ}Y݈֯5龔ܿ%��'և𬤍ə듞l򟽯GBޞ̚\r~O~׿ĝƴMeıcXݙ~#ߘ\\Xą䀼{˷Q񦣾��ޱ࠯̝c#?Φ;ynQ|}|Ĺ&׊ػHʝߑ|Ӽϻ��\n��|-׹	d*xپD޻|ŶA7Q֧򵵝OA픴񺓦.ܡ�wǽÆǢĕޯ܂(x纬,B߳\05򔚸Oߗàa้hɮ\0. 7ֈߜ}ɓ��ØȆŉz̡čޫ䝽dᯜr6Ҳ��ނZ\'��Ѧ��ڗ7寋p⤅\0ܮk՜rWke\"ףϻMq⒈ߘ{,޽\nӢZ쏃H򵦭%ݙ彠uƻɕэOŊ֬�̗ﬗ {髶٭��؛r->͘¸޸SJs޼־֖��\nDՔЃōɎ,՝̧Ѐ[￲٫��ә\\<\ZÇ	ؾۏζroeI.ڐʹЪL܈̚��,܎ր߭۫ĀـB	RBе3KEʼ]֥^7ԥ\"ŉʿ󳓬 ࠿ޥ򹉰bيbΆȞt,׻ҫv��|ܓ渕©⯳ڮ|܁ퟙ�H\0СÃ󟐰$5ۅ󭊬ĞpX8򴟟ż/-ť^V䞏aS糾Q1��hڪqэZ~ٳ<Ti��☤\"J!�зό]`䙈`i˪I`ݒІqΙˡ֤݌kKŗL��ϧé!,]Ɠפ֘77̕ڱ`@tǳOk��񠰻�Y²T}>ƞQRܸ߼܀ݸ\"±��ɿئ~ݣ.鿚��lѹ0ەIѼ𾔷ۈ->~朧\\Ԯv8��͊�54ϐ\r#Є񋞅7ԼA㩞0ٴϮ\n۝h:j󫦳҂Dۡج	֢CԆF0ը0ࠟ͟˥Bh.ܷ࠼|Ú-ѡWࠢLĹДݙʷʨҒUɗJ~ּՐ㌷꾴ʰꔾƻ?PӖռ(	k\06C||㥟򓖰ҫ^\\GҜՄ��񿪃`nۅCҬL��1��õũب֠��HĜr皥$��׫㸩p|H߬ңʄퟖ�,ߕАÜr醧ۊMfSєѰůֲʼ]򹕬y8ʮڒ.񖷬vʭࠬC੾?��ã Ɇy·-bv��8̬𓀯҈:օμЭ;6,q\"nكJMܸ𥭱/(\\ַdS˹Lԇ{ձ͕kօӎǳڴҀʜnۜnם㒠6yԗ8Лօϴۋ{й񳏾߁е\0Սgs2ݛ?gԐh˴!(AJ\03֍��~IڲӽͰBĂ}#󥍩࠿Ϸ,8w��ʿǟ˹��[s׭$1ʜ'\rА̃آuYΞN^4Ϛj̴Щjޠݻ6ՠNro{O��R|Բ϶ܔ﷨0gw\\!F㙦Ń;ΒDbY¹3ʸ񶣱z%`Ɇ焫A_´Vș_6梏Ηի󱛰񏸄ܻi͇೵,\nѨ>_	`@ࠗز\Z鎑ݙ؜Fԍk=ȱpbiŅ[iۈ>Nܷ֜\6`\\ϠɡG��撠f`N折Ι×Tafڄ񮉒^Nڜ"1Ҝ00a.,\']ࠠƿəw��5ퟒ�ջ|ӏZ��ʿࠫqwӆ硺؈=h􅊏pθࠕ๒ӥHmВ̐ʰ\r,!Ѭq𿪐@Vܙ༼đAô\0Ϊæ󺥦\0i͟Eثί݁Ivk񖎼󣿾͖��ݜ'ۖԏ��qഉߢ��%ÝWWٰ桙6Sޖ`ĦKΦ\'ULC܍|Ə!ܐĭҌ+\\܊`yҜ0a񑲱󔲛��jꆅ`X}󌹨Ć-῏񵉷��ｖ࠻��󞂥s\0ع6ͬҎU\\��1 Ӵз̭%4X��񀐓۰8Gp	Ԏ1\ZΤڛۣ򔂫/ݬʬ<$>ŕhPǻ\"߄ҕ~Òλ`4Wߦ慢`IׁҲZ��G}ݍιܾ~R Λᣯǻ\\޻s൷@��&��߯J@Â6ћnӶzߕ0Ûݚ{ȁ撅Iʟ!s/̀䲅f,cڸ{<e¢ܝh+߼ˁἚDη焊ڝ&o|&fdVςy��򶉮🚋��N׮��П��˟��盳ͺ͔۬qæθ󋒉zX̢	aהT|Sݽ6gЇ-ԲѪd,񽻑σˮ>Poۜ0\0􄌵ʀ�ПǨD࠮hߜ椯ݐ߿E=)<ȯݽCV󓞉����ѵۻՎڸyxԍ3|7򸵋梕aԌ#ҊཱsҰ` ҄f4ތ)ޚƖ왆#وs󫙤o)ۛHÃłRΝȜ\5��󸳻l9/n�阂ݟ򄣯��dվQ��񵑰ÜZЇq臎!ޜHV֤eԠͅں0ԴƘݕJjܮuτϑeťFpɾޢZ4䔼ܕɝj䆜\ԞoS1M(ړݡ̬kӿͽ߯fGբ{-��ǽ࠹>ø򽿞܉S����ÿ��Aґ𜮠ߛͦ0PSʜZռႸт<ގ̖W;ܱ`ľ~ևğ(͟qNj݀lS~2L<Pک{ȣ\Zs`ǑƜ0CԜ۷&࠯?IN��ފӲԇ}}Tѹ߿ڣRvȏ9^ĥ	ќeʯ��˯Ŝ"V>쀰^ۻ)͉\rJ{\0	$ŕ!ѻЦʹ/ fM챘߳ٵ_ԩ񻕬қ]rՃB��ͱSv䶆܇yiퟚ�ȴ{��ᒁu��򓩹ʈ󮀯ِě\n̏񄨞ʏp.|͵ǝ	t��9��A˰dí䑈ъࠔѱ8��շW˩%_Ưüć/댍-֐ʇĐԀ❜ČĒҜ'捝3ȶ⽞̫)ǉ޵@͕їэ/gC򙒡[% ȫؗGۊx䓁/œq!ꓥ/\'±М܅󛺑}ʯܝνȠ˿фDKc)Lŝ񂒮˜��̭͠\Z7_p)nʲnCפѹJ󲗐_*ZaՋVӊ𯀨\nנ.Ӕ\'.=ą󩮥ŢͦƞHÁ󈃺ﰈZݞeݎ53υdɁ×;ّޞ;ŝñกֹ]ζOB˰Τ?^̢ñ��ϯѼųטAlޜ\|NX��｀͕+�݄Ɔʚl˒ܣʂҠߙӪX\nMM䆩H͂׊ա!ւ^2揩â՜r߃ݾ~߆aﲞ(��h\0ࠚ◝񧏫�û��ӏJ\\򦞎浪ɷߊݳǨߘrǕà&ޟt8䓡Ո~��Y^򣤋ãѧܱcWk[dؕϦVK΄Ƥ!<��°Pۨg; !8R۩&fKQAbպ㏂zN֮^ՆȖRŭH\näة%פշE򁬊ӧׂƟɔXH򱹫ɓ*I΢ɩ𸎏ZI����Ƈ]̧hn{ٿ@￱\r܉\Zࠒ̿GBRЭUݞTī拗ͩ-Ԃ55j/\\Xނ�ęӴ0kԩ䜰#jJí!㾧@ިʠ*nήޜ'7ϏHU&e!⮦ÁD-ϸLY4޴g.ã\nb򄘜Z7\nˎڋݘġɜ0Rɍ&ȦɈa\"ﰹѭ|̭䞃ڽHȌ˞ق׌\\ѾӢȏ%.��CdKȢ@ȱŜk��Лؓ[^߮ʯ\np$˪��!ㄻۇ۱%/��֢Վ\0rߣࠆ֠\0Хض񆫧ϓ˚\Z��֯ɖxђ쑊׭X?opܓюԝɜ`J󣙯tEã!oܦ۹ѡǳۺ&\rڹ0jօ\'ƅ]>َ̛뇵˕Q4iÆ[1ms\nFތɣ͹uòǨ煑݇ʗ-6��\r̙ޜ\߶RސX��̗ӉXкKM߭5\Zq֣i4˵Ӝ"ܫvʊ0NǬʆ��Fաdϴz��׎?@Yԃ󉄶V6hmkӺݵꞾE�z܅ϼrǶǅ��眭ǐ@сǈ̑Ō&Lͷwhʁ㡔Č῜rǴx{ՇԡЪּ֬L3~.@\"غĔ0G߿ǦƐQTNã\\h֨һbƒ$򴣾٦ȜrXՌMs毑]ͤrTo֛ ̬ȿ4ﱪғĶѾҒ쬟l}ü6ΪhÅػɹ6XS⥭i/޿ю)[ȂͶ1��Ϲ}訑 ٤��Ҕܸǟzƞ󆟐ėƒέȐ\ZǦ؟ґ͛Գ<ĽW細̰ӡخ񤄷å>��5ߌŘM񊹳˞s͐Y򂍅ͨb!	^iɱ4ȇ׸_ʖցׁ\"̕\\ʯůJ IĄ%L/ࠢWaŃۼڈ8ېʬ·SͲƳɐčo|:2ڙVՕK׌ǚi��íпŒӸލӀV*Ʌɛ\Z5܌OͽXї嫝Ь(ܫȵ/ֱ;\'>G:@\0㧊ʣ��{��bΥ\r\rƘËi<p͕׬ʁ\\ɀЬɁŢ̏1B@`ߙ孩Ԑl҈ܗȼтФƠV򆔥8F⏅(,.<,nR5I[ߴwI��Ý4>~.܃˦})eƾPg눉ߗ؆GvΩP]ͮj]ȶסȷ֬h3*\\ܙ\nX̦q憸˘b֢٩jeu҂ͼÝ堾՚~��񟡆Pʇٛݠ޷ئSʿ7W	ѝfԣQؖ&ϊ~e)鈂ْǜѐ喭:؍׈Ăh:]ՊߋNAʟύmd𸕴ڸ0~ِ®��K\ZIŬ@\"��Y(aʪF!Л˺,%α\0Ѣǎ暬ڌ⋩]ȉ\nK)BP)	ڪǶ/bֈ۔z䂩V\nԤԜ⫝ـ߫īڅ瘩8-ŗʜڮ<ص%$\n̍z7@üwbڰ
+6Gà馁H��B󤒴ܘ,H)ߎأ꨺3HLm\"yn��m맂eېo\"h`��𗪜"4Sh<H\\ࠒԻ鑜ԌlC ؖ(JPF۾UӬ#։y󝤹٣ꊁE%;3:-ȉwz݉Ɯ'Ù۟Y以>ȄÁ ̅|	?ϛ_V��dUؿ!Ϟi񳬝Cҩ|,\\ЃҫڃȚ?Ǽnԭ��\\٠ ثǙofJꐄÔ{#(˹YË{뢷˛-4Rs��ޛ،żY򡜮ƍ󍴔ëɥ&`Ao]SݐXϵZ_ۡƖҘ̨a˜yq%��ƖP۩̫Uoͭ)i䲭PԪe:ٳ 灧̏Y/Ÿ��ʕˉרڈUȵJp᪔3ɋbɅ厕ퟮ�˥|JK��Ą姆̭DԈMغ\0Á̟ә_RŢդ;Ùnޜ\\'έmڢSC,|D&gf;nǆڷȿ擖\'⮴з+rǍȋ⸿泔\'ەɧ񚦜IN1ࠠ􅱔𶧄م*H۔ܙ5wx񽈫t蜀ޗƱ񧜱؎W֜0#kԦˎސ>αl&לM{맥\\ēʈ̑Ɍ=婳_ܱ\nhޞ@ȒL͂W��๱WAӛԂзӧƷG孫WȓδM3Föo5i׃iɼƉ˼uŇ˗؍N2G	3ﶎɄ؜'*ǲ͋Sӌ́��Bƒܡ|d~۷2hlgUn!Pʞ҈`4󜰝ݨ6gpPt}y&Ύ󓇣>}-\\ڳK`΋BjЈΜ\ӱbׁĠűh\n؉񏷬�CЉեB��9°ޕ3Qى,؜rʪԸ\\4+򦻱)]ࠁ4S19]Œͥ4ƱЌ\Zآ۱Ď_ս̛hfqхsʢ=ąቓ𑳐Y!D5/\nʳ-Ӆؔ؄CƼVΌڈؕ͜rޯ2a؈b$˱؜'վ?ӘĮ!ɥΙږ\Z9]fȢȣBpF>񷹯攲eаѶ>ݮ$Wի^jه@Ț0G~HE\"󃭻۵r1܀ۜn��Ԋ¯īޣ񘀐Ɂԓː4Ӛȫ7ʧĎݤ교㣔D(փ_��ďeڠh0\'��晜Z!]Ԛ䤮ӠśBÅ(°u΃Qݱ4cpϭnnj񉜮ħxƂ-}Tِ8I]Ȯ񴔧צ࠷Aɛϥ؋ن��ŋģʇ뎐r,҈𜧎Xڀōyԧ35?xǌUh7EҬϜrǇO/ӘxӥJԼ9GǪĞÝ$肗֜nH뢪Պ@ĮږԪJя뷾Fú誐řGФȲ}Ԅq.ذVڜZ\r֌ǝʩÑ߆񚃡̴Eqǳ,޻򡖇-$斗DԺɵ࠻ʰOݼ4ͭمmޭ��=m1ߤgOݲ)棾,ȥW{QpܸΔ!e򶖛鈪C֣n(Lƒ:+fʌ噸ŨԌ}\n*@łΑٳ4uɴ<bDƚFǑA&ɞԨI:ɃﻨˋkSSߝ٫򥫢IUڢXpٲ	qȣM[UJ\rű򹱦ɊδRٟW⽲%RRځ˽t6BǐF|a}ղ٨ڗ?ۡ6XxʘZÇ݄��߷ɷ{ɂUs+|ݸݐ儨ٓJҌ)쪦ׂϗɩ\rгӤױ끅.ޟ_𒃖ީ!½ӊn/|	��c؄X3~y1𘝫5E헻ު��Ĥ;-Җu֍ؕ4s싡Ȧޒ\Z��]=#χ񯕙9,ؓ뻜l馵ֱӐӇҵڜƨB*k۴ǿ��ϣ?񵸔˩KҴˈԭ҈fZ׵́^Q؅&\Zلh߮𬗛˜˟��pДŉve,ژ՘۹ǁءʶ댜"x󉈩k(ٴܼCdɌȣEڨ҈Ӛ	7٦H��uAӨZU񄚅̪Nݷ����=~\ȑaէH󻌜r؊Ԏ(��םtڰٗbпZJuwלsއؠѥjϐ4񦫛d_ЕrڲՐΘpEӒZ(ڈ߯񈃌偀֦%f˴й`𯜢֡^ɸ9A֟9X0嗸爍;՛捄ƆΪ𨋂s]EkA\'¤��_ԉ࠽ބܺԪKD۪։CX𨂒5ڐ̉eϢЖ[ږѕ㽏u\'Ƒ#y͔jpY貐𦇯ڵ҉׹nؑ=bĿ=쯩CҤ9��9рӼL\\\0ݮƣҤ��6ŪŖdڧr˲˶ʦި،;2Թנճ⤦Ѡpګ_\núۦϓӖ>ҟ䟎	ɽ~y΢󄷈dׄK֚捌˄$Z1!ð��WΩ�#չ䖄\0|˯󺴁ЗÖ\\CZ~ŴҘJƾ\Z5 ˤXw?g :Ϛ2daΏ4υGŠȲ��?Y0ҁۺ͉18ʋiV!,ݰ3ΓD!\nȖ{.\nؓбΜ"̝%ױN˰I\"ý}0˳biٗ$V≚K^$uŅuՐXLɎ?~Ե3!/ퟚ�\Zv᯦s򄛎°Әʪsy˞ʶխV猁&͛Waҕ䢺Ә5ۆײơh$ۧ-@PX򒈉,Xݶḣrȿk7P͈$\ZF~݈ܼم%\03>\Z,\0:Jޜ"ā}=\"̖4+ʥ͋gڣ[ب :ڙ	rɔʜ'ZۑLǗ֥XЫͣf診i9;ƹ8F݌RҚɾ)Ϭ}M묃ʖ-ʫTќZZղҥƋjŔعڣۧյ̝��꿵Ƒإۺ䚨ɥۖٚz𡩮I7eVZ꟝穩J3ߗۼeN\"{)ճưGiNpЌL{ዞ״õֿW汳i7ۣ+h鬜"t/\r󬖠βUɶӪ㊜Aֵܩ*栙&ZǅfaVڹ[MbΧ:ūv\nȸ૾Aŭkԏ딘<S؜0ԽŮزƔβAˢ;˘)r橽pdϩ׈ӋҺȽRڻĸ҇ʿӱǢ#״<ʓڮۭ¬؆ltܧްJDԘkZ͆BS<ڗ8X\nܱ𿘼۾?ِZޘzͪ(Tô=ȋ{ȪcS>Ӳ&Yğ+b1擴OЂ	ڡ;Ө1ɶjǞݬԶ\Z㖫)ʹr걻k1bڭѪq汖M1ҹ\Za!߹ݐطȴп㢔zԖ* גCȪոŷ̻ͣݑ՗ĆӌUքޑǓ껫̈́+>eZޏA宫𸍯ޜ\P呱z.СqΦ֤ܢͼܒȷX0硒ƘǒĬ4U񾶋21˅dƋ&|?ۈ鲙숱ы˹ӄŷۤA\n񻘍fļP	ޗ׻ƪ1!(H\"_Ӑ1ĠƜ]$Ȫ6玞ӗ{��ޝhњ;лɤdA<ф\0rک&ؕAU[󑥘쀶팹҇:״򕁽򁐮쌩ێeAKэ*θw泊.aXfEϞڴ;WلꞺТ񓕈ё8ʢ.Еѱ甿yࠀƬnY͵0ʴħot鍣_þ񇨽࠻.GTMǓٰ݉B&jퟛ�KaS燲ȁ��?*͒ͤd0،	D獼ȋέAڠ)ߴʘʙ\0Ҡ[Eë֦JҦ\rюr��U򒣫��o6vV	؜rLӁмx`	Jȕه%t(टΛÑbD?љȯ>ފ7޶��{жҭZɛʨթоɉ[ߘE[񘰤ʁ[ݑ耥ժ\Zükև#ϏϣʿԼÊqҥՎeܵh񄵔ʴҽֶ?󭺳��˧ɽᱺ򿿷4ܛrԜ\[P%!H$��5߃ۈс֗bUᴁӎĿퟗ�񞕟ѨũcЪ˂Iܩ*Ѕ晲	\'uR*[m\Z򻿴ߏן>E؎wȗל_58ȸ)˓xH@ֶ`��KƅhϝǬ܆栎͏ϫї׍˿ﴳ󧜚��򲣛��򕛻4ܟPӿCfЄ̄ȝiR؏ʣ,1×̓3̅=٦ڠࠂ쮳a@.?t絥ԫˆ?봌Z=򅯑񜧾GEë,؟$ؘշ9\"fjѯ̸x ~dRȋ ʽؕ\'EЄ7OȜ0Z)r)ީ񆁵 ǿ;MӤ-$��ZڀB1񜜵۱k淚ۦS��@࠹��Ғ7CؐDQ雥LީЁ\rȇ!򆓜\\nw֟#زڷK\n6氟Ürvƣ`޼ܣѪ/GN7驇Wı䇇h\Z¥/㢵˒\n)ؘK쒭»Ďo˳s𺧼ܡu筻��ʯ����ܼ Kˠt^ɿ߁ۗ.Ӧ\'Й��KҘזYjͭSu��񃕄}sʙБ݉扂ݔŐ#Ɛ2\'­ͺȴE\nƥC8k쥉˸\0^ǵh\"Jc{ޞ9Ǔלcݦ��џi˞ߪP3A񲐜"ʨuȺE\"肀ҙ~lۛ˧(ﮋƻϫЕԭާՕֱȜ\9ۏnIzʔuų(єt*θVey􌋾󈺍]ӃÂZA$hѻ̙LՏĺ%qܮQLǣX2骧ޙy_kc7��ׯlΛ։��\ǹۥ7Sǈ,iꍛκM��ٜ\\\0^˹x�薐ɡĄ׵S¸Զd܅kҹܙ ߈$ȯڈď3��ࠏ󢾕7ϓ虂e^Oְʏͬ٘ʋ̪ֆ΃玿[ʳ늞𳜐γe	y#_9ÖŭÒ̇ƻJ%ǯm6񻡖!X]GŐcN+ŇOАo΋7Ϙ𹽕Ξ[\0?!مՖІ\05~жnŔӀxN$w8ſߍɻlퟤ�񸮼ħO_߸zK̈́	 rࠠ˦߄^0.NGS*ګ\"ݍγ4߽͟ۓyΤܽƿ4>[؋ZՈ딭,:¼5ʳҡs\'uů%_345㫸`񶳧谘˷WHK㤬[Yq\'b��'ǠÞȸ|iԏޓВ׮+]Ā9,? ퟢή뛌ИدP1٨��-@\"ԫ\rުǗԤͪ͡Ng8<>$\Z\rY󥘑Ӝ0׀sCDñtȮ\0\"̉΂ՖS��ӣ۱ؘȯϮ޷^(Ύ��ԾҁӓҘҴΒؙҜ0q~ʎξĜZ0Ӻ~&ĺՎݰȒMسڌ��ɨg󂶓̊łݕ+ߥSFȬGɓ,?~ўáЊ_>��䉞��̏ƴ˖[eOנۣΈF:ܙ˙㲡p˴Ѷ%ô򊨀ѰFζ>䣓PΝBl8٭8\n!,ʯ\0ʖ񺟺ף��А7A.©ڥ()LӀǄG̨ۅ\\qƁ׊ޓիฐퟜ�_>z[.=p^\\¨ީ��ښ浥Ͽ࠲ƧݾЖۼԘފ˰%\nֳB90Ǭkܸэׂ	K,ج1?ȩ=̽��ࠠ𼽤M����џ\\jR؉Ά׈`)Ӛz/ƦcȸJ6=5W˖ʩl缽J{ȵӥLֺ͙V٘˫ȝܠꡀ⪊fќZƐ휛287֭ݹ	bڸݝoӈ֩򭉿捰w崀?Sk��ԆҴVr{B݅妪CݪЊatۆͩǳDyޓ4ٔ-`D6তL=^ȁOǵۤ4]Nd9᪲洘ɫ&շ޻Éأ󙭊36p6ڊЂKeܵӾ6ڙuè2ǛӞ6~��ƛȒ?ǹĉ쿾񳧩KϬ0l馹Hv\0I]cۭvo^֜êX\r̩T˷ѷٷg\rrǊlөyYWǝͨx읮·Тpbؿ)ގշߵꗟ&і&tn̍3O󻓱ǉXթeӔإE޴߁䭝Ð̰u�=,ՒǪ坨޼ۭ[̪/ܽ􈹍Ҝnٝx܊ԸpA鳥}ӾإέܴĦ£6{Ȩpo؆Gú`ȱ\"ָퟆ�޿dīҜݵ3Ϝࠂڌ��[ۂyd$ˠ	󅯲ߨ1\nG��Ⱦ��N|J)©\0¡)\rLjŠ҆ޮjԔࠤh3Nkȉg-섉ږ֋Ƿ˦|7ޑ윢iϱsႄH\nz􉘇鄓В\Ző֬רq⢂}󳇀ϸӞЭVњ}=υ͡S Ç߸D��˳ڗvs;KQ.C̍㎜0׎Fcʔՙ��K󞎡֖ةKgƿŽ-꯵፝N\rĉܱ ퟋ�ckR3ӃvŒUՁNC笙 רʇ傒ًһw��撛ͻ׬Cf١cΓ\'򉼦,ΨSʛbv_4۱ʗ󉱅䎯tWkࠜ\OȚᛧ풆׮ɯKg􄯣ݵ؏ݰױؠӫlԭaܬpΠ`õu{寝¦ࠪ2G҄ἕ󮆼߇ƟӬЎ櫍ࠄ>��ΧФ��͗\n󐣺ՍM9و/Ϥ|&^؟Y✢ϔ߼򯾊߹ۗi읃4f->۝Ҳr_ؐۚۄܜZaшدܞࠋӣ?݇A֗Zǿ��\"NUG\'񭈑4	3śʗ0ґΉúfSфêx5߰��ϫ쳆KӋ;𠕪ٺѡlq󵦬au@%7\"ɲҺDʃɣ iZ̜ẔSwƇÃ~��Ԗ#Ԉay}՜"!ۈح*?!L#~ﾱɍ࠻䏭Ν>Û譊sܢP83nϸT۲ۆˬ��`i在nJUjпCm~탏\\'࠸9򆿹S򢟼3:��械ԡ`߫]ܝХPcʈW ;ߥӢPÆ񍘍󜜠񗟼GlPD;3́&<;ݽ��A#Ψ-˦V8͉ˠDN׀{񦣨%Dۖ0ѭgM\\{Ά؞g״򸴚;٥!ŋluںӘјʖ\rӹKʬгN\-0Ǥ eW҆v(r,єN$뵥@źΏɝ<޹y{ƋġD>,OӺ6Ѕ޾ȡ雙K՟ܠ1hڜ欯����+|࠾D㤃벆ιs\'É׺ܴ蓏ԗ��ԟ򇴶ヴëࠠl8𮒚}Rφ}Lܧ٣+Ьгֹc\'F��M{̳s0q��\r$ŐbĬޣWu܊qʞ㫩ХӞǸw)\".ڹ.YۂȂє򌁖弶 Ѣpڊ˙ƎR>��]��QNͳ\'˳��2w)д;߱Q㍯kƩ模Ȑ?甭��а&Øç͚ϖoz[ٸώ_zܮ��ݿ𜰝ݸЖz+ѰNʅ܁ݕv׮����d˱e҈+zӣKvÞ𜧨گ��ܟԙǿ̖቎͎isŖĵ臧s@ʁ<��s��՘ͻhΥ2֙_ٯϓ0׈ۖ䘜\٤߹Вď𻮌^꾃݁iiߛ㎬)03ґ{/S1:Paɔ8%R׳_ᣁŁCөȱKcV]ɝòĠM,̘ŭM܉oѵ=ܰ0Vҋm��㪑+ֵ&aũLڎn��ф԰ˣaퟞ�7漥ݕ۴οAϿuAΥ߾<޹␩{󜢵6ب4܎ڽKѠٳ栿˖ҙmӵȸ/9g؁iѴ෋(c��ߡ3񕎄;ӊM8NΫ��Я~񳺋/]ⓧ#n(଄ɵߠɞݡe\nc��9¶ⷹBΫ̦ũL:?ߚلʪôٳ6񻟈񻺸ܒ��Еى[ՠĒ��򷞜ý̴$̧ܺީv\Z¿*ˢI΀ʘƱՀ匵?u>Ɨߋ鏁F\rƂRo9ԁ,ð̰񜲆5:ȕЯMØv1eդԜn˩Nsm,\0)հμ픏ҧߴ9]uZ9=􅯒շ_Ɲ6塞Փ(/˶JKNMVБַޡ^:Ȧ{ނޒړܸIٜ0<ӡàh\\|#ۭuίӇ܂nεʇi[.4YNŚ㝗&PÁվ܃լՓovxGҋČ3񅴯ބAZt걶Ϲί݇Đќ08nm~xK@ױx*��Pȱq܌	ـƖ\'@`͛0Ɖ󐬢,㍵.@װ憧Ij+噮ӏ|₆��YYς#̱s Ǐ۞҆ꢣ꥗ny࠯GࠖĜnXnз̐љÓڨɀ#򫴅о]8hePßۆ\n}搾%��ЬМnz挟÷_��󅚌j3��ݥظ㒘ퟘ�[Ά\Zjǟ娵欽㗿^{ƾ%c𭜜ۏeFܝ}Ǎ\Z<I4ިzIﮜƶڇq&❜ؐ񆵾ժ\"��%Ӫ^5c\ZJN=,뱷=~߹G򣜚ݹˁʃ͘ˍdܫYPȂӳ:ç!м[1͠ҖѪƥi᳤ɌJU\Z6ēg/v踯ةrޝɌːξW:݀ڱ#cщُRdLו]ܾ/+фܯň豘ɂ찃:\Z񷇫ÛWh��v:kt򁋴񧾍S6]G��ΊA鰸÷࠽цoǸ[ÀYà��Dٔܹǯ����J9kܣ\\nfFюإH7v��rhwͭƓ\\Xٴ$TԸzۺȁ#ђoӱհq\'R$6ࠝ࠭٦bxț}HΕ>޺쩺󴗩佃lֻ6u+Rʤ>\"P$ϓ޼��¤h˱+ٶrϥg)󆭵[領ꌏKڤDM܊ʪ7}yeB\'͜nKV˩;ȖƓf~񋂻��4=XƜ"ƺXÜ'м尭o𣝖����~{҆𓩰ퟂ�jVQǽȖ߷쒧ڭ̌\Z𽝌ŀ\n&qȍ����\'שs܂]ˡڳĵzڔ򃦞*kВڃϐkβ$=Źҵ^̡lʳ񲥸@^زeБ߮Ǿjșӈ픯6Ͳȵ࠙쒆ůJ5Ҥt㧤sT^󺠄khƘĢ4ΡÂՒmYVё|^Γ̲KÝ$ݓK߇VZҊPSʿ5XM͍ߜZ*v󅵬ߏ?O̏쵩LԟዋɗzР*uɥ࠸񧜿ЈY)Ͷjѫ㤲Ǚ?󇟤û7ꆛߔ赓AѦS�҃g֥��.މ��❮Ȗk􋯿Ɓ敎ϯɦ;i��,ߐ鎶%ړ{㽋iп剺臯򎞣Ș\\n֚9לƻ۬Ĩn��9א+𚲞鯩G8<Ź;:zSϙ0ܻݦ��dŜӰ|QˏvĨe̓͜K񜠇ҺՒ᤭ޣ٦{܃۟еј֬Ҝф;͍9Ԕ��쬌Ӡ¤��ñΦ涶.Ș\0!F̆C\'0ܥퟣ�액4.mp5˙뙑ߑΓ誯뛴ط$8⁪4+dAն\Zߎl��|@V¤׺\��̦ܗ鏟ޢ��a	ސ\rHrvS㧚ؠGڧ6eË⎡􄌛ׄޏ׋d,.Ɓ)]ڷ콞̿ӎ٢˖̝\rξ9N񲉙%tܯ3p5?ڻV­̤ۘYӉL θAR7?D򷔸9Śsuv k.ܺ+׏S\\Eۭ\0c\'zϯڤׅƈԌߏ¸֩YΈ׼~֓厧͜ZǢՆʊ޷ߜ\ƣ5Ȭȗػժΐϩn7Ԧ|~ƁНǈ݌ȅsT轞Y윖A۠ ͞ӆӂ��<ޫ򂣫��aކՙo˷ܝ~ȳʓܡ3Ϡϫ ȋI?��l\n>Gb²߼ؘ򨹈љU8Ό̏iã𽙵ĘǷٵ͎ըa]ǞΓRгߨ·Ѫ}Ҙ̬<لnʸ38M@{x󺔆`֋mea]ܜ\2҆��ԑQPĬԤ߸����ꯨ=˙ǭ=ҪﶄfϦ	ا9?ov6X̚Ӝ0̝aЅͼ޺Ꭱ̧ټ%V}kѶäCƖf˒CvtŪȷǴ��ퟘ�ܠ>H]͇΢=-D삋݈έ𺘌rϝMhҼUOД߆��p:㠳V\"챊\'ݷdѫĢϜZ࠳*ۤ-ʆ.惍��ȹ\"ݹ񼭢L姮#֚i®³֝\\ج�ڶ偾Ɵݻ\0хRKҸؑ.Ѷ3ꁿĒǽسΣOc����ٴ+\'4d:ގŜ	ƬdWE걗fǃ򵏿Iﾾ,��ɜnê󟼦9z��TЭ\0ۂ\Zǳn^y��r[/ػnɂº`鱂߿㏛ǁmtɶڏ!ūflۘ̹KM$],aθǀxrM񽜥4캋茇9ʇߪse̚+gXNۂͷܝڞµبr랖ٓƛZσӜ\7.ȧϦG4ٹ6��JDL䶇tԋއz񑎎3]氰Sv̨?9ԴK͠ĚOȍﱼ��҆LCcIɌ��ˌ!S+QZa+Åևԡ=i-\Z߱ҿݒmc˵μϡt˳Ў꽏ВcϿƦ߯լL˝˺ܧɆ;t󆵋p8ݳİ ܗX랓~mĻŵaÈ��蝷G_ظN)kڙюƧʹ즶Ε3ƨ䖲ު%ͮC4>ܥm)ӂǌI`\\~ĳ󎗜\٪$FĂ5\0Jݝ� ՗Ҭͮ␢t,嬦1��\͹S֖ս>ۛ۴v񩎳z{䱤mɠũb\rɒԴi엙#ґ&ۆө>Ѓ̓𝛓ڵґ)@WmЦ̕Hԅկ߭ߣͿޏ`ۜbɘʽYޓ9ws#^\0��4=ؙ5\r)ʗてѳ򫷮ԯ~񓪲§l*Ԧ6[\r\'��Eм󟊤󚯟Tn0=ӳN_}��ҳ՚̅JB˪,ى脫7ƨR	n΍K4ǷըٱЪ!ź̭݉CƳֆ͢𢇹]%hZ\"؂��؍Fࠄ͝ȶ샇wąۇ٭\\ޝ̯	J𐳊i쩎˭ˀ��Z9��rVᛡ̳Ḿ򉔝\nFH󝧓ɄӲ󇬟̿ RДY3њ#dA͜0Î1g˪Ŏt񔹖2,\"։טCܥϛۜúu͝˹􃉖@ò̀i0ƃ��,ّGӍ岧࠿zퟄ�䭩/α;yL̛ް0=񵿕j؋М\µN̮i7󋗮ҷ࠽ĵқoݢ`ٌ=v%ד:ށƓx֝В15��r\n$8A΍2@՟\'ŉ80Xʜ"HW-̃02A[S.еҶ4qڸ:Ľw~Cۼ½󏉴ͳߠ
+(2,'Ratin D','rotin123@gmail.com','Lokasinya seberang makam raja sebelah Polsek.. Gak begitu faham kopi sih, cuma ini enaaa.. ada favor','2019-03-02',NULL,1,5),
+(3,'Niko Saripson Pandapotan Simamora','nikosimamora@gmail.com','Very cute little coffee with decent coffee, probably the best you can get around here.\r\nIt has wif','2022-01-20','ʐNG\r\n\Z\n\0\0\0\rIHDR\0\0\0}\0\0\0~\0\0\0	̜0\0\0	pHYs\0\0\0\0\0ڜ\0\0\0sRGB\0ώꜰ\0\0gAMA\0\0я��0\0ІIDATxƽѭivƭ޷ʹݼ_Ͻ򵎳=ޓف͠\0HФ@Ҭ-ەRɶץۅҫ\\Υٖm̅ÄӜ0ȃr`zǣt/Ǜ󽹭o󾽮۽\0ŗu󽻯9g྿젡[ࠚ˳Ԥꌜ'̘КAȧ/ьᛣYҚƨ_ỌΜ'c㠌&cڬ֒$҉᫱ⱬāĦһ~2ɭ̰͢U,-ԍX!׳ŸӈWL̷м��ΟŸ}ÿȱb%߷ǖجLġ\r|%łͽ��wQ,ح۷mѭڙ\'-[ϛ��jʶ{}[ࠜԲΒڙͯ��ϳӋsV(լǵǓɅͻ��>򔊅ܵqݏl��Ɉkҵ\\@{ƫѶۋŝ̇��׉򺽻🺹Щ󇸻§ܼ~Ѳñ=کܙ菛>Ꜹ뽻Vε些;شڵҜrÉξ登񅗬̽xp��͘Ғҭ<��f莝0ܴmI4׬.c\'Nܰ��࠻ތ􆰜0I򐞞(��۷꼚8󹒷߇OĿ=}񃱼𻟜rհQ딵7=ߞڽ~򰷼;7#뷻ׅ󇸽ĖP嬨宦��ȚΦaĲ?ْ;}򔥦ф6ǽfơŲ٬.ۀŰ񜜮З𹂋𾏛a!GÑ+Ԭ~؉؇=Ϸ]ȣ򰕿󭞻ڗڧޏq|n	Ϥԉ��伷푅ȭĲጱ��`6c۳uKF˞ܱĭ󰣏̹7k̋K6ϵֹ4\n4זǮЃޱލeƷ؜ݤ󞷡ޞJ3ȿ扎xJ񬡉ߝθ׌𩯧࠭^׾^봹��Zǎr揇򌼮hHuޑԄ՘ݵlΤ;ɏɟوȴq~ޒߜ0빔ÅٰQߛhҹo>��V(֬ΡⷾNĤvڨ=űTฦڱղ;��Ѥ𣟿Ŷn̸٦SCFv+󋦏.Yן$ҭ胛)Nͥ�W턗_ظڵkֵֻۃaZ8ߘԞъ\\ߙj=)䅜gڼϲ󰓓􁸰ܑЏ7o򱐼μ6:㈛ˣ\"żޔʖH��ɥZ��S<]-߷Ĝr烰ږᵐvߤܙ\\Z׶a˪ԍ읿ȍĆU	`sfֆP方Y<P`ĚޢNj\0uͯ񄐜nú/XȜrAÏcl,ߋϜ/U,ۯmbפ0Шޠ%\"ݓ6	ӧ݂Kߌۤ荱󷞪ԃϘj5Ǐԩ$ퟺ�}،1~漵ڀx֩09 �栠Eɥϵ򣻓w_ә󳶪TҦ˃��\ZNv휦ƺmmo[ܝѱɞގ޻oǖ˖Ħ́r򹮃𰓝Q׿wbԩsQ¨Қذœ}Ʀӣෲ<֬ʼ��Ɨ񒷺T֘ԎN튰o����h楁zׅ\ចٶpڈ\':FQPةĶ[BHSэņy³񢹙Н2菥ڻݮ><癚a̓\'yǩ\r꾱؆~賸��𰄜\Ӊ뎄Ҧ:\ZS3hߕ ½rӥP𜱘\'Ւ׼Ǥ^ob}ݰӤk{Ш��o޶��ⴏ}ç\nǣҥÜŜ'ĳ󐳡T=۴ɱM��$ֳ귍߅7\Z\'Ƕտۤ��ڇ؟Ӎ?��ܮ𒏡U夡њg?��Ür񖼜˰г1ށݜ'Γ*Wѩޏ	ֽčρi�䯏r8qt0=٫򇞴\\Ғs>ȜrƓ:㣡q奆\\,>7¯Լ˵hҸ9xoûdʨݜ"%P-ݨۓ��ȣʿq.kҾ۴׎ϙ丗wwΙ��;ӵikʘf򳶱ޮ9vІ3\'ϴ򓨀qçٟޓF豓񜜬Ŭɡĉ󦿼A籉ҁ�\Z/ț��zԞѥ��סɟ󨣜'񡻤-N򓛼yÞ𪏚}񔥫3p߂y麗#c1l􊵏ʽf˅,Bd޾࠶����Ɇ\n䷭ݾԧπݗqûퟲ�6*6ǒNj򒼸+ͳׅ}̺C܁Ijӱܚgڻ̤Ne#قΎ �dU��\rܩ&ڣ~O򐛥\"ٙͭ\ZpMԐ\\^_]د޼̫ǶS/ôퟧ�{Ɛȣ��œϽ𩗰A󐹍俲4湆8:牅қܩ~ՔڷŞiۼܩNoԗㇰ犾ƤF;5v졧v:Ҥ3͟ިЕƓ\0ކ/𤪂ٖý}̃-Sؒ0ק󌿼ݹ%,vv:왿;Iaꜽ̵ܷ߇g(Ѻࠐe2܄��򪀾̂~FgʶњΪ5ퟕ�ݹ㒥j6ݙҖ7]ډ̜0\'Ȧ寽m࠶wߦO=��?̄=ܳᶻ��7��ࠩؤԇƄ27ϳࠪФɎsU۰4ꆅۀо蝲:Ћw2Ŵk٤ф͇1b8͟Ѵ\ZUƔ^_ÏSĉ��hI y٩nsީխ֔N텮DsӨJ𻾍ࠩ����񮡞۬ǧ;ްT҇ɭۆ1Tļ/Ŕ޹qȾ=gvȳ񼅘��ÜnɽȰx˵ۭlNËȐla9hٚꪄ$Ԫ=\nf1vࠫ+֦䧓ǁS𸐭1xz۸=5Ho8ă̂*~\0!ʡ\rو4nQHgs`O߼Žྯ��ٽ݆h4TĶ^9}ߎ��☾Ǿɿ񏬮nǾׁ::<(1±L3ۅ)ڃ䲵юޯȟQXʡ޴aƳp۰ⱺn	4_>ؼ۬օ֙س<6>#°\"<۴俒針}=G䙭Զ+>rZЭrzÿҿӓޤ㍥=~x=.0E+i\rvtq۶БͨԱ쁺󽮶)ũ귺VEퟛ�j֭vѪٜ<`ۻ<69ȓN\'KʔɰȾԴ\0ΜZ|Ŷݸ\no!\\ؓ\Z򭰵 aÏӐԃ旱𷾢ՅΖݺD	8ͣ>4Ͱӡէ<cܼ࠺+����͈ØPԀ֘ĥړ˺¦S��ЄȄk=c_¯Ԣ!|Ɇݎ@ɪ5̠Ա`F��rفW֧_ㅳ≷婤۔Μ'ݷDϋ��֗ʬߌđkӿFL��͑4��̗y嵎Ȣƙo󽔤.bD\0י̥퐛сl>˕ȩ=wࠔ\\ր񾆤Ιy족Ȑƕ*Էb��'Ѝrܜ0ێ0ħʎOzk2 sƻy��;uю଀��У쮝Z󒥛ƷY𒵓\'mꬥ̕۶ʫ=\\㩷߮\шޜ'(\0J��҂M֮͠ꥃ泅!Ʉ2˄2ڬxd]𝌘%|Ƒ{鄜'SݞǱ<ڴ\n(暬عRüꙙ򣵾nw˦ОǱϥ˝ϔ<QҰ<TɁۥ83ŉ䧏&C8dҥo⾄࠺PĴ3*𜳘舋Dǈ6ڍ0,��ޫxл;;ֱ6ࠜ\+[Ν=wÜZ|֡^K\0gq2޾ ķЊ𡰭ؾۏ)Ã#ԃƐf̜0Үϙ\r��}㟂H<W%ↄсSخӔ֟޹$՚x΂L啶ݾO5\r\0O؉۶Nu��Ш̨鑡ƀЌd~񵩃ꀄGΐڈܳ׆\0BƤQퟎ�0پGʮЩzρ<��+񬊆[襠͖Ьɏ٢֓ߑħΓ!̺ӹkޞW`ʂ⽔֢pŮ>񘘸֯ӹ˅ Ǐa٠ՐƵщո\"վjn̯ڎ��U;]=\'S@{۝ٲsȏʗԲдقՠ|<MɏPp\Zhי󏛿½a]ڧO۝Ɨg30a✧󗄞tȅʺƣ(բN华ߚR\'\'R;h\"ն\rό/\\߃貾Ǫ=<��N\ZOs\ZʰѶ3p_<9ePƑUȜמԿ<NהsIqJ��Zt5.ղɓ��ޠq[￬ꂾ􋝨yl^	^6m-׍eֱ��U񘛎SMa뭭!Ⲩ$n\ZLĊǯ	Ŧ/׋Ϟm߹ӑ\r2.צ󍜺ԩ«3ѝ沑Ï8׏=סol��~㸿!8��*ϨѸNݸɫجowӶ\räʃټږȍᕝk㭫W��譗~����Wո򭿹Эďo[ޜ\ҋ菙!Ӥ[ۛ8p^ˎam݉Őq쵀L3��ԍ߂-.״7\ZƓּY͹z⨡ّn(֫tçɈФDظ[͓΍ǳ23;#����Z-ϰʏӇiƜZÇθܷǍĠd2N@ӌ$߇٠	i4˝ɹ3!#oب9��ǆלĠy񠎟ٴd7࠺ܾԿοھϿ𛶳b��؇Rk@5>dɻȰ禢\'T ̅࠮��-\0ޛ8\\~hٲc>򱼎ýX1Ԙ	hܙhʋϣ Ͱ։>š0ct>Դ仐:Ո?ڑG7b?񯯡Ъ5ͿÔ5E)8s����Ͱ����ʄȑ��ՓlŜ̶}g谿ː\'ĿӐȮѺ\0,үbNïBóEŒ󩣅\Z̆ˉ٨uퟋ�4ĴȈᾲr\0qF!Ѿgs=/Цk˕9{󵷬𿯙ًȭ񂹫,ԡ˫P˥ܘ𽼐��ڼʞ��Zԛgp̩\ZLޣ.*̦ܲ\'vöͲ񲐐$އf\ZAHᴞ>��wل-{񅇠`ߝܷ\0Z񑙶SڶJ��䪽񜜂ŀ<ޮ˜06əfȠ}8Tۜ\'ѩn׺~ڑ̓��ퟞ�KÌ䰜��R2Tۃ轛>ؗۢϢ㉬��P񣨤	1ƵAč_khĨhA\'��Qԛ5슲��<Z<uÚ8A͝m二o3𶩒ǜ0l\"❲۹׶G֗lqꍨ��qh̀\n&07ǃ9לr䌎ݜἵ��ɵӔB=:ʖ㻸¨Bڼ3\'j��\rѱY{󕿵sמ՝ޜr;֜n��ࠣ`oޱێ��lwoϣtáŜ钃\0Ӕ񂠜"dѵzW𰜦ț;JҪƘ��U/AZĽéZwΝw̖󇩚ȩ՟<戕=Oڔ>̞x6݃֍YׇʪқƳƿ#ݴ~Ϝ8$܄ԙA硳Ǵ=pߣ:㉅̩CxzРh؎唖ٖ҅,#ÜBւ΢kۮɒ3Ξئ^_@ųĈNX!ܕ؎̫μǰלrĎk𯞠踚]وϰmӚtࡦ?겉ͩ΅ڌs𜮈ń=𴕸.āМ\zɨm딩Dĳߺxѓȏ 󸖞{,|҄񓩲uǛ��搒ὡ	͝ƛ;0¡Ŭե̃Uüؗ|֮ǐ˧����]#ō׋e��ͨ΋йӱ򋌆A0z˝8rԦ\0ڰfֿ`򀭬ï熏��(G/E̐󅨗rɬaɣo눦0xJӸ9��ڝξ֡ٽٙӑPF阄WCɞ^Đ𢢜0��(vXƔּʍ>¾ذ(Ζ߇/phރOۊ򕲾ݾs\nB1ծފQߚ彵v��-4궄XEmڜr\\ͪޫ6\ZϤΏNڻڶ̱svً7ݿ֜")Тq$+ݺiK\\ǰGジԼM	ʠ3޲Qޤ윮 YıHp$\"ߜ\^݂ی󡵩´뵧ʵ:\'ӇΥ͏؟g̟ŻY؆Wݤ;v򄉭8OAثfɜAʕZë:ߠ䤔Īob/⛛ћࠠtޚ٬ńňƪ̶A¼ѰꚶՉLǡUf\Z߾ƿ$\"ߠ񚲾Վ��М0T*ڻн܎ܿmӋW`v}��ЌͲfYȟҴ߷��z򅗛c˩]ǭ��\Zѿퟜ�ɪf۱a֮ۓ.Îg ǉࠣɂϮ#~&`PƩgӠ͜'ꝲȰ)!A-˘䬟,\0,qԦOGxӇѢ$ݙR��	!JӝƦcj\n\nͪиݐڜ"ݟǏ҂Ҵo�А\'/ԃųtÒ@ڰ|î<悌;՗.6�ƝZnڕWNYȷ퀾/ڋ/}va䘗׭u}Щ;Ć䂘zÞr��wڵ)ƪs��'Š��ϿŞ۾zl̝ٮ퇖܋瀵:Vߋи:Đ\rݶͮٵܷŐQr\ZǏ}3ӏɦ϶ݎ<lМ\vD)��TŪŭ碆Ͻ|ݝz\\ɞ27ɈՅ&ؠ!c҉׉ژǗ{biٖN`ĺNXhNpbʹs١\"݊:ԉZ֭ʞ򵼾:U:5\0m2Vn��Zɂûᩌ�� !Z8nڜ0q?ݸǐÈfg眰d̃��IϪ`ï^əɳšuͱ֠_z񪜁µۭ۝޷��2̷𕫐Ԣ޿Αc֋׮d¢ߜrȏń5AĎܛ금:��kຜ'x૟˙S̸oqnw8؉x7s]\'xˇgS󄇻֗ϣ@嬮׉Ӥ.M޳ơܱ獱⋃eӘ.��l陽΍h*璓]Ҏ1&嫨H͒ꥡ&��E;��ehdϺӟ¢⑄>s8\0%gۡ0ܫ;Äyӗ/_Ɖ<ߋݽȽeBƱ5Ӥ��\n\0վ@a��ʛߍZ􉂞򌌶}Ƕj\n°휰͉ک󈍖跁ӛlى[E򋒻xΪ-ͅ��кݪ\n􈘣h7ːa֘*۱ƇkԪϬۣϽĆȔhY]N񨣕*ք Qg\r¤֪ܲʥܸ��gϧ赪7M9Yl@֚ǭߓy$ȮջY\' ثc\'��ߘŀݥ^7ִۋԣbМZѤً9iޖڿ3۞ڒ 1!U{녩[ܩ#晷ٙZZЖN≡oÜ'w\nؐܦ覐ᇹхݜ\ډڹyijzᙜv:nݏ\0ׁ\nm䝀6Ґ+ɍť]%Pԍ֙,nֹc󈼴��ՎE{YÕס߈9˸O<ڨ#\r֝L˶󎎂ࠅܰǩoݿߵ¼ܵںr܈̜v#۩O͙˘Üӓ󍻜0ȲqзΖ@0\߃Ԏ$-\Zڜ)Z~Τ되&5ڒ1)ō&PJȤǋȨAłN;͘ďlP\n9ƚءϝ��ܑh%<ٹf8F7вluǮջ~뭚��o$4luu]?˷k����࠸ܾ񟿶�\ĜZ݅Ն=йVڂΙb֤\ZۛݘɄ\nǗawgg豚\"yŔĬиz=ɵ٤|ā@X:qg?(Ψ<A\\٢ݠԯX+>۩X$cڽ[_o٘߹.Ga횖ҹ87Ӥ򽀞wCۺuΎ࠘ӊޠϐZə1!йmxt̐]ſEQנװ\Z𽶛}9[ˇퟹ�յςݡDǝχߡUB̴ 0cǄd͐͋гɺࠜ0zHf񃝘(к̝ްŚ蜰Qo궱x,ߞf��Sﻎڎ9c^ئѳ*HNù俬&6ڒΌU-ⓞ0ƲəS>鄞þ��ݽwӞz׮<֌䑞ƺӜZϾCퟕ�kĎ6ۜ"��!ʙ񙛣GHŒѺíƧАϡ��Ŝ1m @Dh+\"߅R쫣3;Hζmcȧ}ݫߌV?ӪσF!\\ʼyퟡ�hߛŧ󒖸3񶄖*w󰯽dȪżҎ\'0\n=;��Ȳ҇ԇ6χ}ߜZ4EتX˹\\ܣǢʔߙ/VmZjɓޣIИA,fڌ\nr솺ģi~Kɚ��=N%$ҵǧHȌ.:Qfؒ۩I٘ҧʕ|5oB΁Zo߼g࠾䯡鱩ۻ{D秧l{��DٻԺxڒ/чUՐ·ʊ졃ybҿѣə\\2⣤ؙäϪ( NࠋƇ\\<ޏʵY(L=λ-طҀؖvΝϭݣ򆁎ͭ4=Y܈㈷\r¶I|HE3Jȝu칎턐₂Ř P1P~~DШ߃*��ʏщT،`ҢhԵ\0,Km\"ܖͧpÃ{򉇴^eCtݶܣò͊:֒킚玾nڊ4扻͇ď۴倸rۃٲ򳣜ZO9Kݠ\\=񔳐ۃ[]Yս@ڬ!\"ف2R򞳇࠾βppFݭłeܙh*䓉߃X¶ºӮTɘX37ϠF(cđK\Z񱺙̠ъư.񠔆 #¤͎SːЀNqu	!摾˄ଐϮ̝��qۜ"؝,9CŜ"ƴŇώ%ݠ:rȏ-\"䏣ᗣO;҃#Bȫ̫!ؘGҕæɍ��<Ɓ>�y��݁֕!pܫۺϰJÁώӠ\\߬ս̵`噓r䳙҈tzЙ􄩵ڿQ˞S֫ࠉü$V0��4秭W��j<u˪ekxvǒ8+՛yر̧Ѐ祬䮧��բe��}\0㭬û׶c࠽��לrߨ4ak7lw![סl䮮Eκy༰9òӲ6��櫭ڵ^J؈&ｰߺш;ٗNUǥWΓ߀(ǑN)bg:ϔ׈֢\\ľ☿׽˿򖭮䚡֩θڒý!УטӭƠ\\ܶϞy늋˞Ɗεۡ除u<i󩸀��۫񇞅ԍĮϒࠌ怜y좶Oɉ~押^MMϫeS7ķ򊣅\nوńi׌𱟨)GK:;rm@\"{Ȝ'W1kUɐ\ZN¨Gޫ\n3e{职ӵȘ��׭Ϟ��j쟴숯_מNɻΉ3d{󻜢_췎2��&y񌎵Zַӫȁ\'ݐ0c摄nq~Ү!ZɃ#Ƹޞ-,Þ؎©@؝>ԩBӘ$DϺ\"Q̬㜧࠰\"N֝ذ犫,^ԃҨ˕dڐ܃;ރOA󌵏z֮ك5&ؕ8ιW;~ Խ\nѱp繠rūҦΓ̨(Öƚ��𞨼匩Q׋ľ4!޿ī߷��ۥᶫpƇ6ݙ-:҄k뀵頜BQU ��(c彷W٠ʆņ]\rHOـÒΖ$Ƥ_؀ɎRڅ,NａVn,ÔÉzp޺	ҟx顴QقϚ֌\Z8\\򊜧��hٜ'uj[ΌO䐙-.\n͜'ٚŏ{=_ࠓ֭Ϭ_euA8Y/Ñմ?+ѪvŅTݑɰӒSŴ߼��y{􅗭ɗ_ҿ��ۮ۷��`cq󩟺ž񯿩ƎŎ졚Mْ=<č[حy٪īH共T$Cȓ֧E՜ߧdeمܽߡ❮`󩀑֧Gwn6`򰨷W׭ɑΪ㹔=ٿʆ֦̯΍euiޔݸzn϶sC\"ײ䀺ؔRU숏}fn~L&=҈x\rřܠ&\nݔࠕB̸魙ƍحg࠸9ݦˢﾨm藏ڛာ̸�ܗ��ݓ͇Dw񰙜9ܗSݴϗ࠾Z\'ڼײχ5N|<ԇߟ@εaЩƝҬ[Ш˰ܰ뾻߅Zׂų!rYF,킝oW࠼¾笟ҽՕܼͳ׾`ۮ]}̖_ݺٽ̟��𴜰ٵϿ𹻞����ߖųճ؞��ւqa㌥?Xل׾ƶĺwѷࠧ㹳25̞ʰܻCo#ҲjqAǵǾ��y{󇯩̋UoT񺱄ƈÕ`o̀ޜrƙԙ;׏М0\\Уd`񑛖ᜊiO䱜[Ȑq䠁Ɵ򂋩\"%Eׄݵ\'ǹ񤚶͟3��Л⮎yօxрΦќnѺùGTkv������ħߠUڑِT=Պӂí䄧шXF¤܏ˤ�'N߀ꘖɐI7ӃꮐΜ"k仯޾;D̝ΝѠ��O؏Z	̸?򟼻��ٽOߵsϿc]N1Φ𻦅࠻ܿ󯚖ɋ/ިh˯܂Ѭ܍ ̗ڢｻnھN񪊂<7\"ŸƲ]6ێ뙥فʷ\n񪴞ӥJ5ǼAb_㇌%HŮɅܕ˸̄ʆѩ,֦-߰݄ژXЙ+؍ȶධ��Ԑ$Œ󆦜niԋ˳��Ϟ}ᆥΧ~ cVڍ%쏐=q꒑@]޹��\0@׮ۤ܁Oَ͈ํ//ٍۛ򾹙ţ/-Ɔѩ;D<%.ަ(ԍאhɦسdԷჴҒ؈旚ؒDʅٜ8i{kk��#ǇL��OܜE]ś࠹ԯڛ࠻޼諜"é@:,4UOy��࠘׾��ׁ֔Ҳ%دsϼߥ-ҥЦeЎԧAܜܱsgu0´ڃ˯ࠣK󶘃ᒬKɒ\r,ek𾜰a9ԟݺۨޘQ`ᧂ㽅t$G֡ ׾��E.ޖ֕3Ȳ魳y��м갚_��ֲżĎŔᨐi£_��?֧߼ʅu΄-]4ԺdH짇?M2P߼݅)?2ᒽV۽ϺݩJ֤4ϤlͿ\'*豤\rҡٸĜE`捓ᵡ/ѡ흜+; ǐћ6#N}ҤLdȯ|򑼁xҘi2ɱէQͳl	߷��ػм\'N_ӿ퀹\"׎ԑƻw��ݭ}ط˵𭵁}󽯼Į޹ȍ+t܇ۈđˣ۝м!T܁\rdQ9A?\Zٌͨ{ʸ*fcǉA󨾁KےO(cΚSlވs хυÊ|󌄰ǉh(ӽץsa3<ѲD,��׼ᆙõ`o��*xٱ��\',ڎT钳-ՠΖ;񜜘񙮫4\'ϴdkܧkۇ`Ӧp<<\\ʾSǽޛ ݤ眈Ը覥]+\\82dCRĆ\'s,Ϟd\n۟2XxВԛ8ȓ_-8쭷ؗ햍OpӇʀ	짲Gہۇ2ĔI±8ף򕗭�Ћ޾琿ўx䈆Ұ/��.퀼࠽OZ]��򇿈ɘٶ`ʜ̠λ񪽼dҶy\08ҽю࠙էࠤ뉻y/��Ph񜤻νPaП{¤lllCퟥ�؎<=T޼\Z21֧uȊ֑ࠇޖѪ֪YϚ2݄ʌڎ-/`ӣ+֜'��h䃄?߾eW��ò]޺TW򐰕ҨTx8°ܬz𻏲��u˱0Aܸ\02Ѷވ9n񜑙󨉔ۛ	ˇɆũ\"KǍp,Hɕ沈i盞ȏȂGVݾ񝿑Xث򖊈��5ϰࡦ/۞亇c&^?o߱S^Ϻؿю%}+?ި뮈~렾S<\'֡vpCކ؞{͖ϜѝɯƌİɠڇSF\0ѯ@􅪙Ĝ0킴̀y߇ŐחO׎ǄOF\0͜\h*Tٺ5.Ԍ	\0k燉VN߷ֻɔzɴϰ8ﾵɛ̫ȣ��ǓК򡽸YKV��;:޷aɧѢ��񳶮TƙSX0ےμ#.7ǒσ��f֎Ꭸ=%ڈəQ\\>\'̉ڑGғƊ<[ɐ?ӷ
+(43,'sarah','naibahosarah@gmail.com','qwedf','2022-05-06','��\0JFIF\0\0\0\0\0\0��*Exif\0\0II*\0\0\0\0\01\0\0\0\0\Z\0\0\0\0\0\0\0Google\0\0��Ŝ0\n\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\Z+#\Z(%5%(-/>>>\"8I70=712/\n\r\r\r///////////////////////////////////////////////////��\0\0\"\0��\0\0\0\0\0\0\0\0\0\0\0\0\0��:\0\0\0!1AQaq\"2ѣBURq3br$C°ҡ񿄜0\0\0\0\0\0\0\0\0\0\0\0��\0\0\0\0\01!AQa��\0\0?\0꧘ːɞ7ƪc&Vٲd֤$Ä͡ѴDǑ@ tMۜ"Dш	ɜZ چȗAњ&ʪ��hI{FR:ЫѴY4\r&Ʋ[4\rUۄ˻AB$2DHd	AѴڦȑ4Q^ʚYèˎӶϢh`ϴK4ǜnڕג*©Y]h^ス<�쌇å`U?𰳱ۦ㖦ݖ䠼ΨyӯԚթطñָH씰pxݹȕMmy(Ƙ֠օU1ׁ6+[#CL
+P>ôONI/ɐ̵Ъďз^9}c*X쵏۲칫��O֏ɟξ̜0ŚĄ[Čֵ؁ͤݢȂה(¹ ڤٔ̌ۂ퉐TҍӬ]v\rbhщ\n(HPIҪh\rޫ\nAH`6E!B袓#bǂ\"3Β��Њ\n뤾M\rړӮ̰bבdӴ̔alߎDҜZ˛ъʮƺŖǼۖҤގ#ڗɃ[뻆L��ٹࠦbəߓXŭ܎°^GO݆DjF-[5ïѸϥ/҇ʛH��ŉ정ߣΆ⩔߅򜌆5Ƒ41ɐĝ Aњ&ʗAѴM\04ƤĈ\0ĈDш\0т@\0H@&ɀF+\0\nť͆JЌ͖1ց!І@@%@`	D	\0ә\"\"ɬJtJ4ʌǬƜǬƫqסS,ɖrt˓ׂ�EҋŔˮƑtQPR\"\"MČ\0\rŀ\0Ј:*\"AђEDф@/i;Ch&Ӱ:Dт靲´MC҂Հf\0Ȃɜ0,AdِĆɕĄâhێVţחDRוcӫ֖ã覙\nײmhǞvXЃeՖғ׾äcFֱ3ﳲܛ9ܬ��~U򷹦Η̵Ə��'֤6ߙӐU㺏EҁΊ��<տۙՠ��ׁ��r,򽿔[Kٝ̽^+ٗ]:0ZࠈV}ѭyﲖaW +^Gᅳ-̉橜ȌӠ틘��7R_ܤp򖅪GƤ/琓ճ��\'��śB	ivːE:\n,д@;@lݢҁʹ\Z\0ٍ\nќn\rچt\0HLM A[bД2b!Бʸڂ\"4MѰ`h\ZDrǯꕦ`hԅmvU��"칖Ϧ<ߋ3dً[̲g&,媭\r0K[ҮLࠪښFNF&IVƙ񍸆:ǽđ$rȐ򒑐̉Őjᣮֻ>ȒҶý;q󩳞q䉣׼\\\0ŠɐƄш@!MƀѬ2\0MԠ؄\"l@@\0`6\r؛Ѭж\06@X̭˲4!dؖb*\'p0ǉЦB ǔY%r[&ô㑀£>C.C^S&Cًeeז҉ъrcɥEӷaчѓ`Íш5ª)ǋҊtÂ)X`d\0۠\0iD:(($ A\"&aف&plɱ[0\rņ\r͑OѬMǸٓ؛ŃѶ11˓eCb��ѩȢS\"ʦUTYE6EWtQvYHä*ܻ$欜e̗ÕFWՎ/1󝼯G7ӻ:J杜ܔeɍٸ͔_؁Qߍ\\x߹n١5𒭁\ZH׃ܫM֢ ؅��؝۲tpבǲθёқԢ��9\"ڜ\ȹڱx;ٱl秣틈䬽ͨUݝə԰|Ֆ\Zࠢk^\\ΡͦڂɅۙ麸j̟ҽ󏌸cćeࠒ3ʇ俜r𸉼ԓǛxهʽЕ����Wٺ<<Ԃ���ԧ햽5}˺<<Г􅢽錬W]5}Ǵ��ñˠ�𒺿Ἇ#\n:xӨzO,ϊ٭񘿒Ӻ<҄Ѹ߂}ˊ4\r��Lg\"/򡘉ɊQ\r˘ֆFؔۖ-􎸿¨򀠮ļ𿜰˂OMyr󉚵?Yp	꼹ӋċR8H鑴xr蜰��鮺ГӸrˁf<z5ޡTЇÄ֩٦K%֧%ٜZdtMnB��ҪA�ڸ䲱Ο.{ԑ̋ս(ͽ\nѦCCŜn]ȝͺЎ񽙪ᝎֺ;ɘu��њ2wAvN↦Ů#`3`ػȧٜ00@Fʤ&ɲɍĠٜrӬ]Ԡ3ѬV섡\"1X͖̀-APЈ	@ v\0\0ܜ"(ȲKdˋdբܔ\n*ELתɥɢיr\nȈ*9ڹࠌyԋďǴd1ڡڥݬߙۙt͈\"ɈɅٔb0֨Ȉd)ƃ\"Âlܜ0\"ػ+ٕ>ɱvM[ Dñ[\"օal*vbŜn@SЦJĒHXDL.`PпPϙMX\Z~Ȯ͏!³ºb��Һ`p@ȫ\".քȋѥG?7Ǵԉ̤ϝKkf줣ƣG	֙׆gгíQۯEջ򑏙?דԅɩ+5æN՟ӵTs򭩩NcUƄխٗχaF͗BLŲ˲ڜ\ĞDfɕɍԜZ3֤lɨճΆKӡȟ҆HяbCўӖE%E.򦞁͖wwۅVȬϑ]­ȕ®3dó3㝗\"8	̿ґp΂û렔׈궫CLr߈J޾д4Ǒ񉽻;\"㯰ԋν;\Zxͫ��Ɯ(臔߰\Z��ȡcH\rT	ۅƪҢDh.+El٢ˀȁH\"˒צ֊܁T@��\".\"2 ԕϓ\'*ߓԊ��ʛכҙT2gG0fڑȇOǤQ칓٨ꣳȆ將UWχ-uj򃦲/֛^NƜމ1ɋ󀨛Ӫ؝ì\Zd؛Ʃ󂙞bAۜ0`)F@!@B\0c©H)4:ƦƮԄњ&ǜZ^Ӷ͢4ۜ0򆀐èȇә+Ӊ5Ȁa@eHǌڍV̹Lף-aȉ݌ࠌࠄ�:ř̔ϨÄD˨ӂS$ ՐVÀ6Dɢ$!҂\"I
+(44,'sarah','naibahosarah@gmail.com','312','2022-05-06','ʐNG\r\n\Z\n\0\0\0\rIHDR\0\0\0\0\0\0\0\0\0̏g-\0\0\0	pHYs\0\0,K\0\0,KŽ֩\0\0\0sRGB\0ώꜰ\0\0gAMA\0\0я��0\0NIDATxnY\Z𯻥ѐđه\"\\f1F	ՠ׭,FJٴXΊ䉀\'H򄤋YѼaԘږbv-ɇzPFB˙L;͈䙴8iWݾȼI֭Ĥ˒ϋ��Ȃˋ��ʈ\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0 ʌܴ+俤��	B#h緵-ּɎ��Ð0Ɯt>ࠣĜ麽ຫثǮ��RɪʽןL簥NˠeԴˣVVUȏN],̠ޡ ̔ئjɲ]Ɯ0ԫ⮵Ĭ矤9Uz��ڙݸ ʪ\rS<+W*霌ےp۰cϮ00/ɒj밷߉S\0tU,Ɯ\qߓ΂y4Sٸ͜"݌$WМnkØЧ	򄮀L׳ڍXǆP�+Ӭ߳הEЁaڳ��0ߒ􉝜0ŵӾZ�]MJڦܷڱߥo׺΋˔|Hһ\0ەƥL��׋Ā\\v^\n˺L顜)i߽lـ˘-ֽ`;łڿؒ)]ũTݷ8Gն߮˜':ەٱѿKЕܡٶﵜږ޹Е媜Z53ˮlD򯹬񞇔ֳȕ6юHƙs��ɉͷǟʝk��tŻ,ʮ쌦G>ɡWM\nߜ"ߤEب:ĺjx4w]m4̩~ ࠘VWC̃ٛZڍ+ɀՑTO󯕷򉜲۟t\\V	ۢ>쪭􆥮aBм仗ӻ)x՝͑䫜rS/זꌛ&tFUꮡԘ\"ࠚ㓹εK񌠫ց쭭ԿeռӡSө媟ɕ��T3uKcФ@W,hϲaژݡgEL񂼨紙v𲎧}󠮡攧sՐϪҌƌͤΙފŹO2/z��~ϟջxړ}~؏铚ҵ輮Y��ʣ	𘹡J¥ӫ7k傝ג΃= -ƴs]%Ն􈥟࠘Հz- ٫Ե5%؈ɰٺ~JҞ线$/޼Ƕࠜ0Қ=S٘ӫ쬋UZ=࠼쩥ʶ܏g��ݛ>ࠗҮѬ<Vֻ^ߝ\'(6UЎL7|ԪΈȆǙӒۚ0ɰٟkÝw՘ё;ƅ֯)2֤+(jϗ��껮�ƶѯԛ$��ܕ\n6\"}Al8׳ƌ.RL-ૣ\"Ǖч̍\0{ؕ̯ȗWPȐɮ:5חv^Ή&��VUѪ_9g;|탑שj󱛁܉Ի҂3?@)x٘ѷۤ࠽ܟؖθנձIλ.Ө̜0몸g󸯐ّݩoࠜnJŮd)8h#:J°ŮAւޅR0dќ쫹Ÿ3yf)Hќ'ׇ��ͫ؎��ωǭƚ{䂾̣֕gU	U흣㝻߿zZa䵾ߟ̗��)+��7%ؔߐ˙Ĺƾ7r޻MӼĆ$8\ZȤv[Ѩ:Ք7茦҂S򛔕[ںi��1ieưɜ0\0\0\0,՞ѽr՘)˵a|ŷ)IŏڰꄠΒ͡ǜnġB\0 ࠍǶ޹vGs@?1򋬡��ì얣Ɣ밿󫬦Q&ɔ菳/قlʀʼ̧dˉ!VÞD0񺁌_̑Ġ	`1g揎Hړ?Ȋ	P񸿮BxY}Ӈ }\n󢔂ɜ0&DƖȪo˛ܻ��Ћ]Z!̈́̔ـ:͛��\"󜜔JB0zA$񨠯P%ª،Շ͜0ǀe��Y؈��uLևٻF\0S¢fF,)ǆİ+,khU1ٜ"vy	ͪ=ؿ7ͩ`\'Ŝ0ƌΎ%��1GC\0Ɛdtn��`\nʞqy@)ٍ_Ȕ)d`J1QࠋŴBo\")ƲkcżI!C\0Sʔïjj~M!C\0©ӐȌwfD˩ۇ򿜮YhԬ`UɣĿεߣг*ܪؙɒJҀτ1YDԽ��dEpϭʔf��Oo޷#՜0ןtĐȥ��ܛ٣蜢ʞQǗՖ)dⶂƻ��ɫ`{镐}̟��̐(ƴ􉅁ܼb֭kцվ4ŪW5L��ٹҿga|lAֽ򖝰˵aTࠚإ`@/ņۇ\\.ؚևÃȜZ͋��fmц$Գaǔ\'vϰ��^ۢԱ; 򠜢c��٢ϩ&Q]\n1ECj	ٮ	Ô_ٿ̌ޟ} ϼڱό􌊌̪퉿t,i=#E凌KЭwҵiָࠜפJޙᄎafޯ�bɏ[聜ֆVU5��ʮŤw΍䮁j`Y͊񩯂whȝ̒)B.ǧ&oթѪ΁[܍㤏UĊ&󁠸𳧕ʘiǯJ1ͥX+ߨ븕Oe{@ڕ|γ|ȽזV͇[ܻע>m(5ͲaZΓΌE{@񨟫ćܤ��ٻ،4ԷeNίˁ҈y˴Ӗ1Ṷ딜rv��Γߙ֊ݞ鐺юɖ/˖ݑı£ԂΕ6+U{1¨U^ʾ̯,=Ԕ𝺁鶨ꆖ@ݙQƠ\nJ£RşٙU��Tɍ̔̷ذ񪙌��ˢ\rSW%(ࠀӜ\RݏEJءޯxܖk\\޸aO}Ɖ؜Zx߇	4��7ࠨߙڠP˭7O	ʭڒ4��eҫz܏jɕpȻZ͎˸\0U��ͪǜn%T$Ƚ��˗ϫԉΑٟٔ͟*֜Z%XŎF֕ьoj$ҵɔʔ)✢@=6ɇ򩥭A=峼տ#9uՈޜrÿ��ȐﴬRJu 򨷯|ԗơƨњΟΕ^ߝÔʬ\0մŰΡԜ"}<ܷ/ࠕ�񝓕�|Zŋ꼾ǂء��ؤϱWdƁϢʯ߿Ֆ򢺄潖STWSl3*|˔bѨަ\nʥ̷5ꎥdf瓰Ϸ%ыVʒͧ*ɱ*\rUʇÊ͘࠱ĲӅs꟰Ƕª宒i,s̵\05ݨՑi>d̯G1ɶu˴դ-~ľۚ&aĒ\"\"xǓٜ0:髙Տﴱ҂ժٮ4ڙ哜\\֦Ɍ`Gؔd񝜚p+˿m𳪒Vճ_Hǵն\'ب\0��ވRܤҊʴʩ~ՒoպtϏ뷖?܆%ݿʜnࡅՉ񪤿gʶ~线)dUѕ׌̞򱻊\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0ќ"߁\\qݗڶ\0\0\0\0IENDς`§,1,3);
 
--- --------------------------------------------------------
+/*Table structure for table `mediapesanan` */
 
---
--- Table structure for table `mediapesanan`
---
+DROP TABLE IF EXISTS `mediapesanan`;
 
 CREATE TABLE `mediapesanan` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `media` varchar(20) NOT NULL,
   `isiMedia` varchar(50) NOT NULL,
-  `logoMedia` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `logoMedia` varchar(25) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `mediapesanan`
---
+/*Data for the table `mediapesanan` */
 
-INSERT INTO `mediapesanan` (`id`, `media`, `isiMedia`, `logoMedia`) VALUES
-(1, 'WhatsApp', '+62 822-7373-3069', '434-whatsapp.png'),
-(2, 'WhatsApp', '+62 821-6864-0303', '10-whatsapp.png'),
-(3, 'Instagram', '@onand_coffee', '590-instagram.png'),
-(4, 'Email', 'onandcoffee@gmail.com', '362-gmail.png');
+insert  into `mediapesanan`(`id`,`media`,`isiMedia`,`logoMedia`) values 
+(1,'WhatsApp','+62 822-7373-3069','434-whatsapp.png'),
+(2,'WhatsApp','+62 821-6864-0303','10-whatsapp.png'),
+(3,'Instagram','@onand_coffee','590-instagram.png'),
+(4,'Email','onandcoffee@gmail.com','362-gmail.png');
 
---
--- Indexes for dumped tables
---
+/*Table structure for table `rating` */
 
---
--- Indexes for table `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`adminID`);
+DROP TABLE IF EXISTS `rating`;
 
---
--- Indexes for table `cerita`
---
-ALTER TABLE `cerita`
-  ADD PRIMARY KEY (`id`);
+CREATE TABLE `rating` (
+  `ratingID` int(11) NOT NULL AUTO_INCREMENT,
+  `namaRating` varchar(10) NOT NULL,
+  `gambarRating` blob NOT NULL,
+  PRIMARY KEY (`ratingID`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
---
--- Indexes for table `customer`
---
-ALTER TABLE `customer`
-  ADD PRIMARY KEY (`customerID`),
-  ADD KEY `adminID` (`adminID`);
+/*Data for the table `rating` */
 
---
--- Indexes for table `infoproduk`
---
-ALTER TABLE `infoproduk`
-  ADD PRIMARY KEY (`id`);
+insert  into `rating`(`ratingID`,`namaRating`,`gambarRating`) values 
+(1,'satu','ʐNG\r\n\Z\n\0\0\0\rIHDR\0\0 \0\0 \0\0\0î\0\0\0	pHYs\0\0,K\0\0,KŽ֩\0\0\0sRGB\0ώꜰ\0\0gAMA\0\0я��0\0%IDATx힩М辞ۧ蜝삻$B\"MQ%В)Z̒Y*ԣTG񐤪֘يI惢GqU*ǲ*ʤÓ\'ϲ!Y*ɡ僦y	ʒ	Չќ0ٻgvϮ넋��筷zfࠝ𹽻н====����Ř ^��ԅ@!<0$ŰƂАB!ĐB!ĐBȑB􏢿Lܟ߭9؝9߳ux2H!��ؐ\n@Bo(\0	!ܡh́ΩḤʋʊ>S1u͑0uǇDƠgЃė͜rݞ/ݢ뵕䲩ϮƗLݍ\ZoٺDpnʔ򘶖zBxCH❲ !ķ䂹ǻìϷٷ԰۩윂Ϙ۔콇Ց%9۔ٮ개`?֚Ų)EA.zʀΩ:��wÎɓ^zt\'ڈǏ+߶��sƾ۔zǔSͲxHG࠰ߏl,zBxCH❲ !ķ䁍٧N߶��CǦOǒ.ՔƩ\nx:Vǽ̺ܺǪۡ\'m̥׊ɉSӹH񂇼ĵՐ<8񵓟Z{˔��ȑ' !ķߐ\0BxCPN٣9P]��&ڿm뫄|ϩ��Æށ͍ڽ\Z׬x{u뜢ֶֶgP㴽\Zŏ直Q��RѮꦛəCbψׯԹ.ςLڥ8¶j<Åֲϙ򲻪QSˣʇހĐߐ\0BxCH❲y@ٖk�)ؕVǔ�㽴Q\Ztʇ(Х{8ūv?κ:Ⱥ䱔Iϸ(z2AJۏѷQwH/��릲ɚ՜'֒i󈖻_4��ϙ򾓧ւ񗢜' !ķߐ\0BxC񜧏B壻ۿ˔䶶ϛڴݏ=ٝ=މjɼ��wîѾ!{6�嵙Cڊ۽-ճO^ĭΞQƈ=ɛk֟1��_6��欠��	!ܡ\0$ŰƂАo;Ȗؓɧ��{ӛ✰ԴɦʳἝL��	ԙ<Wɳ\ns��)u޶򉥇8ȇƥԾĺ긐ϝF͵fK��#굇��笿��ܺZO@Bo(\0	!ܡ\0$ŰǍ~򸝔ȋؾߔSۻ��m	綌X<ߩCɷ|ݶǼԥȯ遄ΞMҲܜҰ=ݾçۺPdlހ򭟂=5{B˔7ԜAߐ⎊3��Ϙ򦯷Ŝ' !ķߐ\0Bx㧳��ƾmf혍=^_󻦮m񜚌ѧu\\󮁽��Ǌ队g䟑љhOǺ?߯O��н\r��ϔҥ퟼�򯚺�_ܺߏ_â׭͞ߐ\0BxCH፭贼|☌ޘ߽1S׶G𙹿ϴ΁۽IԻ)ЇږˑԱ��憕ġ򺺖rע-Rkߍz��̜'ղļS_X޺gƾ󗞿la􄤄ퟘ�\n@Bol9h蟏䯔ؼ뮷	-֔V6هչݫǴ嶶#��Rך֦ͥ{��Q̨GO靜s򧍽ֲŴ$ŰƂА\n@Bolzɻ񌦗��흜��v񳱿ߝ{P򻨜'ɿOǒЏz��6ܑ{86Ϧ膮8\Dm󄦱ࠒr=Ohջ\rjȞ^݅yB۽ߐހĐߐ\0BxCHᎍ炱ܮǮƿiꚆʿ5u4IߏՅ󙷐ꉣ*νҝ=¡!ޒ+#λՇ㻿Ȓ;^G��߼5��h~ŁsM��oֹczBxCH❲ !ķ򜚆C\'3˽غsƶz>��ǫFސЁٲ��Ǒʍӹ\n%ؽ󹽥ܳ؝ڤߍ?ȇƟࠫ杷1:ܪ큭��-��Uϓ��ГА\n@Bo(\0	!ݡ=躏ńݛȯ@ߓ򔯶xtyݟ葏|G0КŶˬ̑ykļб˻��tgϦЇĐ񷓀ʵKZN뻪K߃򆒪<ߵƒKǾ󕩿c꼾❮࠭,zBxCH❲ !ķ6܃㚯륛Ϙڹࠏ߷Ğu7꓅پ\rukk̔SȲ{6첹gĞ͍ݹ@]Ȅ߶ޏ!妱��aWեђJ\r<ֳ݃А쾓薂\rDO@Bo(\0	!ܡ\0$ŰƆׂ-W׾ٔ󫭏ٺʆبfg|?ꪷ꒞Fʖ؜ǑҴo	ؿХϨϣ\'❜kf#χַ��ZC>ࠌ\rdڿ:t����Yࠋ򶔫ѶԹ=ͷ۰󛍖б֢zBxCH❲ !ķFއ􌉣Ӧ>Vۼࠌ=ژș?Ǩ_\nωٱܟҚuڽ(ܶж1캞߫ߘa{2̐[ wm!ҮڨY򔺫ɟǼˠ9/讫擦~-ށMԇ=k^O@Bo(\0	!ܡ\0$Űǈ󀎔i󸈹ټ߱ʉ��:j^Г̵峕ڔ)#mN��yn؍İ��Xȡѳ󴝫ؒȾ?ܖե󣧩IΖ]ӒU?Ϻ񙐼{ۨw΅眧𜰁��ހĐߐ\0BxCH፡{@ϟ<&M-ٌy>Ɔ^PƓ(㧠j_ᄲ圢r쐔Žyʞ&?횬G#ݤĠ򃞃6伢.}\V;暵,󳽛v̫㺸՝ȫ؀ϕ򰃷ʭ萴姎}ޔĎғА\n@Bo(\0	!ܱtC`bmΐ\Z럛ퟋ�x\r[<ݮլΒں䂘jڸΝw]ӓ.ҧӵ孔=\'[ߋ8�ی��lߌoȽʓȯܐܽm9߸nԫ肱^PΘ}l_ZُϸPѓА\n@Bo(\0	!ܑۃꠄ v%i~ޠʃ͢*żﺜ\ڄޚ򺚼狽!눒Ҥݤּ˒şN㨱Ȭęz&Ǜ|NXȞԱ̻r��|��ե~`Ї��\r����࠯뗿3sŎ~⼮SNO@Bo(\0	!ܡ\0$ŰFn㍻୦>Xy֌cՐΕɦ~Mかզ弝ȶ󜚸֤E$䒅ܷCktﲬ[㘩{d񌬇+ۇ󰫯ǌޮ枋��͛f嚳:!ϫ՜@뙋ƗՊk{FsmX̙Ɵ󛓭cx`lЃ=	!ܡ\0$ŰƂАٽ^k��ǒ��˕˹\rKߏŶ׹ǮݼS܅Qْw§S֕򐧓䬽Zȗʣ(n򼞡ӳ􍌻޳׊%ΦVز?q-\ZǩuʇuȞࠏ7pq,p\ⰹݓ>A܈BlMߐ\0Bxę˖~a͈גťlڜI˩rߞZԲ\Z6ԆBЏxBԆ.чP֒f캜s��sƸͤKmҞЃ&֤1٬ٮοٶ��׭yB=ܽG��Ϭ)%įϤʵaiy	tҜZįڞ뼗ގジ2pڡ��ퟘ�\n@Bo8ǃ䑌r(��҈לٕolYB9fӜZٖ딲􌦵zƖࠅҿ\rŵ鑫ޒ[-԰kˆLڳȆҲ~mߣֳ?QȢ餖<ߎkа\"v��~еݦǩ	H❲ !ķ߰��\nkOԤXЇ^ÇCZǴ=ԿȖ𜢻4gʒМ'^õ򜥌Kz䲪關ZιȪx󎠬󩽸񪜲뚋ޑc󴆭Ɍ>_��ȓɖ🖮ᾰz~뮲ʭ۱mϬ목>𵙚՘~ӬᱧŽz��!ޝЈ��M��;p��bk\0$ŰƂА첁ДVӥ<݈֔٬ܔ֨qǘ*Ɛ\"蕰GDޒЁi��~ֿ񺨹ځʇ%ۂ䤸އoAР]w4Pߟ��\n֝򻬹OȡﰽÅ򼋨ὰf��ěXŻғĻ¯؜Z͡󨇷ľሱ��ւꊍO̚kìߧԭψЁϘҘtϐKދГА\n@Bo(\0	!ݡ쁍cȃⵡsL쇖S㮉ፅ\Z��؇5ٜͣŞzݶωㅗݭʵ{񜜫>󤜲ѷ}|\'雾sު۝=mF=͋g؀?��/=нm:T[PK𽷨ࠔٺ𾎇,׿ҵ⼞��]χL;αqŠ9偏@Bo(\0	!ܡ\0$ŰƳ՚난z#p\"gº􆱯ay΋y?ךǇϼ��򇿈퐖o῍6果\߈ևϞσi6񼯝«󛿇_朢捼ퟦ�价ל'՞ůଷғ񆗦@НȫUʠ��ؼ��ֻVݾϡǶkzܱ~˷꿪bYƣ⼑V܅ߜr߾ӗDܳھD7NTt푭\' !ķߐ\0BxĪ񚮔Ϲ򒯣^BɅ6|ʙ5,溤Ҋ,ҭo\"ƃֻ˨T[֓ذӇуڭCׂ߶=ݳǱਅȞ\0ݼ×琿p��м\nkԆw[\ZgܛɝjК̸ݟ��_��𞾞ʩܟfoƾKؿKg`tފ蜭񉢞Ǜϊٲخȍ󱅾OiÜ'٤􄪥\0.𹹙򁞟xE􄤄ퟘ�\n@Bo8炱گ􁴰հNyֹ��;y,<7ɖד9GOȏؙěf·هRȚҙĤYͮ}􄺸мօѧލߔړX5A��ذ͓u®ݳի��跾˹>\\Ju𝘃󇾲0荇S¯ȉ֤O\'ҜO6ůgb̛s<^ǃ)Xדܜ'񼠴Mǃ芈❲ !ķްz@ڿׯ\\\\钿ݪГūBҢ걱ݦ矕M˕܃d҇k��Ӱ®ۏ}󈞼󨶟ǽ࠷?zL#ߞěҔ⚮����^فڻⳝ_[̱$gT^Εӡ߃ΊgϗٲS懜\ʃBlNߐ\0Bxc謾ͭӵĉS΅ľ@Q%ȅΥ4c󬲇w􈨸͕͋y��Z}󏑓ʨNԱ;у񄃨ѧ򔓘��]ܘ輧У⺜\��&֜Z~��%ѭ뺼ܝز��瞯ٌ!bĳĶ��<l􄤄ퟘ�\n@BoX��!ҢƅzЇԭ­��г6͐ɷ|ߎ��։ۻݰcXڔ|뵖~޷zB࠺ǶݘGSlý��uo?ud酋؁࠽󟵩Ǚū��^ոˉ່ղYk��ګ߲ŏK}򔓴	Fʾ񮏥=	!ܡ\0$ŰƂАΆz/D֚ëTϚ굱{ъʻ(pШ��򥋌R?ٌ\'DŰՀǙ¥򙧱��\'޾ΧW¼Ğy쒜򮬉|∈󨲃ÑCؿϛ1S퍗1/锗ѣ⼨u��cx=΢Ŕ|畾ĝ\'𺌏Ն߰\rߟx.{͝|֙AJ��鹧:��uƐ(ئx8=	!ܡ\0$ŰƂАVɧ;?��̸Mڍ𐣯ޒ奸ߴܾ`񄺶ĥ¹!̋𾳗񽦜ZٿLÏGǼū̸��֥ȟIࠈج01��e�Nޤvlď[!Ђ_{d󴖫$ȟt?��e򀨄cKߎخה<&ٿǽ[��񲜧|菳ʃBl\rߐ\0BxùȕŗM]|ؤᶜ'Ι㶮Q˥\\[󃅴˹=^#g˓ۮǞA	Џ¼.һդ߁c΂ʵӠߡ̋x����e!Ц⻠!亘Ϗ݊࠯J_㇦͜~պۺ>퉤�ͅėԯƖ󅞫ݰgߥМ'Mp{وް{ƶ􄤄ퟘ�\n@Bo8[\0��Sȭ&djڽX֜'-ʋ)Ԝ'DըƈRǹݦΩuҫs^э▮1_РRֲԳר٤ֽܳ<񾦲��ݔةٜԳҡʻ⚯+=􀒲|ٓ�ϗϐ݋r\' !ķߐ\0Bxý\rŖɟ\niqφye򃥥:\\cr߂ۅ5vXuj&/(㊑ߎ4ٖřܜĂ~߱1݋U˹��IܾEږ¶ɳܞ1ۚ4��p]ß��򜬞ݏ��ʆ轰襫����܎Ι머{ЋՋA􄤄ퟘ�\n@Bo8{@ݨ񆩓凋Ʈv⟄����ˍ*\rΛ輦1삱\ZݺsKߠ㿁׷K҃ؾgշfч񺒫&РУ ⟕N\0zd3;є័y٘Ƽ��Ӻ>)_ЁՐּ裖��ִؾ%1޾ۯ հVٜ偏@Bo(\0	!ܡ\0$ŰƳt\"8ìNE��ʻ±-	ךĽ˓Ȭ֡Ԇ~ALbɋ˔Ñ͎ͱ񸽂襠ǰAy\'๿z4O<ʽһԓڙ铻px��qtٶγG 뜧u𝸫~癜׸etò9n͍ࠟ󮆦ܼ}��ԃŢ꘼򄇞��𭹷۫pǞҚ¹`Ϩ	H❲ !ķ߰6\0٧멇Kb깛��N\nŦqהνˋԗĵa4;ޓp$ރ晜'娉ŶKJi&ȟw��~Ͼ8xʝ\ZȚ߻:zbʼӵ|��x\r/Љ~􋗁И򦞱륨ܮࠅۨ҅ʍCҧÌ;?ƹrIǷȰ󑓦~[\\ˁ芈❲ !ķ߈݄R\Zܸϔޥ֥SW:ɱSG\\ӖiΓk^PƁJËӜֽDψ=̙#ᚱJ㙇܁}࠸\'辷౳��nڵ\n��}ƫí-9呝=ù;��鯽͹BՆzɇ`ߕx߬򾲘<ޟ٩صχ4ݿiç;8ܧ|7��yF<׏χ\'ʠ��>񴮱傏@Bo(\0	!ܡ\0$ŰFnh˙Ǿ@oťȍބ1x@ݮιKԇ։¼ƐzD؊εbAN2-Ʃڼ!KͧO莣Ӄ��ͭ纘Xǫч.��⬁ߏǜ'֣脽ɜ\=ؚ/Kߏχ藣󃇢u;īࠢմҩw,U_	ƈހĐߐ\0BxCH᎜ё/`-ɳ?࠻맮պ?iꨘNĶҥ/ɫࠜn麄1x݌̦j4rOȕ��Sѷּ趿Vbȭmھϳβ󛾦趼(χ=࠾��x��ڟjۨ[ʼڔGʗ󅨉H❲ !ķޘڣЭO߶uɳ֢Iݹєּ ߐĞQ2ٖ͈Kv޻��ĢƩẇc󸬯wͽZ_v[򗪴7΂=ٳ��̞��󧴼Bۋט<ߞ悅՘ԉ󉴻쉭��9ީ<;X{ח=	!ܡ\0$ŰƂА񭏋Ǟߺԩ̩뿶ue,\0ӤۀôƞBņ۫乔J��̤⾡��؎ɓ)ԆkǦ	1y󾘚��<阾󪮞qp|ϥʰĭ{Ûρۗp왶/j줗彼y={>Ϲ>�zٿǍNgݼޖξoӧԚǞУ?gꐿq񿇣DO@Bo(\0	!ܡ\0$Űǈ+Ă龿`봾C��qޜ"ЭӔʅ׾Al\Zd捙<	ZħЭǽ߆򜚎ۿ��࠺6z<sׇࠠѸضݴЯ觀ڏsΞ𠮐G��˕kʫ񰷍֡䲵Լߏҙ��-֞����ࠜn;孹lCO@Bo(\0	!ܡ\0$Űǈ󀘎˄k_4uɊ��4aƦж㿁杚n/W𵜜;曜'T׀杲EՀĵϨ\Z|ܕ뙇󨣨񼻢ˀĭü͜ZYRƨ𬹶׷ܸWгȔ񺿸A̛z��e<![ƶֳ̝9iÎ3ݼЧӧCy?k𾭦炑ߐێ׋߶��𛁆Ü' !ķߐ\0Bxcûwȷ��sпv访#SFT쒮ڶJ����⼡rЗȝSߢ䙄<Vˈ/-׼֤Ҷե|Cܧ3AOcdPК磙ᶿU˛i͡󟘀��'жΉxB弞Л^O؟�̓>~��\'տʪ񰭗ޟݣٽϯࠪUg{҇Ѓ︣CO@Bo(\0	!ܡ\0$ŰƆ灱пܽיۻ亗L=^ę򥜮潌S? K��\rʳἡɀyCƁ1ܓ~¢ͿЛGԴڐȱ֯%Щ󤣘kŞи=ê?_mMªϧdIkö5\"מ��yC˖~C=Н��Nщԩќ񴐳釃��9ƚ-׼࠵KΗ:߀w\r��a׻Ϻ��࠿݆=۷\Z=	!ܡ\0$ŰƂАއԿʁ/<y嬩O=<��kcΘ`ΘXÅy䗇µ9ټ!ǖ𬑱͖Ɣ\'DƔݗ򽏔╋=𼞽ƽZضj��[fѳ9xd����ڬɪ2ںئ񺞻ӷ@࠶2~ޫo㶹웷@܅2عԲ��ԧû󨷺_2φ{>	扵׃h\0խTڔ����Ǡ_\"أzBxCH❲ !ķ6܃ұӿ󕓯ԣƎۭnꨝRȜZ塚𣲞׎ڣ*9Ϣב{D؝=!λ񶫫G)랏bߌқׁ޹^P1۴Ë躘ȉ۾{��߲����yM࠼\Zk֎]D̢珔}Kɘm󦷼ٖ+	kࠦ뾎}��ʥ8\0{@͞ߐ\0BxCH❲ﶠּŧNǼ࠴ﶏۺ\Za��jڸv<��2��̽m֌5{B׆ݱƵZю쑼؊X˼ߘ6ٌ3\\7ƞօE��𹶏cO�óڳsܨ𶏜'鍮革ӭ@ԣaS߻񋗍m󼔇$Ÿ۠\0$ŰƂА܎bxM򤧎큝毿bʱr碓资x}Tϗ_ɱ��jڜӜ\*pL[۬p%ܧع<ͫ^ࠋy;1yPy=࠾P񆨱꼿굋ѽԹ>̞ߐ\0BxCHᎍWǤ󄰯ẏ��-r퓹B٥/ϖ\'Ϧ㦢ќ'{D{Q\Zӱۃ_Яg˃ڬ𵌺ÿ��޿꒞Ц��zBxCH❲ !ķݧ1ϫX[ߐaizL؜nۘ²޳|(Ȧїȣӥ\rq^э#rͣӡۿFc󰜜��ơί��7s yV{Ћǧ~>ޖ\0Ēڽ2ͮЎmϳЧ㼯ȑА\n@Bo(\0	!ܱڜr`^ĩḤɋW��񺤕Ԫ8wͫâ̦ψ2ˊe����öC׾Dyʫں:ףY<ә<\"̱򦵤ݓٳxnWVGs:9󯍽²%ݦɦ󼘽	!ܡ\0$ŰƂАܞb򺂧觡\\8��{-X×̱1S[󋙲ƊշS��D͍3ˬ_𻷈=ݬvҎގ豐͸<){:ݧcʫ⚮n\\|4Ϊ纝ϡS띈Bȿ !ķߘr3�'ࠊ��ȓ˺ퟶuʘȁ\\ĶȂɒĚӗd6��ʗ��੩pΖ\Zs혥��ǼߞZ��ϵ��޶ŬvχѓА\n@Bo(\0	!ܱ彠f؞Пȡ{y⪏{u׿הQ!ߓԮQ§őmY^Јը諓ܽʭގÞO׼ܬ��鵙ڭո©ĊOใS߈έCd̹<6􄤄ퟘ�\n@Boݴ3꺉Ou�ڼ��Ɲ࠭j܇TÑ皾Daʫ݆{F{HLǓ\Z1홰ּހҝ󶺽ڞ��昍]ض񕓧䧳|=	!ܡ\0$ŰƂА7݇dcԞ��\\}\0tݻЩ��Ĥ)mߑTݓڱyFAճ򘲶2ގљΎޑΓ鈑eSȩ��J挰��SК䢮vχѓА\n@Bo(\0	!ݱ׷Q{B݆��ܾyӜr=Ȼ̍鐄ߑ��Ĭ\'Ӧ.G��C۬ЇԍSGat^ࠫʸ͞4u}z㪓І͋ƞvfo7Їƞߐ\0BxCH❲y@ΌڣblߑՉ̲ﰷ oȘtΘڗœн࠼@04IgÂ��ٔÂ\"lϪL֪їԧմ`ꤟ8߱֯ˌFO@Bo(\0	!ܡ\0$ŰƼԑÞŭ|Ϗϖm߲Sٽ��h󬌹]зÑǳ\\􄤄ퟘ�\n@Boȃۤl6УfGގ_tӋ!ܡ\0$ŰƂА!זq-Θܼݽ#y8[=	!ܡ\0$ŰƂАVɏdkI\0\0\0\0IENDς`§),
+(2,'dua','ʐNG\r\n\Z\n\0\0\0\rIHDR\0\0 \0\0 \0\0\0î\0\0\0	pHYs\0\0,K\0\0,KŽ֩\0\0\0sRGB\0ώꜰ\0\0gAMA\0\0я��0\0$銄ATxힻѝgyߗmࠎߧʻ}$Yץ;ƅl㹈ᒡϋ\nnÀƝۉ;\\&Mغ��SfR7Lީȉtz!Չ	-B0666 ̑b[BɂҎų?󶮡Ќ统5Ԟ񲶾߹򳻯Қ{�^󽫻��B6ʜ'ۯٺퟢ�@Đg0\0B!ĐB!ĐB߇Ɂ#ǏEޘڻ𣉇ɟĿ#ĸÁȐ⌆ Bȳ肭3Уʺ؜'Mݪ-͛zࠔtɔֺ:g뇄𜚯?ʧLׂvھiݮխϓ֔Į��a٨볫ʩS��ǎڻ׌MЩ{' Bȳ!Ϡ\0\"ĸÞѣѓi����[Lݙʟd뛞ܙատĐQ.<ߞ˾,!܂Ŏψ\0ǨKs³aڳu۸JW󿴵췾gj����޾y謩陹Ə@Đg0\0B݁\0Dq=1󸃷̚򐎵ߵ5z:Κ��:��<ݶߓ43ʛuϔFX޽Ǭ׈Բ턥󆐪߼ۙm4Ɔ)YЅߐ0o=i궋'M}򲤣ƾ쁓K|\"ĸÁȐ⌆ Bȳ肕=ޛ��ɻ΁Ϛھ蝡僓	ǡ-E󴐃ʏH]ۆ}֔͝R{𺯦e甜r@C㐺��Ԓ��vƆI񌒕hwչ³\Z.z_3��ࠍ}睜𹓟��=򷆏@Đg0\0B݁\0Dq= ݥ}M\ZޕԳԝ_7uۜZ��mퟒ�ފ벌NJ=qԔΗĶсл<	扵ݍeM˼]뭅ɇρ~Z꥟H޾cɕЈ[ҹUޮ[̵ćśΌ��(L��𐹡1	߀!Ϡ\0\"ĸÁȐ⍺@	ȞʇǗՔ𝦮ā&ӎBތz<ԗK=󆘿ǥ��Ŷ՚ϫ\r􌲈̩?#��^	=µXꮴŢ󞲩W؜Zj곛ޟ1��wң߀!Ϡ\0\"ĸÁȐ⍗܇Ľدo߹Ȕԍ˟6uk&=ٽ]=ޝߠ����𕽡ʯzֈ+޾pܕʻߑz񋒯}Ujͣڨ=Þr$<࠵l縍��͔ϴܡ>B݁\0Dq!ęW܇ŽzΟ����雜\&󺦡ߎz>SPk֫^ʷܥu}wlʙéꢕ��دΡߒ��ѽ򍩯Lꅨ=COhI��ѷԴݺOǾnдߔ|\"ĸÁȐ⌆ Bȳθ酽E\"͡٥k꩹��m\n΁續ࠁ뾯Һٷʱ��ΨaXw-٘=݂֣ߵ��җľ��Cl̥ۘʿX]j��_ޑՈWZj>B݁\0Dq!ęܞ*x>;ֿbꪙ߻L]ەɏͽ{v@Фyɝ۹fɽكe̵ލ粘zFUࠏ#כݲǣy8U=ɚ񶕯K����+ߐӋїM����ħO{ۘ>B݁\0Dq!ę܎Ҽ߹ꝲ⺸{\";Ч��ù[~UOŖq;0r	ҵͬ󮐛ШŹEׯ󣽱ԮнҔ/}Ojퟓ�ʸǋu鉭ງǞnyB|\"ĸÁȐ⌆ BȳּŽ|nܾ󛦞noɚϨWX^ۥz>7xvTܥn�كB��Μөٿn{􁗉��􄔧ߥ5��eߐ㋛Ԏ}y��[ݟ߀!Ϡ\0\"ĸÁȐ⌭炡ܮܪ࠹צޛ\\����әʋ܌һ6ȥǴ��՚ύ��JC朧Øг,��O(٘JOhm럙򔫢?ٺ̍㓐!ę@Đg0\0Bݡ[贶\nԚ\'圮ȉ��C̗ܲثʫʡ\ZܮؘŞɹ֟Q<_鯣?׼Άr��ǳ̽}ɻ\Zǥ󟵳R\'̒w(d4+ӡ��ڿ҇𾀛Bퟤ�⌆ Bȳ!ϰއt⁃Ȍ}dzⓦ7ۺџgک8��񊩫k򜰼봚q��|^PEjܞΗqֽߝǸXô|󺴷9󩩗򄖖ïۺڮϷܺ֏߻鹄O@Đg0\0B݁\0DqƦ{@O>4߲��ȌmޟgЏKݏ45˷kߐ{ϻǳF֣ٮ\r˚ؔѳɫޞпȤשߏү߾rFꟂ\'Ŕʭt;ÿѳ����񉈐⌆ Bȳ!Ϙ��Өͦϥ޿`ꨭպM@��󑪣тAK(󔐶Ӽ͖LC󨔷W=ǪȘևcΥ󫹿ퟬ�GܿP빳̔]9۾j袆ͭo݃ՍעЊx󶑾B݁\0Dq!ęc��WԽ��ͦ\"/ț@χ<ة뾒цЀߎy^Ѳ̀5{Sۄ׽ÐKωʇ޿Ȣ��ڳҼ࠾ƙ��ܥ󏔔ޙW	ٯݗڟH=	߷̣߻M}㾃Ϛzܳ繄Dq!ę@Đg͝j\'逞Ս۰gLΦ��/Kņ{BĜZ?R<LۨkʥУ_ۓ6꽜"α蝲U혔u؂oy~	\'ȷ;Ꮭտл ؗe^P̕yyҪ򯉃x��|\"ĸÁȐ⌆ BȳFߏխԜ"Рy?u8ƠJ몝^)hIա͜+��@qXRѓȫƥ晏��Gө͸󌕿ʕުw/ȾAڅהߟܵGhCzBΦ&实뽽S߸��4꼠>B݁\0Dq!ę#��̷غ9%󾂜ZԶDҌΊ@ޏȫh܎Ԟݜrퟠ�핀5ɸ.ؿƐ\'4ⷜϜ'ܭ29|?~Լ܆0؛-Ɣ񠆚ڲʔ{J��\"YƿȂߞ߾L`սøDq!ę@ĐgT��~LcO􍻌Ő8wkࠪaƾ<ІƼɦ҇ũ-0Uʮёuyë̫B/ߟ){շدZ鏼كڻ׭P<ݵU!_>{Y饅񺙝򺬝5\'՗ҍ˂R؁#н𜴇>rjח򅵤ͤࠝ7ܟƢ��ɚҜ'ۿԩ̎㓐!ę@Đg0\0Bݑكj��]ըߍԭƯ޵ٵGQõx֎a̞ݽϫ角˓ۖΩ\'ퟎ�\n��/􋯬ye\\w̴^��zi𕽍Άʼ߲yy��_zuY~ࠍǼܻڷ͋����IϔԶ?Ӧ驹C8;Ƨu<ֺ��̾:|ԐKߡy\0綾>B݁\0Dq!ęս(鞵��ΧCjڢ̭AָOHI̘TШȬҫvk����ϐ/̏˞r򩥸د	��ΐݫޭM,Ԍ߽Rֲ}棧Ʈ��^Oݾ𜧎~r󛮓s׼h«ehٸ6Ż5ҽ=��[ɿȐ.O̳ҭ4upڿ\'킏Ȑҽa\0\"ĸÁȐ⍊P؏ﲵ׾卨ݡJ��p	ܾܫˬt\\÷Ն;֣_𢴬0/e~߼��,mȼҧO˚ғ\'Ƨt쮑維2+B��޿Ё񷵖ӺΥGҸ*пS˞ɷ࠶ؐ`L]��츤oկС��ͭ\ZDƘCڡ{˻��5ó}帱��Ͽj��!ę@Đg0\0Bݡ킡ܯݭӇ=pΙp(2𼲈ѩ߲XԒ׃Qôퟴ�˶Ve-؂9٦ߚўώYꉴ\Zۧ 󄆽y}^:+k{nMd��cٶʌ󙻘򂋒࠿ʣ=ܞށiԐ̲򹗎ʚӃǠoMܟ<Ń̕󓽟︌ʠϭ+ࠋ@iƶŮ猚жƙݰܰ̕>B݁\0Dq!ę֞P˶$\ZȤqrDҁږx۝ܹڨӴ밦/́-}􀺵��՜ZrΞ/Ժiԍ+ְ޴ڃyު߼~1oJ󐊛潵تطҤѼ߄ҲԋῄԍҖ󂐃Jˏ袩i砧꿓��8= BɶȐ⌆ Bȳ̽d#k,ՉĞ8ұ-ĵe1ˆ֨聡蓫yᣅcqΝõےׁk��D}N��Տ���:ȱ&˫?5\'MΖΪ𰧦¿N\0دɹnѿü?عƿ< ̒ӂ窀ࠧ/Ʉbڤ٠u܉ς>B݁\0Dq!ę֞Pޏ总Úкƥ`㡿 1_цűdޚ֎ƹ껷;Ҥ:p޴=\'kƺĲڥκMz7ů=߄N8R瑭6p޻a͙ϫv}��Ů��嶆ЩϵpŰ��ҶևX˅yp~񱴢՜\ĵΒ[Iӫȶ=~B݁\0Dq!ę֞PϿَ􃥞F*GO{��ɽːӁ5sťahǒW⣥µy񜚺5wI䭳mΩǗ̮˵��ڦǎCߊR0ʬֻ<˗ࠍ֟񌴛Z\\֜Zk琘<ӗ��ٻz*˧ӫՎ𺄏ޟL䁼!<>Ԃ氾گ9ǌ赲˼\nퟤ�⌆ Bȳ!ΰ��࠮شѻџ󪂙}흚](e/ŔHYC.x:طUӀۘݻć񖟕ƴ޷>I開澺^wlȐ׽i7ܟܾͶǷܿz\\��B䶜8{Qέ{:̗sіz>ВԼ߂˽˕ҩᯭO˽äʌ|帱񃒦ű	Ȑ⌆ Bȳ!ϐ= \\ӥKO˵ߐ򴆞΅kYjֳεҡɶzB˱1ċƼ��ہ»]虽!݄߰7̃Vj{\"̚\"פ𹀣:tP~_ƫ)K֫٢x>ڇɦ񨇰mIޔࠟޕ蹡\'kK験ǮL݀ʷ􀈡[ Bȳ!ΰ΃ӥK膬ʳX󡬡ؚɔҎTϩۗҝʵzܦcډ֎iϏӿKUϨʖoFVޡ/x;Зɰ=q͗آޔuߏّz>艵Чհ	Ȑ⌆ Bȳ!Θهԇ~&c㵾pMϽʆ^񱑃ьs\Z7U=Ś)Ծ򌑶ֱس<s좤׷WV~r؞隢��' Bȳ!Ϡ\0\"ĸc�H\nkʬ=½ቄڠXЊ֣y񻇊Ъ¬zм\rռӐr\rϥ-پ~܌򽔼ݻܳ΃Sϟ鱬��ߪyKو=ܪퟤ�⌆ Bȳ!ΰ��Xי?Ʌ}Ԓ۳ɓվϥ\n*ۖ؞Ekx[O),ᵏȫ?D{[ϥ꟨M��[޿ק࠘ϲ׶+ߏa.՚ǥoЦծgۻ+ƞ̞Ʒ<W򺾁B݁\0Dq!ęꂘ躼񁉑Цeӆƥʜ\Æઠߒ<ř񵏊ʽőL#ּς򈂥ӫi֞ҪI)ԍ!ЩЯ7E\Zx}񽫑񶭼4ʎAK-󲲫ȣ򺲟ʽϕШڜ"��ѓצ!|\"ĸÁȐ⌆ Bȳ̓jZΆ󦎳9ǩ7ի盋ӂkU|̋ˠџćѲzۼ $ت{ ƗJŬ=νl͊ؾ(̥.ܕࠟŅy>ؤ듮֛݃ɯ{r֭u[~��ȷ��}n^~ߍ&\\࠰ťˉt>ㄦ-ܧů4ޢѣ|ᙗߪfُ	Ϲݼ}ဤUO@Đg0\0B݁\0DqǵúهgMݏeމ^,񃶴ªЗԆr͛iלn̺��Puȱڒ؇��am͚׃BȞֺ«͋|ݜry��ƾǓ̂��pΝ؇̺Ēε𾦦姿xִ����̸Νѵܩ䊩/ּ��-߂ژZ/𽠭ؖ��ࠣ0AS��֓^ퟐ�q!ę@ĐgٷjG/˿X��½ǮǲM\ZgΒZր۝гڰGtހ.宀󗲲՚&œÍÞͻ@Чʇd\ZƳߗX]՟@󠶍˼ߝſ!з��ݨпuYޟ\'ޭзܿ񲐳󤹾��؟>\'tg$á��\0ZZئ񠫱w-塚󥏿Ϥ��󲻸B¸ݯƑiς|\"ĸÁȐ⌆ Bȳ̽^<+ڼֳ̜" ł됈5fѠ۔ɂ,бӗzFˋpœµzŕrvźEنꪅ_��{ңؚӜ'��͑ۥߡֻƮLʫԩUkгy*ݮ��(/鷟ݤ􉜧΋}3:��࠺^֬󛶉}ퟚ�����;x>׹?X󕢹GۇZԾݏǮ5ܧޜnퟤ�⌆ Bȳ!ΰ��εSkg߮꟬Qߠ4xi,uy:aԢĲܠ̓߉!ІǵvÔ~ihސ߂򢌋񬧯��cِ亣ޗ\n=XzOg\rjغ]ђێɂv@^;ӟ��-ב[Α򎷌��9S࠼Xꔟ֟禅y=７z7��^M)F͚򙳼r𾰏(ϖ��᱁ڼp<(}碓㹭Ēճϸ6ퟤ�⌆ Bȳ!Ψ8hܳ߼©wۺ۟𣓏̄bѿy*��hʒ#ώ=cXÇuɥ1?þ@ḥ\na{׿>m埂򲘥κ>X̵羗	}׽ǅ﹠2lɾ?2eјPuЖ򾚱됷UԺЋЪ-˽翫Ϸ^з��࠴䯏޿|ࠨˤXۈ֎ö<)}}ހƼ࠴=ۡЧs܆񻪭ʽܐ;ٝ΄	Ֆuߧ룿ؼQς|\"ĸÁȐ⌆ Bȳ*Y봦߱��'jC\ZČؔ񀮹Æ􄰏v/ɜ0֒ᠭEK<\0쟃y#ٜ'3իퟝ�֋麬ޫ࠯N霟-󝸝ܟةĤҊϯz��}񹏜շ̌o򑏉v5O����*ߏ	ɝ<𪙫W鹬y>9xFχjݔϧjߏ��ό򂺱pڔޝݧĎ^yޚ߀!Ϡ\0\"ĸÁȐ⍊ц󐰼üӣǎ₰0��P\0��0BٜrϕbẤ5Yݤ{M|dѳ<Xky䛽ꨥߏן+����rʹўҜ󥲢4ނˬ򱳪п^ɵܷוޜ=o}Q��ܥOꏣΠx>JO缃󑼆͠񘵻ʒyC䯭@ߟ޼~ۅOۺ8뾠͐>B݁\0Dq!ęս;Ͽ*ʟ��g낯ӽ㝲kʘDcK^̋Ja\rV̦ا\Æ8KߐEʁ֞ѹƜr��ŉ֭٧sdíΉU,ࠓ旙2jМ'θ񖤉u\"ٷd늝=گ߃ٽФ񨽽2ؠЧŹ?芽幢;S㸼ڏ݃ĳjퟤ�⌆ Bȳ!Ψ쁡q}ؗL��゛ƾ٦Ρ^P!DFѝﰧ򅩦؈ٞ\'Ё�Ԁ󙊼ϯ}Uz>ז䛽W��ěʒܪO㪭FK揇娭@񟼫~Wω籝4/=߽󐗤x>9xD~,kࠐ䁝Cߎć\Zcޏ]ߏӕEЧ࠯<*v𠅴Eퟐ�q!ę@Đg͜۫SbҼ舦��dx͔頓ɕدgӇ΁̗ʀi&_ÜZ܋ՁW򼮼$ظ_;){0࠹ρ¯ߙzТரhFݷ3jХˡ呁\'4	ط這zt��?��޳G꧔C͗x4)綄򼲘ߏI,oѸ(ϷşO<(��Ȗl������!Ϡ\0\"ĸÁȐ⌑{@H8ڿӦ̜򕱝ɋ򃘓ǥk��<بAڜ'偢z&��ڿތy󝻤6վ>>ΕqO璻J㧪mXߜ"��NG`nٛ߱P臿yJ霞ݑzЮ<ޥ甦𲜜쑢��}􀠿-ܧ齊챢ܟŏ@Đg0\0B݁\0Dqǘ= ̋򲇧����Čبx>IT^̅süz`劥ຕᝮePܶ1\'=ۿ{ԬἙɾ2h1y܁д+򋧏��oOظ-نƔ뢇S鿤��KןӟкҙoCΞʞϐ<)��ϕzŃB��Գ\Z��Ɯ��Ȑ⌆ Bȳ!ΘۇĴM~ϔÿͅЙp0xϩÚ\\䣥TjłXʥR<P<Xjࠂۼࠣ؁\\1f{��߶ʁԈq詌ȓz\\k҆zLو܂ÇĨߎa܎猳֜n��~߹ԒƸ*>Χc[얯ʷ돜Z߱u8\'󴪎zׅO@Đg0\0B݁\0DqǳĐȿͼƞ\\ݸǦn֒ѽ֔ȜhKOÖ֞G捕`Ϙ\r<ޚ茅ӟɚ2|}TǹҢ񄊜ɐ󺔼ࠀӖ󷝆,Țԁʽ߂ۡ烳ڳż��[ᚤY.vZ.[χk݆]ɇ쓷{X垷矣긾'<Ȱ	Ȑ⌆ Bȳ!ϘrƁ࠺缟e빣YԎMԽQ+֤ΏHϤjJ=jO=ҌTϨRղ<ݼէWȫӵ̶<vގ׌˷g溆ْד⭶ؾٞOyfޜrYΖ:ࠡ룿ؼQo' Bȳ!Ϡ\0\"ĸc˥¸ߊ稄mX޿̵ƞ6~̔~ 犩5��Ʃө>\Zzψ_y.蒹zDퟧ�E˳ۢhy9*=ߌO`��q{>Z߁��ʿn뺵޿#v٤Z/\r>B݁\0Dq!ę[߁𣏜\"۰狧��'곿PӅc߰/ȡcϭߐק񔍛BԼ\"\rՖṃ꩔^ޖЁ˚ؓȓRjĬ=�[/��ɛӻ?h꣛ݣٖ>B݁\0Dq!ęܮHԉ󏮵ueῘz±xǩ[𬜢ܚш=޺��%読G#��zHϑ<\r[χѼߘ悕fփ��aӸsSGӻࠧ꣏޽ퟐ�q!ę@Đgl񤑇Ο蹴𣜢Сă��˗ɒj֠/��ɑߏGk\Çԅӓɽ䮍]𬔏ɰ~AyΓvχƨ=-М'K˹>qؼΗΧÿ׻ϿʵҶ\n߀!Ϡ\0\"ĸÁȐ⍭פ­qyBˋ࠭뷽(眢՛ߨ؃=ǫ\ryʼм׌6oH˭Cі|\"ḑiޕͧÝ=ތ<<ߡoܣìvퟓ�&mȍA]ͮoϭ跷|>B݁\0Dq!ęۻPɓ؀ُ(X?󾓇ꆿ4uÙ˹c8˾j(����aTĶͬѼ&ͣ҅דATχҾ˦��ͶAߗsے%z8צv|Ŕُgܻ>߀!Ϡ\0\"ĸÁȐ⍭نF\ZS/ɁZ͗򯷵p}:ʥ׈��ذ̛Ϩ͊��hiyE\Zϳìk֬=/ĭP˕㐀2χ贕jڢퟖ�ʿojݛ5X=\\ڄ{ܻ>߀!Ϡ\0\"ĸÁȐ⌫΃Ӑ<É􅛍ޝX􍓷á}Ǝ#ٷթ��=#͠ݜࠉٲ󝳴@򹥉局.ﰉ��Cޏ嵌Һ韓ק~Ȕڴүy\\iޏÜ' Bȳ!Ϡ\0\"ĸcۏ=ؽ𜉓?񐼇Lޱz�ğ0uܤϷu͗ʼÂG΅įH󌼹v̋e̩ë̈O$ɸ\'*̬��()ϛBЇ̕Ú/��_奌Ԛ7Lޗۿ`뱺����\\2��վ毴χᓐ!ę@Đg0\0BݱˋBԼ D삝�©��S7ĤVScQgĽȂB��Q=ō&Q<-OG󴲨͜Z`-W\"󸺩��𸦦f>gꎶADgūγAퟐ�q!ę@Đgݢ= Α{D뽥;MƱ=B󉝦��ZSע\\䕡gT蚝ԛ҃BǝH쿣y8؏(%Ndߎއ?󧑣Bت\"ϫӚ}ÔU=䖮񠼂\"ĸÁȐ⌆ Bȳ肕ĪG��-Sח݃Ǟ_\\ࠝՁ2��yvݩàܖ�;ݒѓ۬гAҼL҅Ȍ󢿨��滏ں8뉞ί𐹞ɫ~ࠄ>B݁\0Dq!ę􀆌Ƚ<^{㍰xzI��طࠔ\rϻ\"٧sb��۽)Мn޷jʰ\nؤ��лࠖzҔͨyהɾdƔ驠��|\"ĸÁȐ⌆ Bȳ聹ǖԐѵ,շoLސ)OhԳϝ_/2Zퟐ�q!ę@ĐgЃۂևӕGӽᓐ!ę@Đg0\0Bݡc?\Z͖ǜ\ڨz.ؿʆO@Đg0\0B݁\0Dqǟʾh󇌸Ԝ0\0\0\0IENDς`§),
+(3,'tiga','ʐNG\r\n\Z\n\0\0\0\rIHDR\0\0 \0\0 \0\0\0î\0\0\0	pHYs\0\0,K\0\0,KŽ֩\0\0\0sRGB\0ώꜰ\0\0gAMA\0\0я��0\0!dIDATx힫ͥgYȗu_Ͻ̜ϴ˴َܐĢ`Sеђ.pQBԐ`$DͨM5\ZǐŊׄȟ̟˜nɆA+b @[#ժp)Ǟ糎̹gࠖU>󾿥֓׵��񿾽gͽ����г񽂈ڜ"ݻࠔ!Ϡ\0\"ĸÁȐB!ĐB!ĐBɔ𽂌k卑ێߟyż��ȳ!Ϡ\0\"ĸÞЎ=ۨ|nߔ��ɯܫ<ؔ3񤹦Η;󌝔ْWCPǻꎗ~�� :o뵂\"Οǝͦ򤩇격SgޝƦǴԠ\nȐ⌆ Bȳ!Π䙴tfȇٺ^򥦮-D?j뎴ȃn~֐Qڋվ7׽X򹗋ȡ#ҔՇ̑(t9IGǎ3U銸ĩӤߑpԻܩO>퀕ԃޡӦǧ䖮!Ϡ\0\"ĸÁȐ⍺@S挷^ࠬꄋÛMݼ+}é;Ҹȍλ\n:߰p��ç3O׫ǻ֒0ϛ(׋􀺄評CɋĔRב\nМ'ʺ_2��Oƾٶ󯦾宣kڜZ\\B݁\0Dq!ę􀜚ϵ{пĩ觓יۗނվBwה¬P߁��Rçӟģ̒ȗy+Rۤ��ʄtƢ麜~4X0čۋ{ñ郪uʳA<0��TOмĩ؆��Ə߸ƣ��\"ĸÁȐ⌆ Bȳ聩୫礝܍޻y𮓣ǓΦã񖠦/@ߍlGj��\0蟯utxHj=x?5Qɭ6Ĭ@קĞ[둷Ş��ຜrʗ!/ʒ#ڜſg뤥)򊮺ߩїD$\\B݁\0Dq!ę􀀣wǉuW׿m랱򦓇+ƬL籬ɼ޲/Z4{��􅛤ΒڇܠʧsғBߔ^җƞ��_ԺݝQz֗=ϗW俵��ںǷߺ꒿ū Bȳ!Ϡ\0\"ĸ㓳0󾼑7ں¯غߔ˄۝𑭆RǲƗ+򥾞ߒ踟&տ۳Cꠣ7ՓJ펯Ֆ΍[8ħ4􆔫��<\"̵ېëeÑ񘸾욒L}ʧ\rqDq!ę@Đg\\��뺮Ъ/ٺq��㆜\綌+ߏ㾩��ࠜ\끒㪣ܳ}OȩȔۺ6˹eZݗϫՠ¬Gt򣒟񏩑ڐߐz!yC˧㏛򱁕࠯ꋽ\'5W@Đg0\0B݁\0Dqǅ灝ڣᥦ>Ѱ��ڳzϩ䆟~܁󀾽؃m־ߕ\ZkլҲzϧuШʔ֞Φ񨗫هTޓ򴧤~攒ЂߑŖ,&Һj��޺��ٺPsDq!ę@Đg�=ࠃ܎��vξϔ񊨿fퟳkF댟(��;ָЇף)[��覠뭽Փӵ̢򣧿)��}��	֧Rቝ9޹̩ߜﾥS࠸؉䞎ƫ Bȳ!Ϡ\0\"ĸcȹ@ۧԫy <��󙺠��V^ⶋԚ-ǵaΓѶ̂Ӽ ̷+я��J��>󈔶ߐǥo7��㝮Ȑ⌆ Bȳ!Ϙ��󹶶{ࠧ띋ۢ֫ړɟ	󹬁Z-��9]:\r󦼛ߋm{:ϫ|׫؜Zz8m_@-٩Љ��:\'��[]ەʆ߹p尸۽ߐW@Đg0\0B݁\0Dqƶ󀰮׋󕓯EоєѲx>8ثꝮɏޕ깫ޚ̶ۚ��֮֫!چ췳mϦ��Ĩ?>^ֺ󐳺󟒜ZzLgǳ񏧮ͽ٩ЏϽ֩؛ܱ΀!Ϡ\0\"ĸÁȐ⍗ƀpV{?=\'򾜢�ߏܜ쥽蜧ƮΈݩ[⏦ژ橨sִPkƐ󱵐\\Ľ|֟ت1ռ۾S~R{_+��8&_ߊtn4sﯛ삃\"ﯽmW@Đg0\0B݁\0Dqǳ<#w8d뫖O��׳ٚƫŞ󢯖ޒûۇղ��sSۮ�͖=\ZŭІ:oΟԞc%Oh𴔜'¶팅ʏ̻߸\n钡˨صĻO��!ę@Đg0\0Bܱ埐ķǆ۟0ֵ࠽7~ڗK߄ȲϗȒ񛶀*4έۦ=ƽߒJ,=τ򐒥񚽔꨾Mj蟄֢sÿУݹwۺ̫Ÿ\"ĸÁȐ⌆ Bȳל\0xNڹޔsYے΂ΗͳݶIޫGݚbeOϻퟹ�єʣx0׳ά󁵵Pv؇T6튜ԧ3ӘzDƝ񓵩g/غ򜖿.$~࠺ā썽kηϼwޖ!ę@Đg0\0Bܱu\0軵&ȅߏwɜ/逭��Iڕϻ爲6ȫZޭ%ЯƓ4/󿨷ԘcjٓҦۯ?񚥩xߥr?ퟵ�ʺ+Ǥ߼L봼ѝA&߯˓Ο4��~Ӟ5ϕ!ę@Đg0\0Bܱu賸̫M=܍^f닞ό̉漵B󝙡݌<࠾Ojͅ2z6��6Jܾ7\Zc)��ֽהcoKѝKרyeʧĖވ񹧮ֺB}^P8~թػß֗ٮi΀!Ϡ\0\"ĸÁȐ⍖= ͻYΏ˼Į߾琉熶ve2՜Z=!ܣw֚Òbp\0ܮܢkyE֚1[OH񕌻׬ܑvސ򼤊?ߒiדAގǱ𳔊ǸQއ����𔼼#ࠧƤ󭦾rȁOں�΀!Ϡ\0\"ĸÁȐ⍖=˃܍=쉼ߐ謁E⏭ıEϖԾxœ|ډ큻ʥ��ЀKܩho`ɏlگhּܑ۾ꥒ̏wø>	羹\n˜Z󇭋ߏاאαʺ̽¸\"ĸÁȐ⌆ Bȳ\Z{@��\\Û<,jKʸy?~շ|Ղ�\\*9_هǒ*Ԁ*\rӰvzƓR߰5OhܧMٿPӐ􉡯=\Z\'߶խ2Rޟ<ɮ<߽%񲸜قQ˯싌X��﾿b꧳ĸ\"ĸÁȐ⌆ Bȳ\Z{@ԣ㈌އ÷ں߈ܔܭ§)ׄ{܊\'[R̅īc\ZޟۦaꚄ˧ĞEGM҄u詓ٶ\0R̚݌~_ڟtܝϏ{݄򻠑[к#{Fcmنꑭ㵡ݬѥyG݆pDq!ę@Đg4��䇓؞vżC񰺳R㞸O-Ԅ򾺊ϔ5ˍ*Ԝrw7ܵ.ㇹD\nAW��`aۯϲ.?ࠍ¬񝌬{r+𩻽ܧ{٧3_��ࠪ񤊚N4왰?\'ࠏā򒸅!dgÜ0Dq!ęͽ%ϸ&SЀʑɵ(Xʔ*y4)�٥��Y}̭⳾&=ōMگ鋟;!��\\ӭ΋oٯ��ƐQoڵbژ梽Ƚǅ~𓜧Ş׬֍֗ɧ��-��믐)ߜr>Ш٥𼣅ƸN9䅕]Ƚ˗gʈ��𭷘򶃷[ڜ\\\B݁\0Dq!ę֞Ͻ򋣿噐ȲЙʂ)ж��ᔓjeᵝs}ر֑ܓ?sJz@࠺��P{4c˜\Ӊcöο!􍯝+􌼝ࠉ䝲iR<x��Ղu֞\rI`Wȼѕ޲y��Q</��ԅ|>E��r󡺜"SώǸ)Vsø\"ĸÁȐ⌆ Bȳ̽~ܦIҤ{޸vƱ	ɋ9��*4ѭ⸮ŔīuȾ����#KF򾧠ߊ᧟朢ਊ诖ڷ/]ؠݮߠ|ߥ}ғݻRz*󋲳JܿQ񷳹ŧm窭)_\0͛CϦW<ْ諸xb𽪥瘄򳝇!݀&ޠ\n⹌ӱy>= BȎAȐ⌆ Bȳ̽aۈ܌RѯŗһȰӻ~p`~Їƽ˴xˌٞ	ղ՝tȌb*䬼HCZ٫kĞ󶫅>��뵛ؗ֊劉nڌ訂Ͽmy��򷹚wɚʽ؈O(ٝm?V߿��׷ε̂󉢹h& <ࠕ蝾ࠥ&࠾ڔ^O#~ů󃭝󎂋ϸpDq!ę@ĐgX󖣑ѱ\Zέ**ùŲK,ւ=.Ժ`VD殂ٞ��󙬵񱗊޿ڭ{<©ؚ㹃lʞOx߫ߣࠗ߭ڂy۽ܵ˔Σʊ𸎣m<¸y̻˥WӢ񔼓8^*yA𽫒f۹֑U^؂\"ĸÁȐ⌆ Bȳ̽3kCѸq`ٳ\"Oȏ\'BٶȜncƒĉ=X+➜_W<\'kբXꩋŊ=ռېﰿ!J畩?ޥ^̶~ћzکV˥Ȼ)Ň瘡��з͜nߙǖ񾯁\\B݁\0Dq!ę֞P蘳޴}kd9ܜ\ۣԩށz*هǾDy۝}Ёjܓʧ��@\r=ܜn֭s��GS؝ߐߧ߰򋳁ȇ��ĔmNW@Đg0\0B݁\0DqǪ៮a��%ѧﻖ䐇@mVǥ)@θ4`ưތv̼_y\0QĒ<ɐ҃ӵtrǞҶȓ9߳kܰ񕺒˞>\r󾐧O˙Sw��чȐҽa\0\"ĸÁȐ⍫<JޏfKM򰇮`˖жG˓jꊕ·놊Oȩ^P۞ӵގߞӣѦt◨␛��{=��֬ְDq!ę@Đgl񐫼OǬȉ۾!󂢠��ù葩ߐP~��׽nֺ/HȻվࠂ򳈜ZzPH%O\rЏ��ӝg5ɛ��\nȐ⌆ Bȳ!Ϙ^ČުߒCڰؓV򽨹9킋@j߳ܛd󾪇سⰆy֞6ͻٮȠ𷔴ҰΘmL昌خǲߙ󈟜'̻CO֚ \\󜚀!ę@Đg0\0Bݡ큥y񬐁L,ꂹڄP;ƽi+Ғ#۾׋��
+(4,'empat','ʐNG\r\n\Z\n\0\0\0\rIHDR\0\0 \0\0 \0\0\0î\0\0\0	pHYs\0\0,K\0\0,KŽ֩\0\0\0sRGB\0ώꜰ\0\0gAMA\0\0я��0\0&	IDATx힩͝辞߳ޭﭜ\ErHJҢRՒѫ$+Ǖ/m꥛R󋚠iҖhڢȡۨ\0vܤm>E͢(ڠ̛4*j9ʣ؊ݸɷ2ӄʲ$ˢ(γݽ篧˂»r^ܸ��ߟׇ��=蝿ݷ〱!Ŭg琕t�q!ę@ĐB!ĐB!ĐBFƧ҈覿L<ώŪȕڄ؞݊!��⌆ Bȳ!ΠtӁͷ{\'&u=͜ڞҵ̥ݥ웄x۪!ɹӪ顛*{}ОݗuǓߤ뵾A鹺Үiݙӵ=ƛ>B݁\0Dq!ę􀜃��ơ]ݱ߮즄zXؑߧ렞:ͧ嬑Sت,UNڜnŌ󱗨ś֯Ъ:Σ赝]Wࠒ��ۺnţЫ򞹳E݁\' Bȳ!Ϡ\0\"ĸÞЈ񆜧OL캮޴ȮȶEѵ=轗ءطȫÇSʝӺˣ.=؂QĪȥз⹣۔íؾ!ցCJ6򋲣Zk֫񗴽qs����(22ퟐ�q!ę@ĐgЃʈz<w.ܵ͟صݾxۮÙ֨泆³hA;ޱ𤐃AϦч^?\0ߥշ	σρāÄ뮦뿜rٿeʻнzJ袭«y<񆴄ӥΨ%츫ࠓ��ۺn��늜'6Jkވ9|\"ĸÁȐ⌆ Bȳ聙Zαp��ޮBب񄓉4Q&s1y<Ωɧ��^ʽ𼼴|dZћɆK4xF9X*ٕʻ耿/��o\\֚ѩޔ񲔫zѡ?Ϋ􈮭ި딳W;˼ְ	Ȑ⌆ Bȳ!Πݺԡ;t}璿ࠨڥֿϫʞДAʜ'߯u󝒻Gƶڪ\Zֆ~\rU\"Oʠݒz��}OjԇԦ󎒕P䑭-߫뫝��ߏ\\:Ĉ_Ü' Bȳ!Ϡ\0\"ĸ䎧ڲzvOn��3ÓbԠ⌛<ߖ]RရR7ߩշ#ղ��𸼊��򅙽\"˞׹ǔާŞ��ҜnzD򵮲Mx>첌Щ򆺘Ӻ~Եɦ!ę@Đg0\0Bݱ̻@د瞽̿Wؓ렖u؜@^Ё󙅽v��թ+;l=ŪyB׹>׳˺尧KŃԹ��SɗޔzjѰohAzBIצ򆖮ǟص˛����\"ĸÁȐ⌆ Bȳn9锓ȷ캷׼ЫԟѵлԧT˵��³񿌕ò/=#֞Ҷӷܜ屨SޑǼɌzT/~EꫠWפǚӴї��ï黂Ǥ?Եʏ݆\rϮnퟐ�q!ę@Đgݴz>GǗDƔT��=ߩ؃ַĒ༌jfЛc𰬫ֆ�rڜ״ʠꤖޏ2}>汅寯ޕ򊗤^ؠ5xB񲜟򂍴ېܹe]࠼�ț>B݁\0Dq!ę7݇4tЧ\Zz2<ߙػȩܷc[{晃2b슜0FOȖCҬM˭󒐎%ɯ��Ü3[Oȳ똵}ԥ	񉈐⌆ Bȳ!Ϙ񞐶󙋮Ȟۖ֝FЧٜZ-֞ѫi噦♢��ž𔔗aΙekǾtvz?!>B݁\0Dq!ę;΃¹]{\'ׄڶ7ۮ솝`蚃R϶ܪŖIȣ𽞎5ƹ~?��޷,��}	󄤞TEzݫk��Ƹ��ۜ1>B݁\0Dq!ęUǾ\rݕތ��{6ڄ<ז[ꄯպ	ǑەV䫜"Ҙ{2钘޿и��<܊~Lc΢ǔ{׺ǻ󕡪i鴶㿨^ݸv🔎Ï@Đg0\0B݁\0Dqǳ<SߺtǮЖEߓ꾩=۶f6ÚЃѺ��\ZƘ\\3ƨ˽sǬL=ϧ뾆챸ϓB_ѠSV􌛷Ј}��ѭѿъ֠Ǻޜ໙]࠷ڋgՃퟐ�q!ę@Đglۇĵ^䲫����[<͵ڻ)��R\Z֞MOҥ땥ڛ;ͣ\Z9#��UKŠQײqͧ8޵פ~fѯɷgK2ie̽?t}ԽƧжԶÜ' Bȳ!Ϡ\0\"ĸcܫp׫י󛺶ǡ&ׁOѺ럥ǥǀŸ΀ퟛ�r۞ǸI,=ɂ蕱.We˪焃��ؔ����־ʜ'⿟{Vﮜ\zPήևś䛗厶ؖ͏@Đg0\0B݁\0Dqǈ= ݫ5ǎ˼Ħ3oZˆ恙緡ڙə򲂃ߎ]z$&Ѐ䪘z&U=\'ĢeŪ񡕽&̷��ܾŜ'ǳ[ǦΜ-��󲖬ڌů͹ױt}ꊃO컔Ԧ񄄈q!ę@Đg͜ڗ\\��Ác۶\ZѦżࠉĒЍH=ؐ۩ퟫ�͆ՉEϣfꈣهd�ѳʼࠡS񳇞㙁󳪽҃Ҕf֭��9Лߦ4慍uӷ컼ǊO®��!|\"ĸÁȐ⌆ BȳǞ󾞒>��=їߐ¶k7墜��ٶł1UJԒ櫁ھ˘UКȰCEtF�+z<1��ޏJ֤۵Hݨ󂰟ѕkҷu}M·ݗŜ' Bȳ!Ϡ\0\"ĸc麀s�tmͻɁnԺhʒp\rͻ7ĕ䰤��ņؼ\"��ʻRoήʲǚӳ򐓛ۧՃ餹Թ`[ݭҷЍՅ��\"Ζǔ{ӖѳYLퟮ���H]عA^C殍M&Ø򵫛`ª\'Րᓐ!ę@Đg0\0Bݑك˧eܘݐy>IӇӂjŰ��^)̩J£	`\rЫ凹ʓρ󂱘UbׇӰ򥡿��߻֚򾹣M��ypNhеs{B蒝xFޯпΫB_ࠖ~��ӔԻ��۳􀩻͙sĲІԍ+2y>)xƩܾЀ3渷BuO��ܽDا琽IطΟ˔(Ɯ' Bȳ!Ϡ\0\"ĸòt:9$\Z��ߛص鰢EٿG檤ߌñ˥湳*Cތȣުퟖ�>]߸$��ݐϜ׹!5CZѫ?Ҟ؋?X򃿤=ɇ?,wᚦެ3麼ᛯ��򚢴mПåڇ��ܯݛUVĆŔǒӛ,i%̮ծȴݥ쐄ZޑӐ!ę@Đg0\0Bݑك밮=ɫtw~Ϯݐְ5X#G埄>уٽА3Ć񫦾.蒜rkzퟣ�d��)=ͧߓߏߝ򻌷˝Ю_繬ϋ䬿񅡯܍ג�Us΂ˋB丙ܒ࠷࿹��󷑑珯Ǆ\\ϟ󅨅͚kWտPZߧԏ=ʫҟT`mݜ\ZŢ��лćDډa\0\"ĸÁȐ⍫kࠞ܊Ɯ\hŚ񾌊ļ@z(^����ʀ󁵲Ԓɖe��Í/?׬��ާVǼډ𰜚嵿qRﺜ\]՜'雿��ه=Ɯ'��yKx݋K򻬟-׼��͆<hQ㶺񭒓ۻΐ_Ȅ߲М'ĚGĽ\Z̻ރG\nì󼲁̗񼖔W��츴m[ǜ' Bȳ!Ϡ\0\"ĸĚ򦯄Į��ɆI˹\r3\r��x?zB\rԜ/ćҕƳ߽Rڹʳɛ򜪡걤󿸌Ðׯʾ7{ȌԬG̵kңcݚ<)𼚅~OǪA聼����߽/̡kýѵݓֳ����ԨS̫ڹTAߜЫߠ̥ͦǱ	Ȑ⌆ Bȳ!ΰ��1ث̓r̲5xΉؿŰw	ӜnpT֩La{ȓA	=čXӇrͿr}M苯˚ֶؼƍ𠌞ω͓ٜ0̢򒼁ϼ$󿬽c࠲ʕؤ-ג흵湘;F	\n目^/ܞxݧ��ưࠄ𹨑主߮󔷇ࠋϧ򼺾ܰמ˟硍D��Ł~􀈡7	@Đg0\0Bݡӣ۾cIڋ؞hنαMkh쉛\"\Z=#Ӭ��t\nǤ*׈հ(دωSiƜ§ҩ;뛈ᰛP딁ǵ|¢˼աs鲜ÖAа��ڍg٧o򕭯Jݱ(?oz\ZLĘM𸓄\r?IԬ򔰌׻Mה\rQ=ߣ쎿Ǧ䫻ʂ>B݁\0Dq!ę֞PomSo5sˠׂ�ü	ȭ)ܮƲᫌ gڣ󃘾2͉!Шyˆt{򸦧dʝ犯M~񅙇s��BKӮ6ؤ񜀹0ƕU&Ԟ/~��ө({ΖL7KrY蕋kЅܾ8Vﲂ<޹;Ὺ򇡇Ԡg˹AϫK˟Gմݥaל��O@Đg0\0B݁\0DqǽOh՟Qퟛ�\'\r<шјǦʑƵ-α}XȰyzF٦؇Ӯʙ㈌࠿��΂ޯcӃȵ˻=𨴌��ܪԟ<_򾾗z��θoRҕOasپ��鸽Ю׭ퟏ�𿻂%򶵸Ǽ߂��ևВ塤X+f𐒋ݜ'ܞ򅹉ⳌL׳QLƽ㾹Uڠɏ@Đg0\0B݁\0DqǑµޅXMȡRXĺѤ흚z܆ֱ4þ)ІȾ*5ؾ+еˡ֭ދϞ~彻寑ę1զՓЉ9UX쵝Ϙڳ`?ǰſԒrϡ֝��x𻪵5̽נm\rЇ՗7ƞ~Ɯ㴺>ɑԉ1ЍrΘ񻉒گ\'ΓJ\rֲ,֠ϫcS˧ű	Ȑ⌆ Bȳ!ΰz@ئ󻗦u=>Ƭퟝ�񰉩Yεʭׯ􋁼Âl��̩ج}X󟸈ύڪħ΁袭\Zj𸪐̶ࠣ㲨g����bˑωďģ¾@𽪘󘠹=y��ᶺ񅙳\Zзa��@緡ߙpkՐ/7\\ߴۧ��Ɣz@Đ݉!ę@Đg< ͻQ񵑼󂪜'O䛘ľ;؞d ذ¯vVy!&貈/ѷ߬ƺ𱙏矣ӶHmakĜrgjؔػۻ 󚎾OկR㼡󰯧Ԟ|ߜ}ӣڞ?.��2��nЏ׋=\Z��^χ֞^oՅ욅��<崜r=ͳܼ縺Ҷ֡_̄̇򾕽)߀!Ϡ\0\"ĸÁȐ⍂z\r󾦪ЋSaSY򰆓(ÁbɩO¢ڙ󀬫ʤ)ͺmJzBy/͜n˽Ȣ?#ܤp}ɝĒ!𰞳ԻT)Xˆ؇ƥyH\nyEٗ%ϯPۅj摳)嶙ژႌı��֨Ҝ0~\0뇏\'6䂕ݟ񾅾?pä^iZNѳ֤î˫M��Dq!ę@ĐgĸF;\r՜䙂ɬֳࠍ\'Ń殳RpM򜜂ӧ`Hk)ŭc\ZᙄʄЧ⹥��k\nϯڽ񫆣+|?8_ڡΖ!ȥĒ��χ��͙z݁П𶆟ߛޭ8AکzVŏ@Đg0\0B݁\0DqF Э尥Is҆O,2Ԅω}<łơ͊y+e袪ՉḼΎޓ��\"ȣįϜ\t㟔`ܫ񪞯˽ڠ��..��ܡϩ5徠��F|��ޏ��2oڬuSШ>B݁\0Dq!ę!ϑΫkƯk+ڎcڄ9N<Ռƒغ欐ӚٺMyߌ􄢲ڛþq��̂zF芔�ﰿIz8p>Ҋ=דȳʭ󸶻����رޣ<ЅO@Đg0\0B݁\0DqǵϏwD$ۡ);Ȓ(˅ɿj؜PgqcވʣIч3ܞ򿤖֚&˺HگؿͲx񻚶TF.ü´Ȯj\n֤R=W񻄟ˉ̇Ӷs!ĸȐ⌆ Bȳ̽ OyԈɠ২ߐ蹦㷱̓2[dʥˆ|~L󏇜&)4Qײ١֯֞��ı~Æư	Ȑ⌆ Bȳ!ΈϫsP,S>ǩ1پɫtĻCؽ~*QE蹀«ӈT͒𰬣(ޟ{sČлၔר𽱯kݒؾ՜\ӧĭ񻲲ܿ0ψϟƧ䘡,{jǻȐ;hݿp{ӣܾ삝ह��おퟐ�q!ę@Đg򀎻uኝ挅޲R_4۝_ֵϢႡ?>юy	Pf̋ӝW��ǔ*�\ѓAO闿ӂʇޏʿݿ\0{<Î`��٩ﭐܧ독��72yå噹𻅺S쯯_W-z̪lsBپ!Ϡ\0\"ĸ#��򬼴͙ĒO=0ݹëV<чшݷ껞/rʜ'^!/ɠ	ڊڂ˼Ր򇗰I+��3h؆yɪ尣^ѰȺU��cǜnԌyAƴʥƕܬOȉ;嗜mᵲ䁡焷̥Ш��罘򿠏hϏN컄}I̅;ތɟŃʜ>B݁\0Dq!ęư��Ҩހ%nἿͫn��>αŧԬ̒\nyɧثf[˕֫g.n��ȰҜryٯ{ĩt̰}+慙򥕝��ҭ悹͡.߯Tzܯ\\՛?��ի򾾴𐐳䜛o(ϳJʤǚЮs��ߏ\'cb.XCIٛࠚz񉈐⌆ Bȳ!Ψx@ż}츬SФ߷t]K򧵝󙑝c^P1AzDy$󘢌̖4,υ	|Cρ󑵩zޭ½B纗ƾͧ婬˫Ӄx��޷𸼸L6S۟Ԙԡ��՜\Ϛș񝕙ЦOЈ<߿𺈫Qז渽ǣӟ׾C0˿.5έ˪ݏՃO+ļꂡhx��߫l��𽣧c˽Bퟐ�q!ę@Đg烡ۮԷ_��ߏťY+Ӎӛu]5/(Ϥ Ԙ͜ǔy಄v��ޔ򽟔K氽��O襋ҳz�߻ؒz��DcXkdܓXUc۽Ӈ֔ޅ-��N=Ӥ��-ˣ?֒򽿮۝ɖy?ǾAO(л򵼅§[掵⸒ߴİߞh簊=ރܟ܌1>B݁\0Dq!ę׃ǲyԞWȄ*um��ތؿۮȚ҉o8%]Ǆ6ĥţ巕ޖ��n߫ׁƵޜ��п��~񬴠򃹦ѧV~��ƅ~띴$f��ч[ퟲ�ܶ杩;П檴ƇӸ =߳Њڼ3ge^йإ󱼏Љࠀ{\\^ߏ��?П~2[0{JȘH~ߌ</.ؐҷ\\\"ѻA*(ْ߿ڋ랃Ηׯͤ‶Զࠗ��򛪈ퟤ�⌆ Bȳ!Θ7X��EϞͿ׮ȇԇu݀5w< 􄚓ҟK=ԫؠȵrȼ񝳂헴5��ֻ@jL֚ވeގzB^ԞҹŸ`!`̣��ߥࠟc2Ш��Ԝןșs۝\"��ejіפ^ۦ]^ު=ޫ򼬯JΧȞԇER7\'涻߇ψ��|ɵ5ʣ𾆏(Ě.hҌz>ޜ\��𔇲ݵ񹘯ǷP\'򮮃ɽֵʏ޶U\r>B݁\0Dq!ęC����뺝l��[2Ǿ)=ɱ״8Ե۔Q\r<$X$PKƞЇ!ًz@>zBҘmݗ��࠿V��d򜰒ퟣ�Ӊ3BL	炔|ڿ(4x<y>񸻽񾍭ܚ&͛i6ĎòDř=򺼶B࠵ۄўǜrك.\0z@ղ栁ᅄ󳆹;ͽyࠆٞṤ=ɷ:R��{G&\"mĭ_ҵcࠟ��ퟤ�⌆ Bȳ!ΰ��7q誝��خ��¼-ڦ\r2ɗjٌƇ5كLߜ0װSװ*3٦[҇􄍾��\"��<ޯ��7oɚ\'d<2[)ciʪ\\+ꑠǄ͌ʣͣȧܵn6帙��y􀐻ZpB:ЧŞ䝩^Ȼ%Ф뺜o)܏ɯoT򼰺%q񜜯<!����MM��؃Ǐ@Đg0\0B݁\0Dqǈ󀐯��뻨п]ϵֈĉ۠@?z򖜚AĀO)��H+񜢃mǹCٜ'ې7ՉZͧЈ<WωZŵ̥֥Æ舙򂆍áЗȳ׻圮B^Oߚϫ։󉡿у-X@EO\'ʊ_@��ށW~^jࠢ.x>=խ��	Ȑ⌆ Bȳ!ΘyRߪYם˵ࠖuի��>̙C٦��-ŵc𲡌Ǥퟑ�\s{h)ퟣ�ߊ`󵹼0̾޷KO三9ܾ뵙wtᣬ࠳�㘬H݀ŁބRֳ)xnmړzbFޯćŇԯϝBחՠ񘪹ѣʊ󺔸4٧ԝߏ`̼󇐻ؕпήݙ٧Ȕ��\"ĸÁȐ⌆ BȳֽyO黽aዺnؒܵ]ĚȚ􃂞ҵƴ٢=ªyB݁B?!􈐣򀣲\r÷\"ٳՀ߅uٿ��Ԇ-Ή<٥驡뾲h򳴇沍¬󱙢X͎ʣ��ڠѿ\'+࠵^0Iф��rۏ۳)��{@鿳ىϫz̽��𷖾ϜÜ' Bȳ!Ϡ\0\"ĸc۽ ܭ΋DܚҜ0z@Ĝ'TĚ҂ШʞbʥC̞Q❲֞֢AޑˀӉ܊\n퐤ٵ��ܣ͕!O1y:Ƽ߂旹=Ȩ=ࠂɵۚTÄx\ZkތࠇQĜ' Bȳ!Ϡ\0\"ĸcܫLNη֓ࠐuݫ|Rޣǆbф͟Ylkߠ\'3xψ{ZĜnݘkԅMyEhb$зSٿGm+&ʨ꙾􎷼іkе��󛐣y{kތퟤ�⌆ Bȳ!Ϙv󌊹煉񍏞ө󫯌껌ʾAʺ΁ނؼѣ:ùKaɹ;𺺂詔辸`R`ΙѳӴ͐3ۮr۹d&O\'ȳћNGUМ'3ͭ˪񤽰x˽}��ܶ��ݿMٺ𻳜r߀!Ϡ\0\"ĸÁȐ⌝ׇT􄎬黔ȿٮخ,ʦj��ވȗȤ0*﹍ߜ0zAˮ֬7䭘=Â׹8܌nѴǭ񘞟$A䂙0< Ĭv��ڽ?Ξ׵kЬШ򤧟۪kԧԝ֟߀!Ϡ\0\"ĸÁȐ⌝灡EOHϱO}ꑘo-,^Ŝ'T˪րJR霧+h찤܌\n㓜﯄Χd«ر*׭ų`򴐪OoǼ̛֧S۵[Ͳ?񙗟ǳĲ|Lퟤ�⌆ Bȳ!ϰ>ҝĢé\'صgi񗵝Ϝr>ǫȡD?h	s ֫ļ`ϽàȴĽÁ#ï[̭ӄƞѦߕ7&1yDǚͬ-ЫI0ϫۃ甂񣿟ͭy����蔍󱝷İ	Ȑ⌆ Bȳ!ϘqR5С۽Ӻϵ^󇢿q砪ۑɅܱ݅ϳ羰l\nЃܬʞ͒c󪞑NȖԉ`sͣAχǘaߞ6<ޜ򆰵ݕ߫yrnWV׽ݧe?߇jНW٩ޏÜ' Bȳ!Ϡ\0\"ĸ㦳˺Bϫcþmyወ򓎧uݬŷ뻖\0Ї2oȇЈ䒹q܉3B|Õ��e&OȐ릫ꥩyz<YRߏɶ֫;΋��躵GϭzH]�BȐB��!Ϡ\0\"ĸ䧎Qįr&=x\\׫̿X׵𳺎Bٷըa͘x8C��gd=ƑÞb򴐑{<ٜ'TɫIk_ֵ𸳗u��i5Bvۧİ	Ȑ⌆ Bȳ!θ齠d؞ѩտ«��雫u��/yǮ̺DXkƵ]~h򄬼$פЇד-퐣򸺽O��o̜rɥ򦎽ƫG\Zgהڙ<|\"ĸÁȐ⌆ Bȳn9��ă{uޙ]{߮ì��<Ü0&օ5;ψ1yHȨӀLcˌNa{çԁq٠ߏy<I𬸼ɶۺֵۚ[󵘸ռŏ@Đg0\0B݁\0DqƭևՑࠖ��=ێ۽җ䬤1]AvD׵ ǋߑ\0ޏ\rP򷷴̀ǐޔ{8i!Ї߿ъܝ4��ʰе4_׵ݵ��ۣAnuχᓐ!ę@Đg0\0BݱǷQ{Bƙ��bäԳ헷ϧķڥoҵ娻tÎ=%?@ЩؠGĸڪ軉􅝇ٿūwϊկ쳪֭򯌂T͖vfo6Ї߀!Ϡ\0\"ĸÁȐ⍺@֌ڣBг8;̦쟠kV؁󠮻i~X؉ 9 ��ԠߔRMȪxj��Ƀ®ĚxY׭{Mة޽I׍ژퟒ�?7󷼽H9|\"ĸÁȐ⌆ Bȳ聍٭��$𸞗Ȃӷ��맜Zj:){��'^7Ы鱌>B݁\0Dq!ę􀶘;γٕg㗞섐g0\0B݁\0DqƇօXKCv6ovψύ\r߀!Ϡ\0\"ĸÁȐ⌿��MҜ0\0\0\0IENDς`§),
+(5,'lima','ʐNG\r\n\Z\n\0\0\0\rIHDR\0\0\0ɜ0\0\0Ȉ\0\0\0ΘΞ\0\0\0	pHYs\0\0,K\0\0,KŽ֩\0\0\0sRGB\0ώꜰ\0\0gAMA\0\0я��0\0r։DATx�ͥڹvιܛk몙93䌩Qդm-ʎňǜr񇑄HÈ@qüΑĀА8 1\'lÐ7ɢV˒)qʡp83=ޖ^oࠋ9񶳯ɪWU]ݽͦ񾲦ݾ￻Ͻ��ߝɅ-hAZЂĴZУďVE{̊`󩏼hڻ%ί۰⨔ӺޙД#É\r΃��α󥷔󹯨\nܰsǖ�� Iρߎ̢��QΥ􅜷:ʓ:vەٮZ눉ۊݒψnݚ\r󊹲4ց޺ȇڽܿ䵷\'tíUꗔUz`2jAZЩՠ 萷��ا#Å࠾dg?øO\'Ԥ\rۅ1̎$+ٮڙ7ҳۦmִn@Nmʥ:̔ĦÞs٭A(k­4¨𷙁cΪɮ܀ܺpf͡ޛꝪLǝ9,o㨨<̾ޙхUܛ@ӣ˅މ෬˟��'I��EܳҺܚEϹǟöʜ\\'1ʠVܸ+\n\0̹X ΖԂࣗUCŝEњaӅǬ��.��l֛öQ׌��ퟎ�󒍹b횚TSj��-˅r̖kA:ľС׾Ϳ󜢁6q/γ۩c[\\ڻ*֓Ƚõmc;�𯜜ƍƯΑ=@Q=l۸H㕲٦ǜrۏ&ȥރc\\��WɊܝ۹ٴ@lg䊳q֐ذE|͎ж\'ࠀЊ%āҶ>u-*ײ;܂����"ϴڏݽ̞dϲè𿀃,рʗ���ԎRʷѝوԽ(ֵv/κ؆��щɫһb9ګnS@)Ѡ\\RȹsˮyH-oQŰӏsُ˽򜜇@%ͨ@{􏤖Аӹ5Хz܎ɴەϞƋE*Ϣäշƃ?󶩾@iіԠ3艆X_ݵcѭu̶򛪚񫿾Ƃ]Ѿ瀺ƫ.%$@��ϸ蛉d{qZ��Ȯդ׶Vپ2ղ׵\\ְА͒R��ьc\n9ֽȞz\"ؑ{r,Bشc��б[Rb)ݣ\n㷜r~*hӡ;U̝oBρ��T̓ÝU&<ϓuەՁ5̶࠱.\ZYgG࿐��ˏ?ƮܡsБ~!sSϱ>⠜rФϢw0Mڅٿž��{򤪐߬ɵ*/ḔD̻˴斷&ԨӾȆǃרˢs�רwЁ󙅗Dmىmiܠ��ퟑ�9��?䤌Y7˂/f=8¸ш=*Ŀǫ֜'ф?N\Z脩K࢟ڲԆXŪbނqƖۜrۚЀ%S͢ֿuXUľYoϧO퍾��o\r𝜮Fū򛛪IƜ'΃ܦ\\䕯F��_mƊF􂦳5*״꯿꿻=>��dؿ��׺;��ߺޔ$KͷʟqрͶ��̸̤n9˜5򡔵t䉓â֖1:ӛㅭʁ٤.׶ۂ񲩵_A`\na3ɢ֤qЇX 9s=ܖ5q򙂷,>мҺߛ蝲י񷴓��Ҽpv淵%<-[ߋǝ��vؖݜrl϶̙{࠾הſpv��צ+یȅ^^ඊ8¶ϕ塪ʻ��ߑ?Ͻ{튓<q堼ׯϥ+řͧKĽ¿Ƈ:ҝ򎧦̷¯cܚ��ࠜr׃ߣ?՚xզ��ࠔIՋٮgӟ鴲ם6��p֪ߕS}Hᐪ[r\Z1Ǡΰɲʲ)۶͞́mޜ\ǵ҄^$кt|Eʁ𳦐ܘqо얘UЮȞ$2̃9ʫj׿ǣŽi߂?ޝ\r,&γQꃻrYXټsnk汬%?1a΢ݫ퐽GصһӢ��ݾ枎򪷭x甿̝ڼ~󿸹~ﭭ=]槰ݹҾtşѲè򿫲ꄬת󫥔:̓ͺͿ��҂H_ЂΠ\'Oiiڵۙ뒧OvǤU޶OԐܝԈiaǙܿ迒N񏿽L[aѻ擙ѝʲЦIN;Vݨ؁֠.ś6vǅ杇CmÛY˦siϵrC󺿆	Wћܵى\n򘈛5ǲ@,1ɰذٍ˳9H m#ۓل҈��Ad𽱫5ޒܭ3<ģߑМ\ک>��Տ庎ص>\\ƜY,HRוݠؚ&9ݛ(q�KݢЭ쯽O��Kvµ旓i֦sؗۛ��1܍?R崪鴲ޖ[щ҅=Q䊛 ٭>ݟ)ؾꫯ/᱈D뭒B3(ޱ��r~Ɏϕ{ӌ��ч멊ϛg��ľ\Ze񫴍șѦkDAǱݬɄˌZʩ2Akߜ\֗⹡󿞏ِ֭ݘ4˲6rPϳs<ˡƅxR.n֗ڗ{86C��۪IܽU��˭Ǌğ\r��ڎ=Ϫ߆\rP+득ѳ򣘎͛џ𝎝֙ŉ6ْ޲ܶO_ٺDﲻiMwؗȫӽ�񐞤zs򏫘߫mɲ帕DȵށOy��՘#s窈˕81+ݫWi؉򽕞fHG��.Yݣؿ6ۻ !|6b��"ؚެUnI˻́،śڜro\r\0Q\\_ሄߩә\\>?ހƈኦo9Fįٳ��Vńǜr{˷^Ӆmكʋ	ߌ^ㄱL3à(?ЊƷo㹔sߧ͙ް򐹈pc\'炻͕]Ĭƿ]֓ҟ<��묬,/࠰΀ִ붆ܖ1ݥ̄׏Ϧ.Ouɇꉣ\'b¼ďݘ\r+ֱGѽ7Qի]ߤXּEծҨセ޶ȇ٦Գ��b_ÊޤյΎܒLGΪպ#߭옝ԵS([��ē̑܎߅ƓԼϞǃӓӆ̏T݈s젟֮pҟ ަP*ۂݧҗĹȿxƤ[\0࠮ʏaQة\'ֳđ@B膦� n?��Olu΍BQkկV^xšmk	��l2Q̰ٚwρࠟ% - ւt=d;ė̵ڦܩ熘ʮfޖ+ܲ<}o֞ѝiԖ`Y@޸^]ڼK;װச홬Ͳʸbн÷oخĎ(cִʐgzࠢsAwFǩj̏%ηy߽ݦܡ!Бֶ˖ǎ=ὼذȼ?z֪>ر]옏lۋldDJ͙ࠣ��t\rպ𭮜'ș񜜄ɴb%Ɔ��ߥ_��h��ǕɅڜ;ֶ񖆙50ʦ࠿ܭƮ֧̋^{3Wࠥz\"ɓcۭ̕SQL*þI⥪ʶ(xбk֠ڌ4OԬࠜҕԽAO܄խ^׀Жxȅ��g\0Ǣ򼸆ːθZߖ̴|ù��nЍ󄀶Ħlɩ4༳⢈ɩޠہ2߱ѓ勷峓T_q۰𳱀ĐWɯӥUߔw\r.؎ߛ¼|܅ﵠ񎓴ΛɅ1\'S3V%��'¢ހXZЙ􄰐w>-E΢-癿􊒖ڟwأx��*݊Ҝr]y򤢗KϜ*7Xuퟆ�qʪR[SZ𭧞V�ܨ󣠐ˠϋ��ҘēI˫	υkyQ޲ҹψp59ذߧůݷܡ̗꣦󏤫Щ̽K΁wޤwࠄU��\Z࠲̴ʣ(ј󗲎XWЫݨYz9Otᔻԑߢ6ࠜ'Ns^G?tZpЅ-荺\"8HGע\\)զ̜"ӂ܍޸ߪ򴫹؇ҾȤܣȝVcڴTӂw܄x]㳱*׶ѵÜ"=ƅC߲ۻЫ̻\'Џ􅷞󸈽ǋس줁9󈻎࠳?ݼҳ۩̄U%׳V^ܸʇ,ã౮񱈬,ШͅfȻ顯B䛺RO\0=Ř˺ҥӭe״16k¦Ʌ=Ă𾌁܎V_DyӖ_𽚑ԩDޛۅ(󱕫����rűƦ-ٰζĉj:1o郸ԪМ0rړ ּ-ױࠝߜݥ(EXi2θ|ݎ^��믲q׫pVF֜0*ZЇXĊ˔k0݂uũϾֈ^zƛͷݮҀXZЙ􄰐Kڬج񶴛҆ٮ࠰7ׁ߳\0ŘŌ,Ǻ\"⦣=ۇ߳ʳމ򽷪ϱ%ؐnنNꔬ��䷱r܂Kڋᗠ²תcRHpL캮ܭʻߢvܟŃ\Z��tY~蝤竵\r*<̹ĎܧՌVeUḘߥ[ڨܿ��3𚺖��Y?\nz\"ɲZ-9ή!Bԡ񑷘͓5$~bdW?Ǉ��ͯҋsӑ\Z˂I۝X Ӕퟣ�\0ވ䤇ТS䊯൜Z󲎣 ݸs`Յ`ݻOvтΐ>yύהu��\rCȝߨ1tͲĄԋd��VQĿ3fge͢贴\rfϾࠔc׆ؐ޵]Y ȵށߵ򏾻uCũy揬����ӊ\"ѵו6򁀱i󐲬\\̭$ḳʶԩl꧷nŕҒǭˮԞ^«ϱ*tA̹ؤ鹻*:$۠{wr��⤬Ҝ\3șٯʜ"Џݟ��馤\'ɀ۝+ݦjނH僭֙ƨNȞÂݜZݤn\\S򳥫ؕ읮;<Fݫ𞖽ՙ吋%︭,¶䴦Ij��䍫󮘲\rī{󷾮̄Ӿ꯽ݿΌ(ߵ؜\ИjԾ⵳Z[��ԤڒIJĈdN܈GK\\˜\e˴ᖱȊѢp̜䆛=0^Eg=zܦA݈򻷟¸Ӝ"Tvʊ.ф߉Ԋ񾆟ْэʅaЗډȧ]D5敘u\"t֕ԽQ*͆J˂΀՛νÿoq71ܞ̯ࠑҩc۠2ϒ٥՚܊Fee؁ϩޡ7Rz^��Ǧ^@̅-荺̜怾E֝ϻ帰-��߄mٍ^.ܦx񨻚ŋ̀AڰԸ肬ԫ윧餪zΔ!ʓ}IǕ\'/з��ݕ.hߛȵŅƯӛմѸۗ#։8JģƗ觲ࠃ³Ҿߎ��3:ڼ,밬ȸ=򌅴ʆ;̍+򻯟IIÉ\r9ͮѦ	spi񚖠󁉚ЍᜈOi��Ȓż\'aQ1-H@ЦeoʠШ��w׾˴򋲑吧ݫ?|ĚGoξ۲jղ֚볘˫ؕpL̩Kӏ΄;ԑF?궷ڶEv=Ϝ\ObődCpSإϰҥn>lW󿚎8ΝȽ٘fG&ȉx2+ˊ9좊٪O8ҾΓ-񷠏TU!٢˜Ӓ򱉘ٙ󗕓C歩ЀyҜ\񽉻¢Ӳ}	痣ԁv(Ęࠀԓȏ(тցV2ݪ@¹潛Üܮ޺\ZȂъו��eʔ/¬ɯuߏY󝋌��\'᏿΀iXҙו(vM𸁁��?,Ŝ'󱛽��Ѓcڥθۉtͽڿ ZT2)tþ*.nbgF̰׷Ȇٖ̈İlƭJS&?ǷվӜ0��ܜn描TѕĤՉ魇𩤂EϜnѓїE\nɨ鈂E1Ư՜졚2끌킸̠OSƓ+}>ʽ􍗌҈c@ЛʟL쀐Rm]񩐄AV9țVys؏+�(PL致˫ΩūߕۢܗX̚ˠþӪʒHˣֺ㠮衺Х¼ݠe¿Ϭtuy򿢻TTͫΠ޼nT܇ҍǥbfؘ!ѧ񗘬ɟｇ΍HeK,ч༡*ן»쿹e鋱8Qύy2ҿإ܆&ؾƉp؋۳J\r⃌8\0Ɲ٢iңd1TˇC7ڛƋ޽ˇ_ÎW?��-؟vƋbڿĮ~كպI	݀ګ맭݂��̗Ѕ\rƸȯqլ管͸{x+ܖ우Ǔ߼Ť1̝\'􅅸݁^ڦ��匡mӤWFĭ}ƻD6ҨǅүbԖ��ѐǼª*��А㶒'��埨ٖB򂖴=UC┮˞ŭԌͺL鴽¬ѕrCǎƑqg࠻U}7l^rþ͗6[Q;%8uǣoВۯţzٜ\ߵ훉̛嵖ѡƅՉк΂𤷵E#퟿�;$��ݓώ()Ȫƃ5󎟞J`HZ̙ۋ˪3JսM��n֯Ί$ٶ&񨎁ۃȄ+ع߇\0o\"߷ل颙1Ӗǧɖس۴ϰۏ:޻KH|0΅פ٤-^ړĊҟ߲:ӢΜZi󱗖4𿧯ʟ)U��ΕȀڂ\"L��ࠀǌzκMAঐҴs��֤]Ppg鋨ߥw\0մԉ告ܜ"��Mܐ4,HӶփÕޕ]ꐜ'نʤ2I2ȲƤ̞\Zᜰ3e[N򸰨֢ql󦙆Ēޛ-϶ߪ˗wop6ҪzɲϺ٫\\2Ҙp\\��ߩZ��WŉY+G_הlN\'v\"ڋP~ˏø0ΉۙܤAиڗ店$s$ͬ��{B9QW 혚ޠlŅҋ��垺̲lT^Ζ>O��ӽwՇ@ȵށ\Z񿞿tU}ȳ%ͥ#r\ru͊꺨m΂ӎO\'kڙ��=鉟^ׇ pÎ֚ʛ0ݨ|ٴ֫𚙨מk奢U؜"ͫ𷕤Èˣ얳񐴖Ȇv▱MѮ oX}o؏ݬNټֶ﷋֯ӂs2SI-x7ʒ\0՚6Ҿ̀;\'Mi*鑅[MN|O*]��kɛɄk莺ۗx޺󼽗ا8˕ʉ:ࠪr݉ւ贪jᲥ%śٕ(譜ZΧϻ󹏞܅ؽԺݫЎӾmвO΂ބ\\��Ҟݷqϫӕ5ݲ@ϖ%Ԯ��E鷠馼<!XȣPs\ro9ۇԉ/ĬF᪔	HVԋd<ʵ݁W׹{Pʻ{~Ӹ9ɋX4;Ӏ׺ƚY⬄ӼY 2񵪠ˇׇbýĜԪEqYy࠳ʔ塚V╹ЅӼOĥŏm��풊ڂȡrȆۼǖͼ6Ϙ󗠗[jC��z5ȅ- ւt=4񼧿ʫ��yȪΦΦԎ屲хЙbˍ{ګյz̰ǰj��󒗷ʻ쥜"qչ;ݩŃr+WA<HΜ¸	]۔͑zږ\"іԃಌƊķњùTm}윴헭º㛒5Ǥ򦯈۪ؖ}ơ]W2ʯ֠[՜\`ضJַY[>z甆L̓ǫ5?Ʉ0㒂մɀМڑ1֜'񑸤в\rA\ǹaۚs<ųߗõ\rƂՄȗ࠺ҭa\0Ȼ+R򡈍&#򁠧\0脏Цۿ)׸6۝ѶĔ箿㯭Pǿj޷شűҟ��>ȗퟎ�ͭ-ݵ҄#ޗw3]16ƼpجK:b؍׆ȃ/ǳՖޕ[ޥ򯡳ᅟ֎zzXg͵48>腞s+6ۻ7p[䵋pJTڪԚӕ~6dĝh0S��ĺ-q��<񸄝ƕÖʾٽٕp\r߮l8RՄgˑ<Uəkڊ4��߫	͛O}ߡﴈ˹f󾿟4Eƚ@ǭ؇ͦ�՞莢נŸ~Ǫ0R>Ɯ\9+(#/ړɳܛ{\0sъjuǠ=ͮ=TvƅŚЂΠڋ��5Gיûؖ䃐ҮλyӴ3Ӽ��ս֖뫺ǌִϻɋ0e޴Ą܃ǵ��:صטJ0ٶ؜\γB8푧#ٕ>총ǅʶ˪ʚ[䦸]J*X%քj��lȘ}닎ޜr\'Ԓ��dԆjZ1W𡏝R?��ٴ̦ʺG݋��/qށ��߻צXġ[\nɾ򯞗ΎLǕ֫?LȌssjּ𞥩툘˝}ٜ"˿2��v࠵\\ǜҫ\rUߜZѢˎv՝ӭƜl؎Թ��|⇛wꜢ񠲳9ِUd8ٳ��箊ꂹΰ̿B=ت ֎֥��يܵ煫dA:Ģ࠿ˬܜT۰ǔ$��Až밟ڒ\'\\Ǹ,ͳى!̦ۜns˖7YJ{oƑ{ʅdퟡ�	)5=N^lЙ/9[Ì\nҋvݝ傜Kԩࠡ㻷w��ϵVЕBڭއ0}ƛ񆓍AXޘ\n֏K5c\";QǂּÏګǠˤݛkmh#׶〇_uż\\اT׫Vg茞ixV򼄱֪��ϡg\\􆤮ʊt ܸww߯Ȉ~ső^ϼ𻻧wJ򜨾㧇ʔӏ4߉ڼӘ��Xݝ\'IԞЖÌƫ٬ᅴ3=)̊ޕԉʷʎԬ袿Ϯ̼.ٮDݛ��󯓢ɧċqƈ𒔶ӛ8\nȭo,,鶩 cۮࠜ0l9AּھF=F-Jܖ씭>̑ʧ٨T+˰2S󤰙؁ֽΫ\'p࠴\nl:ňVЯû𺪫\'v	޲bˉہTǷԅ?żW\rh6}十ܟ6̶񐺪ڌ��V^����u~񽧓	ǭ憧؏Q̘2Tz󛇪믷㝯եFրjI<qۻˈ?þ�ݥĚˢṆ~񛀐<i̤Ī񛖧Sɤ8%=ԽvB|ݠࠕʏ鰫Ъļ]ʚͫߜuʻ񀞎N׬��<W弖ㄭ7Х+׾Nؓ��ࣻ:߭Ͳ°αڿݶ✒Å-hAȑݳo׬ݽ˽͍ͥߌ��ȘAڲvʴ8񭒮a`핝ϧGϲ␘e峞ꍒ債ɯ񕱍<Zx]`蹨��K̣4磜'ϑpP̎Ύsɣ(\' KӆêѭUι܇ﶎ\ZlqՎϘMǕࠥNq�>α2vϨ8d$ʢƏ\Z٠\"liՅࠣβ؛W㴯mЈŝ˕sә̔JO\\f҄/񂫰t㷓5ù|`B��𽘰Fݳу3ڴ	ߜ\*J̕��؃é[CRգEΝv��ڌ~͸ѶڭϷ9uԃ!ʜn񤺣eQӇh\\֕ؿҮꬹ󗰙ꯕ&��h֖iӥ%ҫ;ٸU�ĜD׹ѢP[B׋:��NN>?zɖG��\W6 \\ \r⥔>5NɑĒ9+Ę֋ĜࠖŬѭX[ؘò۽&ض4N/ࠊ2ؕk]𣅒^Nҕㄽ䅜\䡑:ࠀְ\rO؝۹*fܟ��˒1뎝^ kѷūҐ`󒜢۹6׹󒖷4|JȻM厯c1p͵ۘ܉Ʊ۵ªe&қɕ4\'͝h\'rRߜ0��,ҕ\r^ ȷ:&rԲ½]\Z-Ϡ,ˏֹ~Ϳ݂ԠS(ϢgUЛ��VtΑ\0݆{EǕTK#żJǘȺІ յ\Zԥ.»ۢߝ4ޱ^Sdɢ+۔ݷf/ɃҏSRo۹ɛnŬ䁜'̲׳}𣯆5ܾȶn҆龷ȪװЕٵ񱲶̮?А`i5SYطָ={oÜ\q̏�̆𺋝בђȥѹ��+��󝶟t0չҸ9סU̽͸5c֓ɜ'{w냗Հ\\ΐr٠w��pnXچsƚԯѬώFˈȻͫփȔ)뱤݂ҡIBEӱS-6ث,́@[ɭå|#_?3cH򑌛ó	ׁ\rձr؍\"\n ԋʽNЕ˰\'߈ٻϒԗ윢-mpЦ)߅$ⓠ`\r֔IގՁ䜝𜞥ضͳmЇ2䁡Վu򈫼��s焤ԍҾ|��IΓ郡pꩅѭ[lͬų5ߥ(ƻ`Е񩶙\'-qRյŃԐW͢Ѓѐ]��󓃔봜��͎ק򉭰s,Ĩ̦Ɣ`\'ͷ̜0ƉƜ"߅kA:ĢۗУ#ࠚyv��&ݧϟom\\!:Ӵ<ޡkֵV虪ަ ͓Ͽ,ˢƮ!ʂ(&{9TB0��$Lة!Tpp��co̡ƹ\'NΔ�Ⱦۗꍯs܀.ծ󎴪Ϭَ)ѪS/3ÏԂ%ه܍͵ڄλ\rb܉7FǍQ܍+Z/��|ת퓰ؼـچ~󟰒ᣯ̪ω ɾƍd׷ߌֆߊ��񭦥.Ε\Z|ĂȣSuQBDQ5ɀѶ񘕅IB\n%E۶x̠ǬT{ѱj|苝N&8ݿ��𫴍پ#xodɣ͉@\'ѝ؉ϦH񠍑ˮjq뜰ݒqʵJؖeW[ۏx򦙿ακ򿴷��Ӭ碟ּچ<ޱƢV,ؗࠥ̿ࠍ-LPnȜ0ʋϚˌՋ)@*Є䁅9~Ƀ:3ݗ\'CMՎ𻄠@˲Z��ժUӇ7ߵ񽘝bƪɆ/ļ󞩨ϙ3ߗ뢲c𫹐ʴݮߎ槱Mۿ_%嬫Ö��ࠧ0NԢVӎg\n}\'לpŨl0ȞFަ뺥ʪIЫ˲ˊܳJㅝˉի뉌˧dء}ޞԧ/)ꛧO\Z5wˋpȵޗ푍{ݦLǰa򄔔\\%ǣ	夜n˼R㉟É驆ɛ	ǈM��̼ҠϞt0nٰNḰ͇x\n3ɻH.Ŝߪ,{Ld7\rè��\"yNNķǫ衑Ыq�� ^jdxr`ખn㳮˩��ɹϰь𻻃ε䋹`%ڼ\"5F��눿kuJv/)GŏÎOgߺɤԾWϾńQÂyt冖rƽбԑˮof\'½5ƋҬٛϙMMƃԔaAܻ-sb񣥳𦨜nSyHSɤMPګu󫜸t觘��ڑӜ\'蜧^i̫טZ��ԣr{]2!ŌRMJ֩ρ|%?ɵ*򢮅ѳܰfY��햝ʺ󭶅Zͪ嵻��Ҹ״ϳ͂߸տ֏ɗ?ߤs*ڧբ;G̅^sׅ!ޒjvrN մ��˧Ȕ2Ӵ7IԮ䲰á丝άo��\ZU࠼ӯࠀࠫ��rԎ^x󮨁��𮙅/Ա~Ĝ'pUeVݏؒ׎㔥׈ˤ͞j;񪄄mR��𴕎g􆝴ǛR=ǌUߺ^漢 \rܭŭ\0Kܜ0Ⱥ*הՙ򍁛v֤Å𩇵ɁպfƵͳc奟X}e=U̫ӊԣTթvHdP͞񇖧B0.㝮㿦��\w0͝߄έꌣb*؜\\\֬ƙA嗢}ѿ؃čرφЁ眢ިΚ^矧ɏ~ò̝\'kT˲ΫÖ́%ǲȌړP6ڜ\\"8��Jޯ¤ƫ˂d݃~ƾ߮浍\\E}٧Зq,z��^ ࠰\ZⒷXqjN𲶟𲴧��ҵܳ��{?zn๼׭֔\\.Iµ`ےʰuCI꟨ɦÚ̔{͢fr	3δSmɞӘj&׎Y fϑ3GWפּyYEWRǫv䅙=Ɍ\ZB>zmZ¥䃕ƈͮ񜮿��>Άٖ2h钆̉\"Z#݋ʽAEˋ-红\nt��gձw\n]ݸږQ3jp;Ѥ8¿~ϲ2µP3ˤCÌ,Ұۼ̘Ã}ױż̓ߐɞאτ򇤕;Z5՟ϡȦVӂ𿺁Ԛ񠦢͛ЕyhHMG��葭\rz|莟֓xʚ޿cݨ,����Z@̅-茚ߴq��g_ܜ&핖ھ»v՞9t̻ݛ.-ؔ▞-򫥪͉lfЃJ퟽�MO՝Ҡh༜'׺k᳔Пp3򉈜i˛Ǫd	Gϕ��o҆OԁՈq`챕Pέ(Pʈſ廭~ωА׶٣;⿒똰{ɫǆ+ײ༹̰ﯟɝ׶ܝΓީݕr׭$R׃}낣k֥}mp.񜑢Ѹ>Ϭˇޒ҇-厲سV͗kȠ\'r�Ϝ"+JEØױ囥Τ؛Oj=*#Yd򑻶`=Ɂ��p{ܼ̇ﮛȪ߯7۷Yϓ5ڻ۟ڻ@mׯv7��Dw&e߱gXYi¡̇􊳥,\na䪐Ԑ��W5֨応rnjLٜn4[2ȼ𲃷߲С!+��􇈖JUظư饜"ĪްӥS ȟתQ��ˤ=M\\{0رte@ǌɇ[ߐʳ߭;գÐ��IWüçD݈,¼˻}G��ẂC#ھ݋g^p$ʱϜn��ꨡ񜗐ʉ؈)}(&Ә0Ω𗝀Ƀ}Ά��r?٣ఞظܯOh,{죖Tպ̫,c࠻Iݷ- ւt]ɩߝڧa񮚜΅Ǭn\Zۣ֔ܽw^񦇥<󒺪��[򮍻mס󁪵Uԗ��֞̒a_ۊȝEX\nΑƉϙ��1ΐ;߉d\Z8鵰²ѳ`4YʪПȂ̰EʝՁ8󬳜O��5��m\ZαMƜ\sࠡŨђЖ漨w/б\n֕θ��-عݶ;˻дվN[𪓍֝͛nãܥ\rk\r*]l嶜\\0ѴЩݕ6цϡֿϻԍ󌩁ɡAq\'ޜZ^œ啓q濜rΜꜟ𜜗뇻ܷ⁩F߮	}뒋ԽՁZ񭭲ܝXʴtWށZ Ql󘝂ppȇ`Ŋgݡ4*Ϧ��/��ʄrґI$0&kͼ\nd]{nⲹ!,ڌދȬ򽏈hĸݣԳĈϷȺ쮙1%S��q靚ųł)đ|sa\n5ƳŜZʀԤ芒ʛJָ峉ƱԿ��T\r̂\Zǚ˟=ˇf؈$Hȉ7ϱá\'Ř׽1g-Zퟢ�ݜZ六٘̎zV_éˇ��5FÂ4VܞM`>˫O\ZS#ǘ܄ك+(IࠓfN箣ԀXZЙt.񍿵b6͘?b͸񲘺/֝@O].ən2ɸتٚW̘n}竕Ϥ7񆟰*^]mɟ󳛬?xǜ0hƂԉ@=myױTn@ːܣě͞⤅噜Zּ6��\rOڢԃN��ޑğ��\Xܧl&Z0˜ry?�	Aй𰨈|R9KgЏqӓݷ]Ӗhp(~b-ܢ虙IՕk͂ҠݗLŋӱv^@>Oͩڄ\Z��Ҽ��ةe瓙%AݜZOTՏѩpKڝ{܇࠾Λ\0溣ϥ퐜Z`۽՟kEϭޕBwŕ��8u̅T񬚪4_RgЂìhAgйĜ͢NՓҏuƦڞ\N󜢍^o$鱸޷tm̩۸Z򯺤b삝[Ś{ƭ,ƎŮ골􂎪̛ܸ뗞ˁ۳rУa܈A͇ຈ	Ȕ6HېJՖԂcĀܲ��ҁ/t+7TM.i7؊a_܈@޲έ꾾(>ʹɼt�ٱ8_ϤRu8񑪪1֔��#UY󥔵챖ĻٓӦ׎ֺۚ|��±>��W֗v՝ɥþ#Է؝*8]vE9,ѕƙڎn̳霅r훪TŦ[戠AΦ^_nܠ򻏘Uޞ착Ԓ󈞹#)��쑱HwΒʷq튏Ǧ#ՙ)c0F|ߠޏNہ˲\n佺\'ߨҞ-ǙИ餾A8!}݇ѥЃ��񒦓ⅅp.łBEұ򪽥^�� Uȃr̣Ӌ׊`��ŭ뿢ǑOj嬨ը콉ոߕǽbЫ򫙨oZ\'~7Ќvh̫ͥ<��Z񾖽ٌ\r׸ݍǜ	ќ\࠭ω֜𦛕juθfEھ͎tzŎEŚЂΠs9Ɏ®��ǁYQl𦵙CĘQL)緛å神c8̮\n򺑄\rXνәV7Eה$ȧƻ61迢w뛌얩mάѴ.և;ޮ@ʹyΉ<iMҀ\'?ǧlӎBaΏβK΃ҏPפDޘʘᯪӿcЖk󚘜0Zuϸ芫b6gu~;y攈a攙Dܞ) 窳HՇs݋W[\0ؚI𞟯Їتëva0`ԥqFw5æ>wͶ޿8Φ򫟻@өсـ쥜n̦Gk7iˉζ|ӿНeϷ>ӇN(qՆAqΧʜenı𸂡ɫ욿#Pj\Z;ɭݳptϺۦZ<Eڼկђډɀe׻2ñ2VvКˡr<#ٔ玽\r@ˎORƬӄ䃙È42Ǽ͜rjࠏKͷæx񖞥ޥϖĢ@Ĉͳϩѐ씙7cيK֭񵻒A3ߴ[݂©hࠦȗ́{⌤񬬈 Зq࠶޾ЀXZЙtޥ=6-؉Yꐜ\n0喍殤ԁ작ȝѥjࠪqג˘pI}𩰶aws9ԺmǪxZҏ󝝝K|lx񞹘𱦾ێօ	ԿK犎5g{+fsĿˡR?ˤwV媂۫܋GAǕʳ򏩢uf*鬸ɚwR\r8{<rИx]ۭ\Z(稨읽ӼعﵱzͣԘ򣇊ۇٕȂ,g0p#Ym&<��󆽄z0ǒ<שF0<ࠖ󾚎߃Ȉ񞆍殪<̄.䏜\ʁҴ^��ޭ��񗏰̳H眰҆݌UË	p𐃇%սԶD[Ϳ\'լ髜"eΠ(|]y\rKҜ\ѿ﫶ۢ\'Ϋ��߁uⓒ9񅼀瑛ါ̹넟]̱Oer`<tƑI櫙˱@ퟏ�ҩuǣݫô=>:\rjѰX$3ʲ巾;jΈ6g1b̺𽻋⚵uÊךұ+ҋ݆MՐӲМ7*R͸ɝIϧ㩦㓙̣ռٯˆD!򾾵۪0h;/瀭9/lam5亚̻ӹʯŚЂΠs9HU章ϺZξq>Ƿ8Ѷ6{˅IÍ귄脿ߥ>0j��CͲS%ϫȦ̸ր1JٖǣFدڪ\0qղꛜZڥDV֊@aQ壪��іퟛ\00󆚡v𙚽Ηu;ޥ(ʚݕށ=ܜ߃ڹץzpPĘ݃AƹղB糆4Tö̝ࠞʉcᐕݧϰÒH嶡仓Eaɴn඙鯒g핈澣wΰ򸫽o妨IБ4\\ӂ﫭ˎރ­ȎLqȊ8ė׶ڇi��9w`2©skݵջשݪ#`Ö>r7ʽO]ՅyÖ%޶p*Ў7Ǵs݀璕Òί"̹t>y٥À\\\'aΓVܠw����ԋǱpˎȧݓ࠰ZsnL렻|吲Oͣ��(>޷Ԝ:\n국ܸ$|ਕcǹ6܏Zچ]Ւ[ [멅/ŵɦޜ󹈀JsǾǹFu菢#營٠Ŷ#[ؑlÅP۔W\'bⳖמG93ɳУd񂥰a풹載؄令Ϣ܃؟eΘ7،°A#;з۰֢!ԴޟX]諣G埞Ώ6?ήʔ\n\"ϋ¶_ זЖ��\Z닃ԱȻBU|ۄܬʇ⩱}򸑲󑢈ղɖ6ᴶʓЧ Qc%ȷȉڻ궘؝Dș<z-\\-񏏃űάj��᳁g>mǓ߶S\0ղˌ̺򕓾ٌ٪ξ��ȮrȲZ굾;܏\'Ӂ��é\Z6׈ޥzw��\0AƜ"ġS=˥PĴ?𖎛~p)fƪԺܭը B��⨝Œ3+ОɜnIꆷ/u󾼉òɃܞٜnȮri?5ݸ58叟ެՕɛ𴳩hڸzŸ��-ժ^ђĤ⦔ѲݱóI󜆰XYǧ`ؓ8ʖp^Ǽ̼鴤͉\r݌ٱ׃͛˺)]؟υŋ!}A:Ď塎հ҈٠Z\ZV5_ݜnD62FsԆӖ]8:y؜rō>ٷYΫk!l<󃨒7oшݷȕބš= M܋nE뉤 å��٬\Z	Ͷɸ񅚠؜n숎ͭW1а9\nꛙۜZǰɪ󺆲I|YΚ앨Лs஡䣪XŗƠh}ߦ֜'띔ɚΰ̜ߛCƣѻ=wﭙ՗<F+˾9Vӭ狜rՈۺ��\Zȥ߯N\r˚ՠ٦ٺڟ|nIKbѤ`>Ӹw@��yӞ〽Ǿퟵ�½81ɩ��t񾐤2!ߢ瓾軰epͻֹ߽/qȻYy䝲֚LǜZᜰЅ޽զܛ#1݀זퟧ�0ծ]∪/Gjiهւ^4^䣚Ez:5Ըz өbȄڜLݟ⤺ࠍǶߞέᯯΆ(IzAߒ>ѵϜ'׏K0<򵷷ƍ𾷮҄G񩶡͚U؀xݷ֣[Ѡu՚܄cԺ֤*̀v	`[_цǴÖt΂A輦n\"Ֆ,Ҩшxݘٯy[˹˜Z̈ʖ˹kaіԠ3肋ўOŹѥW䂠΁:e뀉ǑV5ʄلͰN\0*ᧃЃһ}㜼αٜ"΁ĻQůܭٜZb%ͦ��kQYۘͶ_oɏװ,זΊ$ʈɊF󝫐��َٓ&��D	͢TȁUȑfw��̕pѢZ˜\읆ޜrҐzn־kۇӰǲPdԉٔӑس<Rƨ=;ތ4̚Ƃɂ೉ƂήƠ͛7\'joǱچϻBՕTĜҟHW횜r̜+\rLĶ<25ہR%ߧmݜ0}xĨڋ3-ٓj㐯РՎ󠸊ȩÅ㡕._ƪ\08x*겿)+咤Ȓ\n?㲒ϝӥƴȇܹFMǎ9Eη.ǵlˑ3Ämcں95G0|?񒖺\Z̄GΎפӌϻ] ̩ܘ|˄��􈴙ϨԸJ)c0F�ϛع9ҸЖޜ\ΛSܾ��8kߺݔϕV&۔-yȓ5x{󃉝ŵ#e֚՚~$֍<R/̫̙ڗ\\ښ#zߌAR̈`ҙݏ- ւt}h圢Dщ¦캊du`Ւ𖻜c摞࠼ł󅟹Vׅj�� +ֵѪԭjƜ"lǆv0ݼPݙ˂쉌ǃ7R௸۱Vipq&ɞäٮ5^ѱ֎ڻ`̱íΑ\0αVퟹ�ӣʈ𖜀rݖh4ܜn\'đ3M;&r춴ජ��5֌+ă척䒪Ѡ��-ե<nx[beFȁBD5ձ֍\Zv𷷏\"7鶜'ُ\'/��Ϙ[Oֺ%࠮6p°[Ɔl민ٴD,܇5ƬȣЅޣ֝Q̇UظvwΪ*ԥas4S=1¿٘̔՜"ݭ٨𱜠[<��pqx#ސبrj畠ׇ`kbʋɔ۸>Ĭ[Ϫi瓳ݭ֥篭ٮV֜"ܩE>𲅍\\ڐ閕̸Ѣڧ䎿蔔׏щaЕҤȑX%Йl�ï<懖ϙļҨұʕǻ;>ʓЀ;ث7ӭŷ*\ndׇў֖kA:Ď塖a֎Ͼ~{��ؐ7>ࠔT۝dƑ]qphխ[߽Β}󭓑@Ͽ$𠳪Y	PB{ǗbƜ0b_V,kq~gnݙ0ߚ˷𰈪]q$pԲܞb!ؔFضĚx��گ\\棽sԌ̧$*��󈏸֭ﳀrғRc|:__֚ܦ̅ڀz㰂PQ8a\'֍ĝۓΥզ򜮆ԛٛݽȳѶ}랑r࠰܌ƞzƨ쐰{z񥣮_ȦZ8û!ٜ\&ڲb>tՙƱMȫӗݦћ{ܗ̸3LÈӉĚbΟтìhAgѹŪ\nv\Zࠥ?#9ZBŵ䕥֒Ŭâm��|\n˘ߨԩ򝎜'in䎨ؿػǁ`RB5ͷ��Үjࠇh啾dXϙ{\n̚5)U계٘qͥ\r9H&؞٘ࠅQΫȣ4ל��}Ø3ÈҡՆy񇁈٠:dǲƱMU乂̕jQ3_s=ԵͨH,c\"}Dر^vꕥ\"ࠎ\\��/pݩՑK㰀kࠔ𞯪mMޅe+ҖrQ\Zۉ{֮qήޟO͗h*ȩ򭎊-垷\'͹ͧ܅2ݖèV呴ݝ��]+^㏔ʏ\r歌-պGLd֯ߋ쳖ͩz䋜󷎜n|֍kJ됴͓򢡠/	ͪwúć̉􉌕/?=񾕘+1Uїˣ͟ܮF��ƴ̡��c䐧*DДϜZЌ,̩ƱI#Պߟ딃˷��̄բҹνК̖y2ԋٻ{̌܀*ﳓi񌰨5Ӕ9𛨾?E&P҅J͎ձyɅ��t֬ށ,λטn\rǩZהOzٖN��C[ؤ҉ᚳɤƜnƷɰIꅆ΍в͏œvRń̀?7̧=RMNÅ7tQ:׃$-옐ўabQq˨볎󿗆ߕyΐ⍄߸ٹ*᪞��A^Źf࠾&)ݝɃäӰƕePѶ񚽩ׁ6ɶ풭t/ЀŚտۯkͿ͛իσ⢺䕿췬7ΏރUDԮKˏ>{kʛL��ӝǻޠ\"ۖR TJŃv򑝶ʰЋź��	ѹխÃܶ��ً>gܴI輣\'��?o,탩٘Jx,u-ȏKɀ2:,ku��Ń蝼J텤˒bDŦNMЌʁܵ^ܜݚࠬ4ɪZx��O��Zɳڨ鼬&*ڹ؃ʁ:򈐍1Ȩ󭓫ӎͧȫֻхŢj)򸳞Ԗk\'ȭ\Z߸n&ֆخÉłҏ|ÒV⣈2ߐꍆ8ٲyܦǌԛQT߼G屡��ӋÀڇ����c醇ބmT*˷ۄU۸巋˴;ɦ\'ߣȝۓ6m=*5Ea\'e硜Z��F=Ȅ3Մ尸rڜX	*��ӆׁߖV8ֽ˜Z/aܦǱ𺫙Ӌ׎χǇCӫ̦ίъ쩑wɳ[Ĺヂb-hAgѹ吀*ᝮM҉͞shH֮ϝ,3vҐ]ҵ\0͙fȻƜZNڵc0ۢݔï}uB𜮵󾦠ŁwFϕJӤ ]jKǰѰT��ܴ\\˯ئٟ��ֹ声cոɆגnգqƬȣQʨٕ/p+ˣ񜜘=_ŌІٺpM癘4ꤎޛ3筳Π䧊ڀϫɪWWƼn·Vy;Ɏ_ɭm߮␩Ñdȁkם２ץ0Oߵׄ嵜0)\\bvă䃝P0ź.b谪Ɂ0༲��򀝾ӻڥ,ˉк݄\\��LȜ'ƹͻ\nə侕񓜧}ߌ*򠅢\0ݡߺ9ŅøњԴު%ٰUXѶC[٤tD P򈃓$L.bNʮi\"ܻĞf��ϡS@Ptqxch񊛡zѕףGtǚŹwT꿋PӪuNࠊԮ㎒ҵ9ɽǇLA䘈X¯&`HJ𕈖˸ױ6J٢ʦ\0\\l[wƚָׄb؅9ǧKJ;֪ȧLې׻絭hPvȲ5࠽UƯ.r󮨁ǳӻ_6Ⱥ˒ҸѢѽ։l\ZK䴹켉홚¥̣$@ȍ\r,Mu}Օܛ󥚞\rˀˈݎߙ-)*ސ࠵SdմVI؅eܼ#VûúͲ7o6vе㑠竸̭ց&1גρ0�}��aP݊͆bjϒؑވiׇտxH\"(䊣㔾ݓ5ʪ%ْXNc*ЇᬡѶ݀hv&şŘ˞»Ǔ9Ҝ0_wל\"ūɯa\0❲qFP��ڳ��݀ﻩCԸ-̦cלϠл׎\Z.폇Z��.Qܽ饱ٻt0ӷէxT����֊#닉tֶ᳞ɜ'Zà��Ƶ|حʙ&q4ڑÅސf̹,iӟyWnԋzة$5kı-C`kǉP;뤜PΩ̾٨Qߺ iۃӹ񂮶-򯵍VpΛcNـニǜ'p4K݀\\]✡񘊱Ĭ8/鑸Y Mȝc��ѫ˷	֖ɢE^9QլφQܵ܉Ჽݖ\0n񗩵/6í>糧ˠ3䜢ˡחӴnMԨM˰ކ<ڄ#섭!Ή˜'ԕƒͤј㽣Ә&`С)ԀYࠗRuɇ׸Պ􏑪헗˜\yѳBؗ̆JKưwԳʗ՜0ݢӓҷ(gԏަCސLנS8Қʚǰ㰵ɱsh3ңĜ񙰥FĲňrѱԕd4Ϩ<\\ 㚄Ȁּɳ	ێ9\'zݔCtѺuܤ}ɡޱŭ܂࠘ I㦁Dҗh4݂̓ϏJᷢϬߵɸݎM\\ԉ̉ώ³+L\r܃aŮŏّ6n屑ZuvC٭��󺔳͵ʺʏw⯯eN]YAl	Ƭ)-ǀ砝e{NઆۼˏQۿ񔚚َ-옿o࠸&}擡:ٹjufUÜ"Ϝrϼ舳R\nßȝ,ؖث֖Sҭ -в\"EܒԁŶ↯8˕SqҬo̐Ք�p\\Yֻ=ґȪOdήԉϞ˲ގGM<ퟅ�YQ4ߑc侊ǣǠ7Ļݡʉ:]݉_ĺؗڲzo曋��տ򜷡߻jpྮûoɉW`~��۫򾢆SH͈䔄ͧۃұ࠾ׇ끺6ۂҡGЌZ|ЩɜT葂H_ЂΠs׳��۹Қ`ğŤZu쫫;\0ʎ\rvׁ̫$HlמՃ橘NnąĦѻÃѰԍ[֞ߠ˂󮥂̑ݫ6ߟ܆Rӱ[㌉>WSƳ𷎻HŅҟm+ũӈ̈́ŜWȸɡ?ÊֲՑ^񿔮єȇ¶𜚊󴐜ŪÜZ|.,ӽؕo,שSܞ˻ۢ谇ГѸ~nu<M췥eܖLJzָԜ؆ۼl1pNʐuWϹHge֒Ŝ"uׯ̯Ւ��ո﮵1Ñչߝћ֛Ɣ\'ߓڶ*ܷ\n,庐\Zj𨚒աUެ;޻X띳فɓٻd׳&>ؒҹo똞C¦m멟��k:\'].Wuﻕǀ㴸jSعږօ󃏧ӷួiV4ʭBȴYσߦsޚZ޶ѓ��{ҟɊy!̏wԄ����G𤰗ǅڥ𮃱|2VӃ}iȐ젖sڢF覞<䂉齸s.»O̓;ɒټퟶ� ȸ Ą7	B%I۷JȒX޵ބ۽𣣭NߖRݮݸ]9ɡ6ĜZ\rPۥ𥘦ĺ퉣쾕ȪTѸùǋ햣ǦÜrB {󖮾զǝHJԏM۽E_7P萂b-hAgЅֳ]ڛйa؜ZUփNnmRďڀ粘`Ɏտۜ\IƖӅ26_ӌ揌մւ9%޷>ըȝ։޷Əߒ\n֗.mװɓ,ퟝ�c35ѐ_U˜Zg6ݒUɜٰʝ̜\ʏ¶̗ݮ˼dک􈨦򌚸ɱBNv¨	ǜn͒uհz첫a6us�\\췻"ڋ4pƨc҂fL2ǐiۃאǘ!GˠZi܏mxqӉ��%نYǜ'�.筝G㿴[tЃྍ�ַ)b�λ⏝CuJ͡ߪ䦜n頻p˶˙ۣқ��@Tqzz\0ͪЊؗ恶ݩࠪqY ع_{ÿ{ȟ𛚥:2N̕җΰҜrڦ􂙪ɺԅҏkƸ^݇��(/بهꌒz&?1;᭦e٨َخ\0ܒȶdΌߕ#ǣƴ࠳8ÆͼV5\1ۓgQ5Ң\r	\'sյм]ә=RC	\'l&𦁜rRӢI޴Wi`uz<ڱǝҚСȖϕƫ a@Ֆ⪾ڜ\H֪菞6[׭��ǒȞ/ўdž߳^/ɥW٤M*jY 4ѝнH\nΝ񠭜\ݽƒɮ鷧𕎇ĥzyި��ȵށ⠭ξ‑oȪPʄւИvӪ<«BQFu*߈\'т֔Y6ƟH@*ɮ͜nʜ0܂ۨ+܋tî۟Ѿ|vpOMGȼ;ءcPyᅺfͻ(jkĒ]Qŷǝ(딃\0ÊF崏Q֝Ŋk&H𓣛�֠֜/Τʇ߆ٵ؛%=qУ¶劲q+Fݨː*ᯯ�1Q之K؆ΚRԑ՜\ׄصF5cª\rĩ乭Eok૔֣RUƲǶ��\0ذӤ��	,]*֦eVϴR멨ʲճǽʏr5L˙ڿճ/U࠲iZÄ\'τߨlڏӾκ󦁂_򼜦SgӅ ׉FN\'эǣWD꒖lhٜr-ڮqۘ��aղֱў֒Ί44<<ʐE[񜰾0ٖsl`Um^._\\حNTƱܒ򄡄嫸G˔ʲ󪾩\"#߷篪󗥉ؽͧϬuǉ򕡄ŧPڎ=?򳰹Φ*⢮ިˈėٲ򜡉9{R>kxȊr۫޵<ΣǙqQ녉ٹ߫\'߿:Ó\r,ъ\r>��NŅŚЂΠqп��̾폮Gz��ݡG̜"gŸ椡H哣qݾK;g|םﬖ֪ȉ؄STِn؏=\'n.Wￃð⍷Է��퐿\rՈۉ\'ݍǢ3\¯ͨܲgaƪ퇔$uʙѰ实Ȝ'pׅ^Ӗ햱�Èƕ嚧Wѧ󜚺А>ڣ\\Ď��s^`֩Ķȯ��ֶ߆-+:Ϯ,ɗߣĐ12ߥo඙pۦȱuǕǧηՇ2B,_䕦Xǣڸۙ߅م2f-8Ȃt]̬󦳇ԖhWQٜ"˃\'&sȞ쓗8̅᾵;*ĸ]慺ذ!ŧI핸ǉšǪAoݿЖ]Ɲ��^ފ캫߶Έ��nr°獕̳ꕆ򏣤ࠛ߸n與ȤʋpǺwʩĎv Q񎙑2=ݖ嘣x\"U{k}f\Z/xƺ\\uǸγ֝g󠤌~ޙ̽ꉕnϒǮz!r1C⫼��Ѭ;��ݼ2㬮(鞝ΛxВ��ղ&e>ЭBuǄ��֥ͨ׋_Z3뚦ՏCԶ�ߑ]Rjo߲Դʺ󞜚ץv笅Bl\\`KﮀԅڈԼ\"񂶎`ֵ󟬆sŜnɠМʞޢג򧇡��mҞNܜ0࠸��ࠣc{ؕퟏ�}沬μφ܋̚-K>֓ȓׇMz̓5u׫Vۺͥ4𻩑ߜ䉩ѦQ󛃳ם*с얺_Z@̅-荺 Ϲֵղ?ݜ"Ąe͍HȔ֮ZǝhΚ$aʕ޴U\'sմLI[5fvȅʗ©ӑݭ`��̟{󼼼諪ٿп6f؅.곕jػkգ]׭Ðκ��Zڎᠦޜ'¹uОÂΒگ��z貇½-J࠶ӱ猆ǌРo<dՙ͘6·L;Bw��Ӛ\rUְׂ\"«W��sǱҷ/$%oюշ󈝣\nۮ��Ҷڡ	};VGoafܘmʼ��Ch¼\\ޙ~Aࠌ̫U놿Ԭږv��	PMpǜ'z﮳\r⃑ͭA?ݫӀ��ퟑ�Ń́ͷّԕ^bٕ࠴ժo<ΗXـEӔ����zհȆ��Bכyaه[椤̘7ׯŅԿ؜r~3tҠ\'��r񶻠ТmėV[]K\n��몦࠳N܀ӟܕʇ?-îۖ֜r��rĥD	ܪݠ·`c2ڕԏ޾眒gΛZЂt*=Xp¯Ú􏳲}ݵ��ٿã٩[MƉPWǵF̬űϮϔk@𰮓r s߸ڌZ\\沺߱wť$1׾ްN`ֶؓ׺hMxܝޫ˭ʮTìE֐Żݫ嵊n񚓼Ϭ̚}b~僡CGܜ0Ǽ܆؃NHuҞך%h��ƆS:ퟓ�zذ\\ł+��۶(ךLȼ􈅲BΜnҴj2؂󰇕hSȥyߌ4MޅǍvSp ڨ4b΃[|5佫辜\NGҟɊ\r>âR˕ʋ�u-u׺rݐhlc@؏WԜr㵴}U55,񓧐υt|o͡��븡˭Իѭ.JՀٵ𝜚֟񕍽ê౅��ϥՈػ`򯜭X(-ĦϥDԘɁ��┓/��ʓp\n/}댜"Ȟ��ݜb*ǲNƸU��̏бTwVXv	ޠ{׮ѧ+]{u޻ڲό\0͑w	˶.ʫ05+=TǏ 睦ų)D֪ퟃ�˲˜rŎ⎡٫A֨Ŝnط󛴉}*ӄ֜pVC$��*לZ3Ó}C߹߉Ͳ>!؏nå\rחx|򝣺>𭈃tŪ��nʠ��Ѓ˵ɜ,ȯܮ\Zʇݿ읜НyԀXZЙ�� gࠎ㦿ƭWN֊ҼЭĪ^ʜ#ߚHʠԁ𝆃ͪCԱ𲓨m􆤟߭J׌!6/Ūԧ𲇣H힋.ϻVȓŪϫ&kȊy膜"ӭ>wJ\Z.n߫Ԛ٥́Ѥ㬛ʠՂն)΍׶W埏#ҋ{ƴ\0ۤh񲈲󖊏乂홫{Tc񵠔X񂺎8ۀ\"��7Ƣ:ƌ߇؍O܊ۀncۑоǣӎѸȞҼ۩ǼYY?R޹ܝ˫F˅65ȊiY܄|r;ͳ𜮫ߜ\ɶob;Ӯk?࠿܄M~ᶗ.n呏`hq׬أzqΧ0ۉ߃˗ڐ]⨕Ěګ俺кӷǴ䉕%ڛ9ٞܓcs��Ӽ!.Hz眥njO2��sr#M$;zīrv֟ՅȜ4㉶ąB\0̘hr2(̡ⰓSυϑŁwt۞ɼٺ|񜼂aԨ˗̿Ǫ࠻ІĆ֐엯XἸ:WBKڻ񻱎ǾЀŀ𐳯舜\ޞz¬<ױܸŎĉ9Ürأԙ񼯷qޠFÎ-ѣΔ܅Ɂ2fڬTө\r~ؠ��ܮƧTԒ2胕l񗐄sFƏ2ŝՅဆA˞ۼ㿉ۜգԎҤڢ̬>)ޑsiǹ䚧$ӶMrךa㜇ꈻSͼ֥ߊoӡ1𜲕I΍{ʼٗVGϻO��ݟIܱT^Xλܞz¼ⶒ-󭟾��ߜ"׃+ Ͽŭ$梁ٮ^6le*Ѹ͂їٜ"f^ߔL+]ࢭ׵ݎ󘗞몱u֐��	ÖƧ箺Gϝ��ƽ򞕜P΃ە£z阔P(4fî([Lk��ܒ8ʙ+k(T6ઇӫ_דȖ;<6\'ƜZkǬԀBϮ޹ѣ׾ĂB͜瑮Ŵ҂ߛZԾ3~&󻱫͠����B򂖴=ڤM˒a��Q􁬂īŝƼČ꾧͹ڸY{ׁͩ\"ژkXƜZР\nĸ-ڎ󝈲ۜ"-ϰ��TԴ;Ϊ(އ~WOZɳМr/?)4ϑ܅1񻵀ı\ZՀ\\۶VVӚѲ$UՓ|ОŅ흚󔾶rΌ蚹⬉ؠM芛處zЪ��ꎚю��Ǟݭƞ邹8Xߩ6%勲间ΉPƅؗHƸ݈q܏ުØl/B,ӟk׻$t$ѕ��ۥefl^cȵ뾷ڐݜZ椧	ڜ'ɠʹ\'޷Τa4VO6⥵Ո񓧙٘h̾ߧզ\nϼ%򛔵ĭ5WAͻڈڕ`嗀AˊƸ鞊ƹŽkӥ[ѿǾX��{oJ渕Ēb-hAgУ堰b+ֵ*ˤk欀Ix/+��vјX$񫠮E󢑎⼭DԚH԰NࠓµϩiJ��޴ٛ࠙刁\Zƃ[n1οl׀-ࠣժ˅ݷҜ0]5ъsі;ɓk\\ٔȥߤaϽˉچퟀ�С̲5Lk ׷KÏڕ$ýÀ11񑁨~̒񻘆ܿĉ戨ѮΖ񦍟࠾oмǽ{خǓV҉/#˚}haɈq϶gňƪŴ*(Ě<9��>ӷɕޝv\rڛ٨҈95p+ʞϤ��נڃkuić󪆢׻H6ߔЪ҅\"¿ֿU͍ʗHP󰴁b	ʛ҆S:e\\󂹯ݝοǚ[(؜SϊkA:Þ1Ū(iUﺓѵuھ࠴ʋǊøtڏ贵$ŹWٳ򶑙&C\njüγLϡ��E/ʔ\'>ΐ쎝Įݦ��SÁÿѢ뭼jȞװ)ƿ3./ɺބ]ޕ\"׮ƪچOĮ㫆ܒꮈឳͺ(ڏDŅͨ&l󠻒Ų͹Ɨ\\ƯUbTά㇤̾ۃʠ>󹹕jԾԅ򩎶Hފ]��񜰿AߑjǾݤ]��ۚʃ畳޿`k̜n,ѵXܰ`Ԍ//󯆃Huڼ@򦥔b-^̍ڄy3±ϥߚ	6n喭ŲЊȵɁ𐱏mWkɂ˺m4ύ򅵄ܶ*:5ɬےĝힼԱߜ\$݅hіԠ3責_��¼rյR͊��۾2RƜ'эIĽ]٨W`)iG҂ÏјÈեձ9ݏ$5ҷ$DؤʜZ\'߻Uɝ)n��\0ώ򒠧IԦ\ZяٖjȐ+תϜZBӬVо˃ڗzN=ۡ_`hnլl�\nсϠއ(ퟦ� [��ŊʏӢȭň邀l㝚ڎ��oa󓿧砸��ԏÚF?:+,hAgЇ&ÜmCږ쵷ǵ��ױĐg鸈[гѤmHѐʓȱF`T Р͝i:ı��5VӼúIͱ鉜ɒrRױ\r}lŪ]��Ӧ󄦹ӵݎt̛nJ嵻y4 銻H;E��u-˩ߕĹ6ϖۺ֔A9uĦdV7·—܍ەۓ>лҐǶ@ݫ0eEHן󀴌࠽۳便󇴽uRͼ,Ư\0O��aEH7ٰ܈ݖ񷘓{đؔ򔃤͋ё중]Ymʍ˒ű؎A:Ӿ��08ΠҰڨ�эŇ8<߭僧ƊC㉋Ʒmt{)Œ#}򇗩Ŝ0!禔tEɪI㝜O��շ@הߒ\'ѭ\0k��>ȶF[#W񴮺Jʛeƿ󓯯񢹼ztyێEŚЂΠǲ\':ў~񗟭ÛБ雑GoيҕTC[Kj˫Р㛞bᏽہgڳxϖ��ة»ŘƽGې^B\\M#Jْ؈_퓅ƣJmȭމϦS<˓򞨥k��&ɓ̊ۜޞM$�Զiܕכ`ܨ󰨵ֵŉ��áͮBO[xێᡇ݇븫¶ҋθԖݳ&򖿇��iˎbtzɮO񮾒sF��ˣŇ\Z^皽cؕƟ{ؼe߼ڕЪ*!߀ߩmDƲ`哶)ښHV\r&ļ��ɛݟLdSiݖ\\ݠT\"!ֻڃجL㙚eܰ؟ɨ䅱{ЕŜn^ڇsٜ0숼sߣ෋l`ۨȩࠨCЩn?Qkؙ𷌵HΉ昶ȴԈ񘭅.pqA֑ѐV؀κϴp̙XՍť9[ȡޜuqȒIվӻ冭З>��Ɏ𨵗!- ւt}h3څЋB]ŷ/֨Ӷ@񫝱_ࠇ��0ᓑ/ؖԨ*˔-хG4۬$t\\��-kퟏ�\'Kq΂ʙӳ=|NǵЁՄ#xcɣӃ��r҇vYGܑme͋uƃۦ7t9zܱ@ۣҜ����rһVƙ󑺭+Sۗժںʵֱ簐ֽ9Ӄ׉uG<t}ʢ\rq5Ğδ)񯦮J[ꫥӿǩ겧\r㫨��Ƙ򈂔H4[?ͮÜZŔ!࠻g䫰{(M��Ջ@؈َ􇵯ݨJXᜧĬZֵۆŎ\Ј(|ecL��űwEʤwRP󂩠\Zc|ýC��cңŪȪGD.3롨t񄾎uç񱲨ڳ;Ŋ\Z{࠶ᤩ윣򝲽Ћ۵רͶ݇ˁͪӚ2J՜;\"ϴҥāԯĥ-˲^ú	k񁤳Ϫ󬨸hiіԠ3豈׵ՂΣ��࠿ދ񥵑`Ϝ"WΪ;񛸌t𫉔=ĭLӛ߳ISx\'ϼicL\r*Z.ퟻ�{ˏ��}э��c8׫VIԪP󐒘泫vD㵜Z𣍭8̼*ڰܞ٩ڨۮ2ǔݫҖp¾ō\'	ܮŵ+βӈ{Fǜ\௟ĊυЮ❮䊫Ĩ̆h˦#ʷ֭+]Z)SPڬuP{ø׭标cԉt��H³b��uԷ괍1;!��돫2_򌛈ωȿ��ƅbŴ;ȵVWˣٕ􋬆ȶ֡ڎTĊއݼRۭ˚5杚SCצɤڲpE e#\0GbңÄ!��>4\neoO`Ҥ-ﳻޤ˔麱ߒ\0O܀˝M똷?̦󰔜ң͹.8WNՍ晖ǉ.ТE8ַӦ԰юѻ􇺢LOݭlԳ앖#͕#ل7H縱bB(��Ս=tΦֳsGݛ, ՚\Zڵ}Ċֲ\"8;ʸ䌔҅dz,Z%t|坜Ī֪ČҪ컚KՌĹٚc͂􇼜rGLٖӾ@ࠪ~jk믙࠱ۆP׶sJʹʼ\ZrjRؠz��¶xׁ˸}䟰ơ̎ʳԝגؔIz󱦓y흚��ؤ~S򜢬��KUIʧfıOTe��֬yĊ籝eΖ(ϜZȔ%Ѵ۔ڄ¤ǅYSwѧ:񞄾=O۔ֽu΋RƩ`͒.bl6Ƈ+ύǥܜ0ᵎ%7q궩̿ǤhߨǇЧǬ/^Æ𐗳nȖ%	﵌ĵ
 
---
--- Indexes for table `jamoperasi`
---
-ALTER TABLE `jamoperasi`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `lokasi`
---
-ALTER TABLE `lokasi`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `masukan`
---
-ALTER TABLE `masukan`
-  ADD PRIMARY KEY (`masukanID`),
-  ADD KEY `adminID` (`adminID`);
-
---
--- Indexes for table `masukan_customer`
---
-ALTER TABLE `masukan_customer`
-  ADD PRIMARY KEY (`masukan_customer_id`),
-  ADD KEY `customerID` (`customerID`),
-  ADD KEY `masukanID` (`masukanID`);
-
---
--- Indexes for table `mediapesanan`
---
-ALTER TABLE `mediapesanan`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `cerita`
---
-ALTER TABLE `cerita`
-  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT for table `customer`
---
-ALTER TABLE `customer`
-  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `infoproduk`
---
-ALTER TABLE `infoproduk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
-
---
--- AUTO_INCREMENT for table `jamoperasi`
---
-ALTER TABLE `jamoperasi`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
---
--- AUTO_INCREMENT for table `lokasi`
---
-ALTER TABLE `lokasi`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `masukan`
---
-ALTER TABLE `masukan`
-  MODIFY `masukanID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `masukan_customer`
---
-ALTER TABLE `masukan_customer`
-  MODIFY `masukan_customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `mediapesanan`
---
-ALTER TABLE `mediapesanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `customer`
---
-ALTER TABLE `customer`
-  ADD CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`adminID`) REFERENCES `admin` (`adminID`);
-
---
--- Constraints for table `masukan`
---
-ALTER TABLE `masukan`
-  ADD CONSTRAINT `masukan_ibfk_1` FOREIGN KEY (`adminID`) REFERENCES `admin` (`adminID`);
-
---
--- Constraints for table `masukan_customer`
---
-ALTER TABLE `masukan_customer`
-  ADD CONSTRAINT `masukan_customer_ibfk_1` FOREIGN KEY (`customerID`) REFERENCES `customer` (`customerID`),
-  ADD CONSTRAINT `masukan_customer_ibfk_2` FOREIGN KEY (`masukanID`) REFERENCES `masukan` (`masukanID`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
